@@ -6,14 +6,14 @@ class DividerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
           Expanded(
             child: Divider(
               color: Colors.grey.withAlpha(90),
-              thickness: 2,
+              thickness: 1.5,
             ),
           ),
           const Padding(
@@ -22,19 +22,19 @@ class DividerWidget extends StatelessWidget {
               'OU',
               style: TextStyle(
                 color: primaryColor,
-                fontSize: 15
+                fontSize: 14
               ),
             ),
           ),
           Expanded(
             child: Divider(
               color: Colors.grey.withAlpha(90),
-                thickness: 2,
+                thickness: 1.5,
               ),
             ),
           ],
         ),
-      );
+    );
 
 
       

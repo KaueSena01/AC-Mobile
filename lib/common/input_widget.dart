@@ -30,33 +30,36 @@ class InputWidget extends StatelessWidget {
               fontSize: 16
             )
           ),
-          const SizedBox(height: 5),
+          const SizedBox(height: 3),
           TextFormField( 
             decoration: InputDecoration(
               isDense: true,
-              prefixIcon: Icon(icon, size: 20, color: primaryColor), 
+              prefixIcon: Icon(icon, size: 18), 
               suffixIcon: suffixIcon 
               ? IconButton(
                 onPressed: () {}, 
                 icon: const Icon(
                   Icons.visibility, 
-                  color: primaryColor,
-                  size: 25
+                  size: 18
                 )
               )  
               : null,
               hintText: placeholder,
+              labelStyle: const TextStyle(
+                color: Colors.red,
+                fontSize: 30
+              ),
               enabledBorder: OutlineInputBorder(
                 borderSide: const BorderSide(
                   color: darkColor,
-                  width: 2,
+                  width: 1,
                 ),
                 borderRadius: BorderRadius.circular(12)
               ), 
               focusedBorder: OutlineInputBorder(
                 borderSide: const BorderSide(
-                  color: primaryColor,
-                  width: 2,
+                  color: darkColor,
+                  width: 1,
                 ),
                 borderRadius: BorderRadius.circular(12)
               )

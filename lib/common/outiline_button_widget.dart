@@ -1,11 +1,11 @@
 import 'package:balanced/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 
-class ButtonWidget extends StatelessWidget {
+class OutilineuttonWidget extends StatelessWidget {
   
   final String label;
   
-  const ButtonWidget({ 
+  const OutilineuttonWidget({ 
     Key? key,
     required this.label 
   }) : super(key: key);
@@ -19,7 +19,9 @@ class ButtonWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          primary: primaryColor,
+          elevation: 0,
+          primary: Colors.white,
+          side: const BorderSide(width: 1.5, color:primaryColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -28,6 +30,7 @@ class ButtonWidget extends StatelessWidget {
           label,
           style: const TextStyle(
             fontSize: 16,
+            color: primaryColor,
             fontWeight: FontWeight.w400
           ),
         ),
