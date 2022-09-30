@@ -1,8 +1,8 @@
-import 'package:balanced/common/button_widget.dart';
-import 'package:balanced/common/divider_widget.dart';
-import 'package:balanced/common/input_widget.dart';
-import 'package:balanced/common/outiline_button_widget.dart';
-import 'package:balanced/theme/colors_theme.dart';
+import 'package:atlas_coins/common/button_widget.dart';
+import 'package:atlas_coins/common/divider_widget.dart';
+import 'package:atlas_coins/common/input_widget.dart';
+import 'package:atlas_coins/common/outiline_button_widget.dart';
+import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart'; 
 
 class LoginScreen extends StatelessWidget {
@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
                               fontSize: 25,
                               fontWeight: FontWeight.w500
                             )),
-                            TextSpan(text: 'BALANCED', style: TextStyle(
+                            TextSpan(text: 'atlas_coins', style: TextStyle(
                               color: secondaryColor,
                               fontSize: 30,
                               fontWeight: FontWeight.w700

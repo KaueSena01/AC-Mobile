@@ -1,5 +1,5 @@
-import 'package:balanced/theme/colors_theme.dart';
-import 'package:balanced/views/auth/login_screen.dart';
+import 'package:atlas_coins/theme/colors_theme.dart';
+import 'package:atlas_coins/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BALANCED',
+      title: 'atlas_coins',
       theme: ThemeData( 
         primarySwatch: MaterialColor(0xFF0A3470, primarySwatch)
       ),

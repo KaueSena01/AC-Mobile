@@ -1,6 +1,6 @@
 {
-    "name": "balanced",
-    "short_name": "balanced",
+    "name": "atlas_coins",
+    "short_name": "atlas_coins",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

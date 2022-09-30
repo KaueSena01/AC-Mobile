@@ -1,4 +1,4 @@
-# balanced
+# atlas_coins
 
 A new Flutter project.
 

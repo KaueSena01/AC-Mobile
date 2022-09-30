@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(balanced LANGUAGES CXX)
+project(atlas_coins LANGUAGES CXX)
 
-set(BINARY_NAME "balanced")
+set(BINARY_NAME "atlas_coins")
 
 cmake_policy(SET CMP0063 NEW)
 
