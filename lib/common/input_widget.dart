@@ -7,19 +7,21 @@ class InputWidget extends StatelessWidget {
   final IconData icon;
   final bool suffixIcon;
   final String? placeholder;
+  final TextEditingController? controller;
 
   const InputWidget({ 
     Key? key ,
     required this.label, 
     required this.icon,
     this.placeholder, 
-    this.suffixIcon = false
+    this.suffixIcon = false,
+    this.controller
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,6 +34,7 @@ class InputWidget extends StatelessWidget {
           ),
           const SizedBox(height: 3),
           TextFormField( 
+            controller: controller,
             decoration: InputDecoration(
               isDense: true,
               prefixIcon: Icon(icon, size: 18), 

@@ -14,7 +14,7 @@ class OutilineuttonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      margin: const EdgeInsets.symmetric(vertical: 30),     
+      margin: const EdgeInsets.symmetric(vertical: 20),     
       height: 50,
       child: ElevatedButton(
         onPressed: () {},

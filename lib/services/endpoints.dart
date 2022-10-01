@@ -1,4 +1,4 @@
-const String apiBaseUrl = 'localhost:3000/atlas_coins/';
+const String apiBaseUrl = 'localhost:3000/atlascoins/';
 
 abstract class EndPoints {
 

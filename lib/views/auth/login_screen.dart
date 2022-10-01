@@ -24,37 +24,29 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container( 
-                      alignment: Alignment.bottomLeft,
-                      padding: const EdgeInsets.only(left: 30, bottom: 25),
-                      child: const Text.rich(
-                        TextSpan(
-                          
-                          children: [
-                            TextSpan(text: 'Bem vindo a\n', style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.w500
-                            )),
-                            TextSpan(text: 'atlas_coins', style: TextStyle(
-                              color: secondaryColor,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w700
-                            )),
-                            TextSpan(text: '!', style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w700
-                            )),
-                          ]
-                        )
+                      margin: const EdgeInsets.only(top: 50),
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text('Bem vindo a', style: TextStyle(
+                            color: Colors.white,  
+                            fontSize: 28,
+                            fontWeight: FontWeight.w500
+                            )
+                          ),
+                          Text('ATLAS COINS', style: TextStyle(
+                            color: secondaryColor,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w900
+                            ) 
+                          ),
+                        ],
                       )
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 15,
-                    ),
+                    padding: const EdgeInsets.fromLTRB(10, 25, 10, 20),
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.vertical(
@@ -100,16 +92,6 @@ class LoginScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                ),
-              ),
-              Positioned(
-                top: 10,
-                right: 10,
-                child: SafeArea(
-                  child: Image.asset(
-                    'assets/images/logo_transparent.png',
-                    height: 100,
-                  )
                 ),
               ),
             ],
