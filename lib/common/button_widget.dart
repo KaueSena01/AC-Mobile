@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 class ButtonWidget extends StatelessWidget {
   
   final String label;
+  final void Function()? onSaved;
   
   const ButtonWidget({ 
     Key? key,
+    this.onSaved,
     required this.label 
   }) : super(key: key);
 
@@ -17,7 +19,7 @@ class ButtonWidget extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 20),     
       height: 50,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onSaved,
         style: ElevatedButton.styleFrom(
           primary: primaryColor,
           shape: RoundedRectangleBorder(

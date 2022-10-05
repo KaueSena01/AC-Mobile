@@ -2,15 +2,23 @@ import 'package:atlas_coins/common/button_widget.dart';
 import 'package:atlas_coins/common/divider_widget.dart';
 import 'package:atlas_coins/common/input_widget.dart';
 import 'package:atlas_coins/common/outiline_button_widget.dart';
+import 'package:atlas_coins/controllers/auth_controller.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart'; 
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
+  LoginScreen({ Key? key }) : super(key: key);
+
+  final _key = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {  
+
     final size = MediaQuery.of(context).size;
+
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -53,28 +61,66 @@ class LoginScreen extends StatelessWidget {
                         top: Radius.circular(40),
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: const [
-                        InputWidget(
-                          label: 'E-mail:', 
-                          placeholder: 'Digite seu e-mail',
-                          icon: Icons.email
+                    child: Form(
+                      key: _key,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          InputWidget(
+                            label: 'E-mail:', 
+                            placeholder: 'Digite seu e-mail',
+                            icon: Icons.email,
+                            controller: emailController,
+                          ),
+                          InputWidget(
+                            label: 'Senha:', 
+                            placeholder: 'Digite sua senha',
+                            icon: Icons.lock,
+                            suffixIcon: true,
+                            controller: passwordController,
+                          ),
+                        Container(
+                        margin: EdgeInsets.fromLTRB(20, 30, 20, 20),
+                        height: 50,
+                        child: GetX<AuthController>(
+                          builder: (authController) {
+                            return ElevatedButton(
+                              onPressed: authController.loading.value
+                                  ? null
+                                  : () {
+                                      FocusScope.of(context).unfocus();
+
+                                      if (_key.currentState!.validate()) {
+                                        String email = emailController.text;
+                                        String password =
+                                            passwordController.text;
+
+                                        authController.login(
+                                            email: email, password: password);
+                                      }
+                                    },
+                              style: ElevatedButton.styleFrom(
+                                primary: primaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ), 
+                              child: const Text(
+                                'Entrar',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                        InputWidget(
-                          label: 'Senha:', 
-                          placeholder: 'Digite sua senha',
-                          icon: Icons.lock,
-                          suffixIcon: true,
-                        ),
-                        ButtonWidget(
-                          label: 'Entrar'
-                        ),
-                        DividerWidget(),
-                        OutilineuttonWidget(
-                          label: 'Criar conta'
-                        )
-                      ],
+                      ),
+                      const DividerWidget(),
+                      const OutilineuttonWidget(
+                        label: 'Criar conta'
+                      )],
+                      ),
                     ),
                   ),
                 ] 
