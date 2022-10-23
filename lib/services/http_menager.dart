@@ -16,8 +16,7 @@ class HttpManager {
     Map? headers,
     Map? body
     }) async {
-
-    // Headers da requisição
+ 
     final defaultHeaders = headers?.cast<String, String>() ?? {}..addAll(
       {
       }
@@ -35,15 +34,12 @@ class HttpManager {
         data: body
       );
 
-      // Retorno do resultado do backend -> Map
       return response.data;
     } on DioError catch(error) {
-
-      // Retorno do erro do dio request -> Map
+ 
       return error.response?.data ?? {};
     } catch (error) {
-
-      // Retorno de map vazio -> Map
+ 
       return {};
     }
 

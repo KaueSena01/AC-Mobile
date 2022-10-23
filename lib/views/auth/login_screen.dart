@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                             controller: passwordController,
                           ),
                         Container(
-                        margin: EdgeInsets.fromLTRB(20, 30, 20, 20),
+                        margin: const EdgeInsets.fromLTRB(20, 30, 20, 20),
                         height: 50,
                         child: GetX<AuthController>(
                           builder: (authController) {
@@ -94,7 +94,6 @@ class LoginScreen extends StatelessWidget {
                                         String email = emailController.text;
                                         String password =
                                             passwordController.text;
-
                                         authController.login(
                                             email: email, password: password);
                                       }

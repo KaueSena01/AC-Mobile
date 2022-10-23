@@ -6,8 +6,20 @@ import 'package:atlas_coins/services/http_menager.dart';
 class AuthRepository {
   final HttpManager _httpManager = HttpManager();
 
-  Future login(
-    { required String email, required String password }
+  AuthResult handleUserOrError(Map<dynamic, dynamic> result) {
+    if (result['result'] != null) {
+      final auth = AuthModel.fromJson(result['result']);
+      return AuthResult.success(auth);
+    } else {
+      return AuthResult.error('Ocorreu um erro inesperodo!');
+    }
+  }
+
+  Future<AuthResult> login(
+    { 
+      required String email, 
+      required String password 
+    }
   ) async {
     final result = await _httpManager.restRequest(
       url: EndPoints.signin,
@@ -17,14 +29,8 @@ class AuthRepository {
         'password': password
       }
     );
-    
-    AuthResult handleUserOrError(Map<dynamic, dynamic> result) {
-    // if (result[''] != null) {
-      final user = UserModel.fromJson(result['result']);
-      return AuthResult.success(user);
-    // } else {
-      // return AuthResult.error(authError.authErrorsString(result['error']));
-    }
+
+    return handleUserOrError(result);
   
   }
 }

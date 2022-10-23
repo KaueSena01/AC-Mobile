@@ -1,9 +1,12 @@
 import 'package:atlas_coins/models/auth_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class AuthResult {
-  final UserModel user;
+part 'auth_result.freezed.dart';
 
-  const AuthResult.success(this.user);
+@freezed
+class AuthResult with _$AuthResult{
 
+  factory AuthResult.success(AuthModel auth) = Success;
+  factory AuthResult.error(String error) = Error;
 
 }

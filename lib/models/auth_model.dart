@@ -1,27 +1,18 @@
-class UserModel {
-  String name;
-  String email;
-  String password;
+import 'package:json_annotation/json_annotation.dart';
 
-  UserModel({
-    required this.name,
-    required this.email,
-    required this.password
+part 'auth_model.g.dart';
+
+@JsonSerializable()
+class AuthModel {
+  String? token; 
+
+  AuthModel({
+    this.token
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> map) {
-    return UserModel(
-      name: map['name'], 
-      email: map['email'], 
-      password: map['password']
-    );
-  }
+  factory AuthModel.fromJson(Map<String, dynamic> json) => 
+    _$AuthModelFromJson(json);
+    
+  Map<String, dynamic> toJson() => _$AuthModelToJson(this);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name, 
-      'email': email, 
-      'password': password, 
-    };
-  }
 }
