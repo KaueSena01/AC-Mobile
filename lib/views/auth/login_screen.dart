@@ -1,4 +1,3 @@
-import 'package:atlas_coins/common/button_widget.dart';
 import 'package:atlas_coins/common/divider_widget.dart';
 import 'package:atlas_coins/common/input_widget.dart';
 import 'package:atlas_coins/common/outiline_button_widget.dart';
@@ -18,7 +17,6 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {  
 
     final size = MediaQuery.of(context).size;
-
 
     return Scaffold(
       backgroundColor: primaryColor,
