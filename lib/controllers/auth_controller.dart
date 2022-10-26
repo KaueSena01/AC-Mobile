@@ -1,15 +1,30 @@
 
+import 'package:atlas_coins/bindigs/transaction_binding.dart';
 import 'package:atlas_coins/models/auth_model.dart';
 import 'package:atlas_coins/repositories/auth_repository.dart';
 import 'package:atlas_coins/results/auth_result.dart';
+import 'package:atlas_coins/services/utils/utils_services.dart';
+import 'package:atlas_coins/views/auth/login_screen.dart';
+import 'package:atlas_coins/views/home/home_screen.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
 
   AuthModel auth = AuthModel();
-
+  UtilsServices utilsServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
   RxBool loading = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    validateToken();
+  }
+
+  void saveToken() {
+    utilsServices.saveLocalData(key: 'key', data: auth.token!); 
+  } 
 
   Future login({
     required String email,
@@ -26,10 +41,37 @@ class AuthController extends GetxController {
 
     result.when(
       success: (auth) { 
+        this.auth = auth;
+        saveToken();
+        Get.to(HomeScreen());
       },
       error: (message) {
       },
     ); 
+  }
+
+  Future<void> validateToken() async {
+    String? token = await utilsServices.getLocalData(key: 'key');
+
+    if (token == null) {
+      Get.to(LoginScreen());
+      return;
+    }
+
+    AuthResult result = await authRepository.validateToken(token);
+
+    result.when(
+      success: (auth) {
+        this.auth = auth;
+
+        // Basta prosseguir pra home
+        Get.to(HomeScreen(), binding: TransactionBinding());
+        saveToken();
+      },
+      error: (message) async {
+        // await utilsServices.deleteLocalData(key: 'key');
+      },
+    );
   }
   
 }

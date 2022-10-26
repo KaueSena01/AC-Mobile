@@ -15,6 +15,17 @@ class AuthRepository {
     }
   }
 
+  Future<AuthResult> validateToken(String token) async {
+    final result = await _httpManager.restRequest(
+      url: EndPoints.checktoken, 
+      method: HttpMethods.post,
+      headers: {
+        'Authorization': 'Bearer '+token
+    });
+
+    return handleUserOrError(result);
+  } 
+
   Future<AuthResult> login(
     { 
       required String email, 

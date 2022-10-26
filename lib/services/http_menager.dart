@@ -42,7 +42,5 @@ class HttpManager {
  
       return {};
     }
-
   }
-
 }
