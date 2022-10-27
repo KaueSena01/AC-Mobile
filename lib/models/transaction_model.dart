@@ -8,7 +8,7 @@ class TransactionModel {
   String? title;
   String? description;
   String? date;
-  int? value;
+  double? value;
 
   TransactionModel({
     this.type,
@@ -22,4 +22,6 @@ class TransactionModel {
     _$TransactionModelFromJson(json);
     
   Map<String, dynamic> toJson() => _$TransactionModelToJson(this);
+
+  price() => value;
 }

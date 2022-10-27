@@ -1,10 +1,16 @@
+import 'package:atlas_coins/models/transaction_model.dart';
+import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 
 class Transaction extends StatelessWidget { 
   
-  const Transaction({ 
-    Key? key 
+  final TransactionModel? transactionList;
+  final UtilsServices utilsServices = UtilsServices();
+
+  Transaction({ 
+    Key? key,
+    required this.transactionList
   }) : super(key: key);
 
   @override
@@ -49,38 +55,40 @@ class Transaction extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-                const Card(
+                Card(
                   elevation: 0,
                   color: greyColor,
-                  margin: EdgeInsets.only(left: 15),
+                  margin: const EdgeInsets.only(left: 15),
                   child: ExpansionTile(
                     initiallyExpanded: false,
                     iconColor: primaryColor,
                     collapsedIconColor: primaryColor,
-                    title: Text('Salário', style: TextStyle(
+                    title: Text(transactionList!.title!, style: const TextStyle(
                       color: primaryColor,
                       fontSize: 17,
                       fontWeight: FontWeight.w600)
                     ),
                     children: [
                       ListTile(
-                        title: Text('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard'),
+                        title: Text(transactionList!.description!)
                       ),
                       ListTile(
-                        title: Text('10/20/2022'),
+                        title: Text(transactionList!.date!),
                       )
                     ],
                     subtitle: Text.rich(
                       TextSpan(
                         style: TextStyle(
                           fontSize: 15,
-                          color: depositColor
+                          color: transactionList!.type! == 'Deposito' ? depositColor : expenseColor
                         ),
                         children: [
-                          TextSpan(text: 'Depósito: ', style: TextStyle(
+                          TextSpan(
+                            text: transactionList!.type! == 'Deposito' ? 'Depósito: ' : 'Despesa: ', 
+                            style: const TextStyle(
                             fontWeight: FontWeight.w500
                           )),
-                          TextSpan(text: 'R\$ +60.00'),
+                          TextSpan(text: utilsServices.transactionValue(transactionList!.value!)),
                         ]
                       )
                     )
@@ -90,7 +98,9 @@ class Transaction extends StatelessWidget {
                   top: 25,
                   left: 10,
                   child: Image.asset(
-                    'assets/icons/deposit.png',
+                    transactionList!.type! == 'Deposito' ?
+                    'assets/icons/deposit.png' :
+                    'assets/icons/expense.png',
                     width: 12,
                     height: 12,
                   )

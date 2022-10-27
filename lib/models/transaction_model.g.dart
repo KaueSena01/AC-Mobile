@@ -12,7 +12,7 @@ TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       description: json['description'] as String?,
       date: json['date'] as String?,
-      value: json['value'] as int?,
+      value: (json['value'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$TransactionModelToJson(TransactionModel instance) =>

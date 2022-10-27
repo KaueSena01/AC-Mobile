@@ -84,39 +84,36 @@ class LoginScreen extends StatelessWidget {
                           builder: (authController) {
                             return ElevatedButton(
                               onPressed: authController.loading.value
-                                  ? null
-                                  : () {
-                                      FocusScope.of(context).unfocus();
+                                ? null
+                                : () {
+                                  FocusScope.of(context).unfocus();
 
-                                      if (_key.currentState!.validate()) {
-                                        String email = emailController.text;
-                                        String password =
-                                            passwordController.text;
-                                        authController.login(
-                                            email: email, password: password);
-                                      }
-                                    },
-                              style: ElevatedButton.styleFrom(
-                                primary: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                                  if (_key.currentState!.validate()) {
+                                    String email = emailController.text;
+                                    String password = passwordController.text;
+                                    authController.login(email: email, password: password);
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ), 
+                                child: const Text('Entrar',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400
+                                  ),
                                 ),
-                              ), 
-                              child: const Text(
-                                'Entrar',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400
-                                ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                      const DividerWidget(),
-                      const OutilineuttonWidget(
-                        label: 'Criar conta'
-                      )],
+                        const DividerWidget(),
+                        const OutilineuttonWidget(
+                          label: 'Criar conta'
+                        )],
                       ),
                     ),
                   ),
@@ -127,9 +124,7 @@ class LoginScreen extends StatelessWidget {
                 left: 10,
                 child: SafeArea(
                   child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+                    onPressed: () {},
                     icon: const Icon(
                       Icons.arrow_back_rounded,
                       color: Colors.white,

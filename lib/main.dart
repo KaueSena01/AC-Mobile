@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData( 
         primarySwatch: MaterialColor(0xFF0A3470, primarySwatch)
       ),
-      home:  LoginScreen(),
+      home: LoginScreen(),
     );
   }
 }

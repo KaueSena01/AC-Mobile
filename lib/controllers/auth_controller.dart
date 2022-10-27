@@ -1,5 +1,4 @@
-
-import 'package:atlas_coins/bindigs/transaction_binding.dart';
+import 'package:atlas_coins/controllers/transaction_controller.dart';
 import 'package:atlas_coins/models/auth_model.dart';
 import 'package:atlas_coins/repositories/auth_repository.dart';
 import 'package:atlas_coins/results/auth_result.dart';
@@ -18,7 +17,6 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
     validateToken();
   }
 
@@ -43,6 +41,7 @@ class AuthController extends GetxController {
       success: (auth) { 
         this.auth = auth;
         saveToken();
+        Get.put(TransactionController());
         Get.to(HomeScreen());
       },
       error: (message) {
@@ -51,8 +50,9 @@ class AuthController extends GetxController {
   }
 
   Future<void> validateToken() async {
-    String? token = await utilsServices.getLocalData(key: 'key');
 
+    String? token = await utilsServices.getLocalData(key: 'key'); 
+    
     if (token == null) {
       Get.to(LoginScreen());
       return;
@@ -62,14 +62,13 @@ class AuthController extends GetxController {
 
     result.when(
       success: (auth) {
-        this.auth = auth;
-
-        // Basta prosseguir pra home
-        Get.to(HomeScreen(), binding: TransactionBinding());
+        this.auth = auth; 
+        Get.put(TransactionController());
+        Get.to(const HomeScreen());
         saveToken();
       },
       error: (message) async {
-        // await utilsServices.deleteLocalData(key: 'key');
+
       },
     );
   }

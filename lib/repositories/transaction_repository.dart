@@ -6,16 +6,6 @@ import 'package:atlas_coins/services/http_menager.dart';
 class TransactionRepository {
   final HttpManager _httpManager = HttpManager();
 
-  TransactionResult handleTransactionsOrError(Map<dynamic, dynamic> result) {
-     if (result['result'] != null) {
-      final transactions = TransactionModel.fromJson(result['result']);
-      print(transactions);
-      return TransactionResult.success(transactions);
-    } else {
-      return TransactionResult.error('Ocorreu um erro inesperodo!');
-    }
-  }
-
   Future<TransactionResult<List<TransactionModel>>> getAllTransactions(String token) async {
 
     final result = await _httpManager.restRequest(

@@ -1,13 +1,11 @@
 import 'package:atlas_coins/controllers/auth_controller.dart';
 import 'package:atlas_coins/controllers/transaction_controller.dart';
+import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:atlas_coins/views/home/components/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-
-
 
 class HomeScreen extends StatefulWidget {
 
@@ -21,23 +19,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  final authController = Get.find<AuthController>();
-  final getAllTransactions = Get.find<TransactionController>();
-
-  final TransactionController transactionController = TransactionController();
-  
   @override
   initState() {
+    transactionController.getAllTransactions(); 
     super.initState(); 
-
-    transactionController.getAllTransactions();
   }
+
+  final authController = Get.find<AuthController>();
+  final transactionsController = Get.find<TransactionController>(); 
+
+  final TransactionController transactionController = TransactionController();
+  final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Scaffold(
-      body: SingleChildScrollView(
+      body: SizedBox( 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,9 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: primaryColor,
                 ),
                 Positioned(
-                  top: 70,
+                  top: 60,
                   child: Container( 
-                    width: MediaQuery.of(context).size.width -20,
+                    width: MediaQuery.of(context).size.width - 20,
                     decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     gradient: const LinearGradient(
@@ -83,15 +81,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text('Saldo total: ',style: TextStyle(
+                              children: [
+                                const Text('Saldo total: ',style: TextStyle(
                                   color: Colors.white,  
                                   fontSize: 18,
                                   fontWeight: FontWeight.w300
                                   )
                                 ),
-                                Text('R\$ 2000.00', style: TextStyle(
-                                  color: Colors.white,  
+                                Text(utilsServices.transactionValue(transactionsController.totalPrice()), style: const TextStyle(
+                                  color:  Colors.white,  
                                   fontSize: 24,
                                   fontWeight: FontWeight.w800,
                                   decoration: TextDecoration.underline
@@ -145,22 +143,33 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Container(
-              margin: const EdgeInsets.only(top: 90),
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('Notas gerais', style: TextStyle(
-                    color: primaryColor,  
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500
-                  )),
-                  Transaction(),
-                  Transaction(),
-                  Transaction(),
-                ],
+              margin: const EdgeInsets.only(top: 80, bottom: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: const Text('Notas gerais', style: TextStyle(
+                color: primaryColor,  
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              )),
+            ),
+            Expanded(
+              child: GetBuilder<TransactionController>(
+                builder: (_) {
+                  return Container( 
+                    margin: const EdgeInsets.all(0),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: ListView.builder(
+                      padding: const EdgeInsets.all(0),
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemBuilder: (_, index) => Transaction(
+                        transactionList: transactionsController.allTransactions[index]
+                      ),
+                      itemCount: transactionsController.allTransactions.length,
+                    ),
+                  );
+                }
               ),
-            )
+            ) 
           ],
         ),
       ),

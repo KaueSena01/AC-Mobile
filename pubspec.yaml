@@ -40,6 +40,9 @@ dependencies:
   json_serializable: ^6.3.1
   build_runner: ^2.1.1
   flutter_secure_storage: ^6.0.0
+  flutter_svg: ^1.0.3
+  mask_text_input_formatter: ^2.4.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
