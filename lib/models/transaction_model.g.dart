@@ -8,7 +8,7 @@ part of 'transaction_model.dart';
 
 TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) =>
     TransactionModel(
-      type: json['type'] as String?,
+      type: json['type'] as int?,
       title: json['title'] as String?,
       description: json['description'] as String?,
       date: json['date'] as String?,

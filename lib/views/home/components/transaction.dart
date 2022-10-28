@@ -31,17 +31,17 @@ class Transaction extends StatelessWidget {
                 shape: BoxShape.circle)
               ),
               Positioned(
-                top: 15,
+                top: 18,
                 left: 11,
                 child: Column(
-                  children: const [
-                    Text('20', style: TextStyle(
+                  children: [
+                    Text(utilsServices.dayFormater(transactionList!.date!), style: const TextStyle(
                       color: ligthColor,  
                       fontSize: 13,
                       fontWeight: FontWeight.w500
                       )
                     ),
-                    Text('Dez', style: TextStyle(
+                    Text(utilsServices.monthFormater(transactionList!.date!), style: const TextStyle(
                       color: ligthColor,  
                       fontSize: 13,
                       fontWeight: FontWeight.w500
@@ -80,25 +80,25 @@ class Transaction extends StatelessWidget {
                       TextSpan(
                         style: TextStyle(
                           fontSize: 15,
-                          color: transactionList!.type! == 'Deposito' ? depositColor : expenseColor
+                          color: transactionList!.type! == 1 ? depositColor : expenseColor
                         ),
                         children: [
                           TextSpan(
-                            text: transactionList!.type! == 'Deposito' ? 'Depósito: ' : 'Despesa: ', 
+                            text: transactionList!.type! == 1 ? 'Depósito: ' : 'Despesa: ', 
                             style: const TextStyle(
                             fontWeight: FontWeight.w500
                           )),
                           TextSpan(text: utilsServices.transactionValue(transactionList!.value!)),
                         ]
                       )
-                    )
+                    ),
                   ),
                 ),
                 Positioned(
                   top: 25,
                   left: 10,
                   child: Image.asset(
-                    transactionList!.type! == 'Deposito' ?
+                    transactionList!.type! == 1 ?
                     'assets/icons/deposit.png' :
                     'assets/icons/expense.png',
                     width: 12,

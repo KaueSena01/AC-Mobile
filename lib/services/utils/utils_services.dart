@@ -1,3 +1,6 @@
+import 'package:atlas_coins/models/transaction_model.dart';
+import 'package:atlas_coins/services/enums/month_enum.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
 
@@ -28,5 +31,91 @@ class UtilsServices {
     NumberFormat numberFormat = NumberFormat.simpleCurrency(locale: 'pt_BR');
 
     return numberFormat.format(transactionValue);
+  }
+
+  String lastTransactionType(TransactionModel transaction) {
+
+    if(transaction.type == 1) return "Depósito";
+    
+    return "Despesa";
+  }
+
+  String lastTransactionTypeAsset(TransactionModel transaction) {
+
+    if(transaction.type == 1) return  "assets/icons/deposit.png";
+    
+    return "assets/icons/expense.png";
+  }
+
+  String lastTransactionValue(TransactionModel transaction) {
+
+    var value = transactionValue(transaction.value!);
+    
+    return value;
+  }
+
+  String dayFormater(String date) {
+
+    var day = date.substring(0, 2);
+
+    return day;
+  }
+
+  String monthFormater(String date) {
+
+    var month = date.substring(3, 5);
+    var result = "";
+
+    switch(month) {
+      case "01" :
+        result = "Jan";
+      break;
+
+      case "02":
+        result = "Fev"; 
+      break;
+        
+      case "03":
+        result = "Mar"; 
+      break;
+
+      case "04":
+        result = "Abr"; 
+      break;
+      
+      case "05":
+        result ="Mai"; 
+      break;
+
+      case "06":
+        result = "Jun"; 
+      break;
+
+      case "07":
+        result = "Jul"; 
+      break;
+
+      case "08":
+        result = "Ago"; 
+      break;
+
+      case "09":
+        result = "Set"; 
+      break;
+
+      case "10":
+        result = "Out"; 
+      break;
+
+      case "11":
+        result = "Nov"; 
+      break;
+
+      case "12":
+        result = "Dez"; 
+      break;  
+    }
+
+    return result;
   }
 }

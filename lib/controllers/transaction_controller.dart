@@ -29,6 +29,10 @@ class TransactionController extends GetxController{
     return total;
   }
 
+  TransactionModel lastTransaction() {
+    return allTransactions.first;
+  }
+
   Future<void> getAllTransactions() async {
 
     loading.value = true;
@@ -42,8 +46,9 @@ class TransactionController extends GetxController{
     result.when(
       success: (transactions) {
         allTransactions = transactions;
+        update(); 
         totalPrice(); 
-        update();
+        lastTransaction();
       }, 
       error: (message) {
 

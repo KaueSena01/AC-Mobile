@@ -4,7 +4,7 @@ part 'transaction_model.g.dart';
 
 @JsonSerializable()
 class TransactionModel {
-  String? type;
+  int? type;
   String? title;
   String? description;
   String? date;
