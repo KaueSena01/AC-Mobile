@@ -23,5 +23,5 @@ class TransactionModel {
     
   Map<String, dynamic> toJson() => _$TransactionModelToJson(this);
 
-  price() => value;
+  transactionValue() => value;
 }

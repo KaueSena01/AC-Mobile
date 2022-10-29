@@ -64,25 +64,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.w500,
                   )),
                 ),
-                Expanded(
-                  child: GetBuilder<TransactionController>(
-                    builder: (controller) {
-                      return Container( 
-                        margin: const EdgeInsets.all(0),
-                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        child: ListView.builder(
-                          padding: const EdgeInsets.all(0),
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemBuilder: (_, index) => Transaction(
-                            transactionList: controller.allTransactions[index]
-                          ),
-                          itemCount: controller.allTransactions.length,
-                        ),
-                      );
-                    }
-                  ),
-                )
+                  Expanded(
+                    child: GetBuilder<TransactionController>(
+                      builder: (controller) { 
+                        if(controller.loading.value == true) {
+                          return Container(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: const Text("Carregando..."),
+                          );
+                        }
+                          return Container( 
+                            margin: const EdgeInsets.all(0),
+                            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            child: ListView.builder(
+                              padding: const EdgeInsets.all(0),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemBuilder: (_, index) => Transaction(
+                                transactionList: controller.allTransactions[index]
+                              ),
+                              itemCount: controller.allTransactions.length,
+                            ),
+                          );
+                      }
+                    ),
+                  )  
               ]
             );
           },

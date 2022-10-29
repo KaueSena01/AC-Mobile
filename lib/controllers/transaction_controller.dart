@@ -14,24 +14,10 @@ class TransactionController extends GetxController{
 
   List<TransactionModel> allTransactions = [];
 
-  TransactionModel transactionModel = TransactionModel();
   TransactionRepository transactionRepository = TransactionRepository();
   UtilsServices utilsServices = UtilsServices();
+  
   RxBool loading = false.obs;
-
-  double totalPrice() {
-    double total = 0;
-
-    for(var item in allTransactions) {
-      total += item.price();
-    }
- 
-    return total;
-  }
-
-  TransactionModel lastTransaction() {
-    return allTransactions.first;
-  }
 
   Future<void> getAllTransactions() async {
 
@@ -54,6 +40,20 @@ class TransactionController extends GetxController{
 
       }
     );
+  }
+
+  double totalPrice() {
+    double total = 0;
+
+    for(var transaction in allTransactions) {
+      total += transaction.transactionValue();
+    }
+ 
+    return total;
+  }
+
+  TransactionModel lastTransaction() {
+    return allTransactions.first;
   }
 
 }

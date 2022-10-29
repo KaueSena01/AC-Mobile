@@ -42,9 +42,10 @@ class AuthController extends GetxController {
         this.auth = auth;
         saveToken();
         Get.put(TransactionController());
-        Get.to(HomeScreen());
+        Get.to(const HomeScreen());
       },
       error: (message) {
+        
       },
     ); 
   }

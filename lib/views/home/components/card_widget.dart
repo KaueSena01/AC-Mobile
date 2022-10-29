@@ -111,7 +111,7 @@ class CardWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(
-                      controller.loading == true
+                      controller.loading.value == true
                       ? 'assets/icons/no_transactions.png'
                       : 
                       controller.allTransactions.isEmpty 
@@ -123,7 +123,7 @@ class CardWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      controller.loading == true
+                      controller.loading.value == true
                       ? "R\$ 0,00"
                       : 
                       controller.allTransactions.isEmpty 

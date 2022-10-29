@@ -86,6 +86,7 @@ class LoginScreen extends StatelessWidget {
                               onPressed: authController.loading.value
                                 ? null
                                 : () {
+                                  
                                   FocusScope.of(context).unfocus();
 
                                   if (_key.currentState!.validate()) {
@@ -93,6 +94,7 @@ class LoginScreen extends StatelessWidget {
                                     String password = passwordController.text;
                                     authController.login(email: email, password: password);
                                   }
+                                  
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: primaryColor,

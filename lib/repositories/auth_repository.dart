@@ -41,7 +41,7 @@ class AuthRepository {
       }
     );
 
-    return handleUserOrError(result);
-  
+    return handleUserOrError(result); 
   }
+  
 }

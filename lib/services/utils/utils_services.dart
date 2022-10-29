@@ -1,6 +1,4 @@
 import 'package:atlas_coins/models/transaction_model.dart';
-import 'package:atlas_coins/services/enums/month_enum.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
 
@@ -42,7 +40,7 @@ class UtilsServices {
 
   String lastTransactionTypeAsset(TransactionModel transaction) {
 
-    if(transaction.type == 1) return  "assets/icons/deposit.png";
+    if(transaction.type == 1) return "assets/icons/deposit.png";
     
     return "assets/icons/expense.png";
   }

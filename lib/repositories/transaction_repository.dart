@@ -22,7 +22,7 @@ class TransactionRepository {
         .map(TransactionModel.fromJson)
         .toList();
 
-    return TransactionResult<List<TransactionModel>>.success(data);
+      return TransactionResult<List<TransactionModel>>.success(data);
     }
     else {
       return TransactionResult.error('Ocorreu um erro inesperado');
