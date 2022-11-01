@@ -2,6 +2,8 @@ import 'package:atlas_coins/models/transaction_model.dart';
 import 'package:atlas_coins/repositories/transaction_repository.dart';
 import 'package:atlas_coins/results/transaction_result.dart';
 import 'package:atlas_coins/services/utils/utils_services.dart';
+import 'package:atlas_coins/views/home/home_screen.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:get/get.dart';
 
 class TransactionController extends GetxController{
@@ -14,10 +16,48 @@ class TransactionController extends GetxController{
 
   List<TransactionModel> allTransactions = [];
 
+  RxString dateNow = ''.obs; 
+  RxInt transactionType = 2.obs;
+
   TransactionRepository transactionRepository = TransactionRepository();
   UtilsServices utilsServices = UtilsServices();
   
   RxBool loading = false.obs;
+
+  Future createNewTransaction({
+    required String title, 
+    required String date,
+    required String value,
+    required String description
+  }) async {
+
+    loading.value = true; 
+
+    String? token = await utilsServices.getLocalData(key: 'key');
+
+    if(transactionType.value == 2) {
+      transactionType.value = 1;
+    }
+
+    TransactionResult result = await 
+      transactionRepository.createNewTransaction(
+        token!,
+        title, transactionType.value, date, value, description
+    );
+
+    loading.value = false;
+    
+    result.when(
+      success: (transactions) {
+        refresh(); 
+        Get.put(TransactionController());
+        Get.to(const HomeScreen());
+      }, 
+      error: (message) {
+
+      }
+    );
+  }
 
   Future<void> getAllTransactions() async {
 
@@ -34,7 +74,9 @@ class TransactionController extends GetxController{
         allTransactions = transactions;
         update(); 
         totalPrice(); 
-        lastTransaction();
+        if(allTransactions.isNotEmpty) {
+          lastTransaction();
+        } 
       }, 
       error: (message) {
 
@@ -54,6 +96,23 @@ class TransactionController extends GetxController{
 
   TransactionModel lastTransaction() {
     return allTransactions.first;
+  }
+
+  void setDateNow() async {
+    DateTime a = DateTime.now();
+
+    dateNow.value = UtilData.obterDataDDMMAAAA(a);
+    refresh();
+  }
+
+  void setTransactionType(String value) {
+    if(value == "Despesa") {
+      transactionType.value = 0; 
+    } else {
+      transactionType.value = 1; 
+    }
+
+    update();
   }
 
 }
