@@ -17,7 +17,7 @@ class TransactionController extends GetxController{
   List<TransactionModel> allTransactions = [];
 
   RxString dateNow = ''.obs; 
-  RxInt transactionType = 2.obs;
+  RxInt transactionType = 1.obs;
 
   TransactionRepository transactionRepository = TransactionRepository();
   UtilsServices utilsServices = UtilsServices();
@@ -35,10 +35,6 @@ class TransactionController extends GetxController{
 
     String? token = await utilsServices.getLocalData(key: 'key');
 
-    if(transactionType.value == 2) {
-      transactionType.value = 1;
-    }
-
     TransactionResult result = await 
       transactionRepository.createNewTransaction(
         token!,
@@ -50,11 +46,10 @@ class TransactionController extends GetxController{
     result.when(
       success: (transactions) {
         refresh(); 
-        Get.put(TransactionController());
         Get.to(const HomeScreen());
       }, 
       error: (message) {
-
+        
       }
     );
   }

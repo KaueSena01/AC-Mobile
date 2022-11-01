@@ -23,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   initState() {
-    transactionController.getAllTransactions(); 
     super.initState(); 
+    transactionController.getAllTransactions(); 
   }
 
   final authController = Get.find<AuthController>();
@@ -77,14 +77,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           return Container( 
                             margin: const EdgeInsets.all(0),
                             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                            child: ListView.builder(
-                              padding: const EdgeInsets.all(0),
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemBuilder: (_, index) => Transaction(
-                                transactionList: controller.allTransactions[index]
+                            child: RefreshIndicator(
+                              onRefresh: () => controller.getAllTransactions(),
+                              child: ListView.builder(
+                                padding: const EdgeInsets.all(0),
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemBuilder: (_, index) => Transaction(
+                                  transactionList: controller.allTransactions[index]
+                                ),
+                                itemCount: controller.allTransactions.length,
                               ),
-                              itemCount: controller.allTransactions.length,
                             ),
                           );
                       }
@@ -97,7 +100,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () { 
-          Get.to(TransactionScreen());
+          Get.to(
+            TransactionScreen(),
+            transition: Transition.rightToLeft 
+          );
         },
         backgroundColor: primaryColor,
         child: const Icon(Icons.attach_money),

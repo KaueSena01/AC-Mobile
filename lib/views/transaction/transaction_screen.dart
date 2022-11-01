@@ -9,8 +9,7 @@ class TransactionScreen extends StatelessWidget {
   TransactionScreen({Key? key}) : super(key: key);
 
   final _key = GlobalKey<FormState>();
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController typeController = TextEditingController();
+  final TextEditingController titleController = TextEditingController(); 
   final TextEditingController valueController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -28,8 +27,7 @@ class TransactionScreen extends StatelessWidget {
                   key: _key,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Head
+                    children: [ 
                       const Text("ATLAS COINS",
                           style: TextStyle(
                             color: primaryColor,
