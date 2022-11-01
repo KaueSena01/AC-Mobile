@@ -3,6 +3,7 @@ import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:atlas_coins/views/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   Get.put(AuthController());
@@ -15,7 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'atlas_coins',
+      title: 'ATLAS COINS',
+      localizationsDelegates: const [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate
+      ],
+      supportedLocales: const [
+        Locale("pt", "BR")
+      ],
       theme: ThemeData( 
         primarySwatch: MaterialColor(0xFF0A3470, primarySwatch)
       ),

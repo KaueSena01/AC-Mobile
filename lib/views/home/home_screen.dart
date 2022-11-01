@@ -4,6 +4,7 @@ import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:atlas_coins/views/home/components/card_widget.dart';
 import 'package:atlas_coins/views/home/components/transaction.dart';
+import 'package:atlas_coins/views/transaction/transaction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -22,8 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   initState() {
-    transactionController.getAllTransactions(); 
     super.initState(); 
+    transactionController.getAllTransactions(); 
   }
 
   final authController = Get.find<AuthController>();
@@ -76,14 +77,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           return Container( 
                             margin: const EdgeInsets.all(0),
                             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                            child: ListView.builder(
-                              padding: const EdgeInsets.all(0),
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemBuilder: (_, index) => Transaction(
-                                transactionList: controller.allTransactions[index]
+                            child: RefreshIndicator(
+                              onRefresh: () => controller.getAllTransactions(),
+                              child: ListView.builder(
+                                padding: const EdgeInsets.all(0),
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemBuilder: (_, index) => Transaction(
+                                  transactionList: controller.allTransactions[index]
+                                ),
+                                itemCount: controller.allTransactions.length,
                               ),
-                              itemCount: controller.allTransactions.length,
                             ),
                           );
                       }
@@ -93,6 +97,16 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () { 
+          Get.to(
+            TransactionScreen(),
+            transition: Transition.rightToLeft 
+          );
+        },
+        backgroundColor: primaryColor,
+        child: const Icon(Icons.attach_money),
       ),
     );
   }

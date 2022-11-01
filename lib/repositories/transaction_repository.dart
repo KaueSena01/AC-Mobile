@@ -28,4 +28,38 @@ class TransactionRepository {
       return TransactionResult.error('Ocorreu um erro inesperado');
     }
   }
+
+  Future<TransactionResult> createNewTransaction(
+      String token, 
+      String title,
+      int type,
+      String date,
+      String value,
+      String description
+    ) async {
+    final result = await _httpManager.restRequest(
+      url: EndPoints.createtransaction, 
+      method: HttpMethods.post,
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      body: {
+        'type': type,
+        'title': title,
+        'description': description,
+        'date': date,
+        'value': value
+      } 
+    );
+
+    if(result['result'] != null) {
+
+      TransactionModel data =  TransactionModel.fromJson(result['result']);
+      return TransactionResult<TransactionModel>.success(data);
+    }
+    else {
+      return TransactionResult.error('Ocorreu um erro inesperado');
+    }
+  }
+ 
 }
