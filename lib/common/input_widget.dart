@@ -8,9 +8,11 @@ class InputWidget extends StatelessWidget {
   final String label;
   final IconData icon;
   final bool suffixIcon;
+  final bool? readOnly;
   final bool? isDate;
   final bool? isDescription;
   final String? placeholder;
+  final String? initialValue;
   final TextEditingController? controller;
 
   const InputWidget({ 
@@ -18,7 +20,9 @@ class InputWidget extends StatelessWidget {
     required this.label, 
     required this.icon,
     this.placeholder, 
+    this.initialValue,
     this.suffixIcon = false,
+    this.readOnly = false,
     this.isDate = false,
     this.isDescription = false,
     this.controller
@@ -42,6 +46,8 @@ class InputWidget extends StatelessWidget {
           SizedBox(
             height: !isDescription! ? 50 : null,
             child: TextFormField( 
+              readOnly: readOnly!,
+              initialValue: initialValue,
               inputFormatters: isDate! 
               ? [ 
                 FilteringTextInputFormatter.digitsOnly,

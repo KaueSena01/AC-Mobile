@@ -6,5 +6,6 @@ abstract class EndPoints {
   static const String checktoken = '$apiBaseUrl/checktoken';
   static const String listtransactions = '$apiBaseUrl/listtransactions';
   static const String createtransaction = '$apiBaseUrl/createtransaction';
+  static const String updatePassword = '$apiBaseUrl/editpassword';
 
 }

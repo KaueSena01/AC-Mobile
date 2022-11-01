@@ -4,7 +4,7 @@ import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:atlas_coins/views/home/components/card_widget.dart';
 import 'package:atlas_coins/views/home/components/transaction.dart';
-import 'package:atlas_coins/views/transaction/transaction_screen.dart';
+import 'package:atlas_coins/views/user/user_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   margin: const EdgeInsets.only(top: 80, bottom: 20),
                   padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text('Notas gerais', style: TextStyle(
+                  child: const Text('Notas gerais:', style: TextStyle(
                     color: primaryColor,  
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () { 
           Get.to(
-            TransactionScreen(),
+            const UserProfileScreen(),
             transition: Transition.rightToLeft 
           );
         },

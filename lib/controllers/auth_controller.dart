@@ -50,6 +50,28 @@ class AuthController extends GetxController {
     ); 
   }
 
+  Future<void> updatePassword({
+    required String newPassword
+  }) async {
+
+    loading.value = true;  
+
+    String? token = await utilsServices.getLocalData(key: 'key'); 
+    
+    AuthResult result = await authRepository.updatePassword(token: token!, newPassword: newPassword);
+
+    loading.value = false;  
+
+    result.when(
+      success: (auth) {
+        
+      }, 
+      error: (message) async {
+
+      }
+    );
+  }
+ 
   Future<void> validateToken() async {
 
     String? token = await utilsServices.getLocalData(key: 'key'); 

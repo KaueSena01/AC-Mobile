@@ -11,7 +11,7 @@ class AuthRepository {
       final auth = AuthModel.fromJson(result['result']);
       return AuthResult.success(auth);
     } else {
-      return AuthResult.error('Ocorreu um erro inesperodo!');
+      return AuthResult.error('Ocorreu um erro inesperado!');
     }
   }
 
@@ -20,7 +20,7 @@ class AuthRepository {
       url: EndPoints.checktoken, 
       method: HttpMethods.post,
       headers: {
-        'Authorization': 'Bearer '+token
+        'Authorization': 'Bearer ' + token
     });
 
     return handleUserOrError(result);
@@ -38,6 +38,26 @@ class AuthRepository {
       body: {
         'email': email,
         'password': password
+      }
+    );
+
+    return handleUserOrError(result); 
+  }
+
+  Future<AuthResult> updatePassword(
+    { 
+      required String token,
+      required String newPassword
+    }
+  ) async {
+    final result = await _httpManager.restRequest(
+      url: EndPoints.updatePassword,
+      method: HttpMethods.post,
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      body: {
+        'password': newPassword, 
       }
     );
 
