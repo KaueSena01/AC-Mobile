@@ -90,7 +90,7 @@ class TransactionScreen extends StatelessWidget {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: primaryColor,
+                                backgroundColor: primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),

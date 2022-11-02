@@ -174,7 +174,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                   }
                                 },
                                   style: ElevatedButton.styleFrom(
-                                    primary: primaryColor,
+                                    backgroundColor: primaryColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),

@@ -71,6 +71,14 @@ class AuthController extends GetxController {
       }
     );
   }
+
+  Future<void> signOut() async {
+    auth = AuthModel();
+
+    await utilsServices.deleteLocalData(key: 'key');
+
+    Get.to(LoginScreen());
+  }
  
   Future<void> validateToken() async {
 

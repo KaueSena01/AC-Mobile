@@ -20,7 +20,7 @@ class OutilineuttonWidget extends StatelessWidget {
         onPressed: () {},
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          primary: Colors.white,
+          backgroundColor: Colors.white,
           side: const BorderSide(width: 1.5, color:primaryColor),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
