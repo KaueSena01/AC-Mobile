@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-  // Get.put(AuthController());
+  Get.put(AuthController());
   runApp(const MyApp());
 }
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: MaterialColor(0xFF0A3470, primarySwatch)
       ),
       // home: LoginScreen(),
-      home: SplashScreen()
+      home: const SplashScreen()
     );
   }
 }
