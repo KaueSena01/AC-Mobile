@@ -44,6 +44,26 @@ class AuthRepository {
     return handleUserOrError(result); 
   }
 
+  Future<AuthResult> register(
+    { 
+      required String name,  
+      required String email, 
+      required String password 
+    }
+  ) async {
+    final result = await _httpManager.restRequest(
+      url: EndPoints.register,
+      method: HttpMethods.post,
+      body: {
+        'name': name,
+        'email': email,
+        'password': password
+      }
+    );
+
+    return handleUserOrError(result); 
+  }
+
   Future<AuthResult> updatePassword(
     { 
       required String token,

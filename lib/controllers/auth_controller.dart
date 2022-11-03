@@ -4,12 +4,15 @@ import 'package:atlas_coins/repositories/auth_repository.dart';
 import 'package:atlas_coins/results/auth_result.dart';
 import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/views/auth/login_screen.dart';
+import 'package:atlas_coins/views/auth/save_email_and_password_screen.dart';
 import 'package:atlas_coins/views/home/home_screen.dart';
+import 'package:atlas_coins/views/onboarding/onboarding_screen.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
 
   AuthModel auth = AuthModel();
+  RxString userName = "".obs;
   UtilsServices utilsServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
   RxBool loading = false.obs;
@@ -24,6 +27,11 @@ class AuthController extends GetxController {
     utilsServices.saveLocalData(key: 'key', data: auth.token!); 
   } 
 
+  void saveName(String name) {
+    userName.value = name;
+    Get.to(SaveEmailAndPasswordScreen(name: userName.value));
+  }
+ 
   Future login({
     required String email,
     required String password
@@ -48,6 +56,30 @@ class AuthController extends GetxController {
         
       },
     ); 
+  }
+
+  Future<void> register({
+    required String name,
+    required String email,
+    required String password
+  }) async {
+
+    loading.value = true;  
+
+    AuthResult result = await authRepository.register(name: name, email: email, password: password);
+
+    loading.value = false;
+
+    result.when(
+      success: (auth) {
+        this.auth = auth;
+        saveToken();
+        Get.put(TransactionController());
+        Get.to(const HomeScreen());
+      }, 
+      error: (message) async {
+      }
+    );
   }
 
   Future<void> updatePassword({
@@ -85,7 +117,7 @@ class AuthController extends GetxController {
     String? token = await utilsServices.getLocalData(key: 'key'); 
     
     if (token == null) {
-      Get.to(LoginScreen());
+      Get.to(const OnboardingScreen());
       return;
     }
 
@@ -99,7 +131,7 @@ class AuthController extends GetxController {
         saveToken();
       },
       error: (message) async {
-        Get.to(LoginScreen());
+        Get.to(const OnboardingScreen());
       },
     );
   }
