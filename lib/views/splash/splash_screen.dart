@@ -8,40 +8,15 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
+        backgroundColor: primaryColor,
+        body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              stops: [
-                0.1,
-                0.9,
-              ],
-              colors: [
-                primaryColor,
-                secondaryColor 
-              ]
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [ 
-              Expanded(
-                child: Image.asset( 
-                  'assets/images/logo_key.png',
-                  height: 200,
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                child: const Text('By Kauê Sena', style: TextStyle(
-                  color: ligthColor
-                ))
-              )
-            ],
+          child: Center(
+            child: Image.asset( 
+              'assets/icons/logo.png',
+              height: 80,
+            ), 
           ),
         ),
       ),

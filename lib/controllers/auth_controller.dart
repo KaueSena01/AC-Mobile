@@ -99,7 +99,7 @@ class AuthController extends GetxController {
         saveToken();
       },
       error: (message) async {
-
+        Get.to(LoginScreen());
       },
     );
   }

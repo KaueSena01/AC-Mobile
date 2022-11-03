@@ -45,7 +45,7 @@ dependencies:
   flutter_svg: ^1.0.3
   mask_text_input_formatter: ^2.4.0
   intl: ^0.17.0
-  brasil_fields: ^1.6.0
+  brasil_fields: ^1.6.0 
 
 dev_dependencies:
   flutter_test:
