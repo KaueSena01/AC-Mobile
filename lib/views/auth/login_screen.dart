@@ -3,6 +3,7 @@ import 'package:atlas_coins/common/input_widget.dart';
 import 'package:atlas_coins/common/outiline_button_widget.dart';
 import 'package:atlas_coins/controllers/auth_controller.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
+import 'package:atlas_coins/views/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'; 
 
@@ -113,8 +114,9 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         const DividerWidget(),
-                        const OutilineuttonWidget(
-                          label: 'Criar conta'
+                        OutilineuttonWidget(
+                          label: 'Criar conta',
+                          onPressed: () {},
                         )],
                       ),
                     ),
@@ -126,7 +128,9 @@ class LoginScreen extends StatelessWidget {
                 left: 10,
                 child: SafeArea(
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(const OnboardingScreen());
+                    },
                     icon: const Icon(
                       Icons.arrow_back_rounded,
                       color: Colors.white,
