@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 class OutilineuttonWidget extends StatelessWidget {
   
   final String label;
+  final Color? color;
   final void Function()? onPressed;
   
   const OutilineuttonWidget({ 
     Key? key,
     required this.label,
-    required this.onPressed
+    required this.onPressed,
+    this.color = ligthColor
   }) : super(key: key);
 
   @override
@@ -25,8 +27,8 @@ class OutilineuttonWidget extends StatelessWidget {
             width: 2.0, color: primaryColor, style: BorderStyle.solid
           )
         ),
-        child: Text(label, style: const TextStyle(
-          color: ligthColor, 
+        child: Text(label, style: TextStyle(
+          color: color, 
           fontSize: 15, 
           fontWeight: FontWeight.w400),
         ),
