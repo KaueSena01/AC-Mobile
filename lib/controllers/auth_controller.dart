@@ -2,8 +2,7 @@ import 'package:atlas_coins/controllers/transaction_controller.dart';
 import 'package:atlas_coins/models/auth_model.dart';
 import 'package:atlas_coins/repositories/auth_repository.dart';
 import 'package:atlas_coins/results/auth_result.dart';
-import 'package:atlas_coins/services/utils/utils_services.dart';
-import 'package:atlas_coins/views/auth/login_screen.dart';
+import 'package:atlas_coins/services/utils/utils_services.dart'; 
 import 'package:atlas_coins/views/auth/save_email_and_password_screen.dart';
 import 'package:atlas_coins/views/home/home_screen.dart';
 import 'package:atlas_coins/views/onboarding/onboarding_screen.dart';
@@ -109,7 +108,7 @@ class AuthController extends GetxController {
 
     await utilsServices.deleteLocalData(key: 'key');
 
-    Get.to(LoginScreen());
+    Get.to(const OnboardingScreen());
   }
  
   Future<void> validateToken() async {

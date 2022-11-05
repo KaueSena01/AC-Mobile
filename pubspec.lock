@@ -235,6 +235,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_masked_text:
+    dependency: "direct main"
+    description:
+      name: flutter_masked_text
+      sha256: aa95e5703491aa7355cd4e97229afd974963781598f3e68bb7f130456354cc99
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.0"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -683,5 +691,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.0 <4.0.0"
+  dart: ">=2.18.0 <3.0.0"
   flutter: ">=2.11.0-0.1.pre"

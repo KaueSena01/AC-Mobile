@@ -55,9 +55,9 @@ class CardWidget extends StatelessWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: [ 
                     Image.asset(
-                      'assets/images/logo_transparent.png',
+                      'assets/icons/logo.png',
                       height: 75,
                     ),
                     Column(

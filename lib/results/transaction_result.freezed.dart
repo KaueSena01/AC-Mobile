@@ -24,8 +24,8 @@ mixin _$TransactionResult<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T transaction)? success,
-    TResult Function(String error)? error,
+    TResult? Function(T transaction)? success,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$TransactionResult<T> {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Error<T> value)? error,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Error<T> value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,17 +60,19 @@ mixin _$TransactionResult<T> {
 abstract class $TransactionResultCopyWith<T, $Res> {
   factory $TransactionResultCopyWith(TransactionResult<T> value,
           $Res Function(TransactionResult<T>) then) =
-      _$TransactionResultCopyWithImpl<T, $Res>;
+      _$TransactionResultCopyWithImpl<T, $Res, TransactionResult<T>>;
 }
 
 /// @nodoc
-class _$TransactionResultCopyWithImpl<T, $Res>
+class _$TransactionResultCopyWithImpl<T, $Res,
+        $Val extends TransactionResult<T>>
     implements $TransactionResultCopyWith<T, $Res> {
   _$TransactionResultCopyWithImpl(this._value, this._then);
 
-  final TransactionResult<T> _value;
   // ignore: unused_field
-  final $Res Function(TransactionResult<T>) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -78,26 +80,25 @@ abstract class _$$SuccessCopyWith<T, $Res> {
   factory _$$SuccessCopyWith(
           _$Success<T> value, $Res Function(_$Success<T>) then) =
       __$$SuccessCopyWithImpl<T, $Res>;
+  @useResult
   $Res call({T transaction});
 }
 
 /// @nodoc
 class __$$SuccessCopyWithImpl<T, $Res>
-    extends _$TransactionResultCopyWithImpl<T, $Res>
+    extends _$TransactionResultCopyWithImpl<T, $Res, _$Success<T>>
     implements _$$SuccessCopyWith<T, $Res> {
   __$$SuccessCopyWithImpl(
       _$Success<T> _value, $Res Function(_$Success<T>) _then)
-      : super(_value, (v) => _then(v as _$Success<T>));
+      : super(_value, _then);
 
-  @override
-  _$Success<T> get _value => super._value as _$Success<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? transaction = freezed,
+    Object? transaction = null,
   }) {
     return _then(_$Success<T>(
-      transaction == freezed
+      null == transaction
           ? _value.transaction
           : transaction // ignore: cast_nullable_to_non_nullable
               as T,
@@ -133,6 +134,7 @@ class _$Success<T> implements Success<T> {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$SuccessCopyWith<T, _$Success<T>> get copyWith =>
       __$$SuccessCopyWithImpl<T, _$Success<T>>(this, _$identity);
 
@@ -148,8 +150,8 @@ class _$Success<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T transaction)? success,
-    TResult Function(String error)? error,
+    TResult? Function(T transaction)? success,
+    TResult? Function(String error)? error,
   }) {
     return success?.call(transaction);
   }
@@ -179,8 +181,8 @@ class _$Success<T> implements Success<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Error<T> value)? error,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Error<T> value)? error,
   }) {
     return success?.call(this);
   }
@@ -212,25 +214,24 @@ abstract class Success<T> implements TransactionResult<T> {
 abstract class _$$ErrorCopyWith<T, $Res> {
   factory _$$ErrorCopyWith(_$Error<T> value, $Res Function(_$Error<T>) then) =
       __$$ErrorCopyWithImpl<T, $Res>;
+  @useResult
   $Res call({String error});
 }
 
 /// @nodoc
 class __$$ErrorCopyWithImpl<T, $Res>
-    extends _$TransactionResultCopyWithImpl<T, $Res>
+    extends _$TransactionResultCopyWithImpl<T, $Res, _$Error<T>>
     implements _$$ErrorCopyWith<T, $Res> {
   __$$ErrorCopyWithImpl(_$Error<T> _value, $Res Function(_$Error<T>) _then)
-      : super(_value, (v) => _then(v as _$Error<T>));
+      : super(_value, _then);
 
-  @override
-  _$Error<T> get _value => super._value as _$Error<T>;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$Error<T>(
-      error == freezed
+      null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
@@ -256,15 +257,15 @@ class _$Error<T> implements Error<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Error<T> &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ErrorCopyWith<T, _$Error<T>> get copyWith =>
       __$$ErrorCopyWithImpl<T, _$Error<T>>(this, _$identity);
 
@@ -280,8 +281,8 @@ class _$Error<T> implements Error<T> {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(T transaction)? success,
-    TResult Function(String error)? error,
+    TResult? Function(T transaction)? success,
+    TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -311,8 +312,8 @@ class _$Error<T> implements Error<T> {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success<T> value)? success,
-    TResult Function(Error<T> value)? error,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Error<T> value)? error,
   }) {
     return error?.call(this);
   }

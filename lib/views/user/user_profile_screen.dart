@@ -1,5 +1,8 @@
-import 'package:atlas_coins/common/input_widget.dart';
+import 'package:atlas_coins/common/button_widget.dart';
+import 'package:atlas_coins/common/input_text_widget.dart';
+import 'package:atlas_coins/common/outiline_button_widget.dart';
 import 'package:atlas_coins/controllers/auth_controller.dart';
+import 'package:atlas_coins/services/utils/validators.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,50 +29,52 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           child: Stack(
             children: [
               SafeArea(
-                  child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 100, 20, 30),
+                child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 80, 20, 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Text("ATLAS COINS",
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontSize: 26,
-                          fontWeight: FontWeight.w800,
-                        )),
-                    const Text(
-                        "Controle de carteira e organização do seu dinheiro!",
-                        style: TextStyle(
-                            color: darkColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400)),
+                      style: TextStyle(
+                        color: primaryColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.w800,
+                      )
+                    ),
+                    const Text("Planejar cenários futuros e calcular riscos  aumentara a taxa de crescimento do capital investido!", style: TextStyle(
+                      color: darkColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400
+                      )
+                    ),
                     const SizedBox(height: 40),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          InputWidget(
+                          InputTextWidget( 
                             label: "Nome:",
-                            placeholder: "Ex: Conta de água",
-                            icon: Icons.person,
+                            hint: true,
+                            readOnly: true,
                             initialValue: authController.auth.user!.name,
-                            readOnly: true,
                           ),
-                          InputWidget(
+                          const SizedBox(height: 30),
+                          InputTextWidget( 
                             label: "E-mail:",
-                            placeholder: "Ex: Conta de água",
-                            icon: Icons.email,
-                            initialValue: authController.auth.user!.email,
+                            hint: true,
                             readOnly: true,
+                            initialValue: authController.auth.user!.email,
                           ),
                           const SizedBox(height: 15),
                           GestureDetector(
                             onTap: updatePassword,
                             child: const Text("Alterar senha",
-                                style: TextStyle(
-                                    color: secondaryColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600)),
+                              style: TextStyle(
+                                color: secondaryColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600
+                              )
+                            ),
                           )
                         ],
                       ),
@@ -78,35 +83,20 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 ),
               )),
               Positioned(
-                  top: 0,
-                  right: 0,
-                  child: SafeArea(
-                    child: Image.asset(
-                      "assets/icons/background.png",
-                      height: 100,
-                      width: 100,
-                    ),
-                  )),
-              Positioned(
-                top: 15,
-                left: 15,
+                top: 10,
+                left: 10,
                 child: SafeArea(
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.circular(5)),
-                    child: IconButton(
-                      onPressed: () => Get.back(),
-                      icon: const Icon(
-                        Icons.arrow_back_rounded,
-                        color: ligthColor,
+                  child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_rounded,
+                      color: darkColor,
                       ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
@@ -119,7 +109,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     final newPasswordController = TextEditingController();
     final newPasswordConfirmationController = TextEditingController();
 
-    final _key = GlobalKey<FormState>();
+    final _formKey = GlobalKey<FormState>();
 
     return showDialog(
         context: context,
@@ -130,81 +120,94 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             insetPadding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
               reverse: true,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Form(
-                      key: _key,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          InputWidget(
-                            label: "Senha atual:",
-                            placeholder: "Digite a senha atual",
-                            icon: Icons.lock,
-                            controller: currentPasswordController,
-                          ),
-                          InputWidget(
-                            label: "Nova senha:",
-                            placeholder: "Digite a nova senha",
-                            icon: Icons.lock,
-                            controller: newPasswordController,
-                          ),
-                          InputWidget(
-                            label: "Confirmar senha:",
-                            placeholder: "Repita a nova senha",
-                            icon: Icons.lock,
-                            controller: newPasswordConfirmationController,
-                          ),
-                          const SizedBox(height: 15),
-                          GetX<AuthController>( 
-                            builder: (controller) {
-                              return 
-                              Container(
-                                margin: const EdgeInsets.only(top: 40),
-                                height: 50,
-                                child: ElevatedButton(
-                                  onPressed: controller.loading.value ? null : () {
-                                  FocusScope.of(context).unfocus();
-
-                                  if (_key.currentState!.validate()) {
-                                    final String password = newPasswordController.text;
-                                    controller.updatePassword(newPassword: password);
-                                  }
-                                },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: primaryColor,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                  ),
-                                  child: const Text(
-                                    'Salvar',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              );
-                            },
-                          )
-                        ],
+              child: Container(
+              margin: const EdgeInsets.all(20),
+              width: MediaQuery.of(context).size.width - 30,
+              height: MediaQuery.of(context).size.height - 125,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Alterar senha",
+                      style: TextStyle(
+                        color: primaryColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.w600
                       ),
                     ),
-                  ),
-                  Positioned(
-                      right: 5,
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: const Icon(Icons.close),
-                      ))
-                ],
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      height: 3,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(3),
+                        color: mainDarkColor
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InputTextWidget(
+                          hint: true,
+                          label: "Senha atual:",
+                          placeholder: "Sua senha atual",  
+                          controller: currentPasswordController,
+                          validator: validatePassword,
+                        ),
+                        const SizedBox(height: 25),
+                        InputTextWidget(
+                          hint: true,
+                          label: "Nova senha:",
+                          placeholder: "Sua nova senha", 
+                          controller: newPasswordController,
+                          validator: validateNewPassword,
+                        ),
+                        const SizedBox(height: 25),
+                        InputTextWidget(
+                          hint: true,
+                          label: "Confirmar senha:",
+                          placeholder: "Confirme sua nova senha", 
+                          controller: newPasswordConfirmationController,
+                          validator: validatePasswordConfirmation,
+                        ),
+                      ],
+                    )),
+                    GetX<AuthController>( 
+                      builder: (controller) {
+                        return ButtonWidget(
+                          label: "Entrar",
+                          onPressed: controller.loading.value
+                          ? null
+                          : () { 
+                            FocusScope.of(context).unfocus();
+                            
+                            if (_formKey.currentState!.validate()) {
+                              controller.updatePassword(
+                                newPassword: newPasswordController.text
+                              );
+                            }
+                          }
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    OutilineuttonWidget(
+                      label: "Cancelar",
+                      color: primaryColor,
+                      onPressed: () { Get.back(); }
+                    )
+                  ],
+                ),
               ),
             ),
-          );
-        });
+          ),
+        );
+      }
+    );
   }
 }
