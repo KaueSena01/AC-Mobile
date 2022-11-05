@@ -1,6 +1,7 @@
 import 'package:atlas_coins/common/button_widget.dart';
 import 'package:atlas_coins/common/input_text_widget.dart';
 import 'package:atlas_coins/controllers/auth_controller.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/services/utils/validators.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,7 @@ class SaveNameScreen extends StatelessWidget {
                           ),
                         ),
                         ButtonWidget(
-                          label: "Continuar", 
+                          label: ButtonLabel.next, 
                           onPressed: () {
                             if(_formKey.currentState!.validate()) {
                               authController.saveName(nameController.text);

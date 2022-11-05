@@ -1,6 +1,7 @@
 import 'package:atlas_coins/models/transaction_model.dart';
 import 'package:atlas_coins/repositories/transaction_repository.dart';
 import 'package:atlas_coins/results/transaction_result.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/views/home/home_screen.dart';
 import 'package:brasil_fields/brasil_fields.dart';
@@ -110,7 +111,7 @@ class TransactionController extends GetxController{
   }
 
   void setTransactionType(String value) {
-    if(value == "Despesa") {
+    if(value == TransactionType.expense) {
       transactionType.value = 0; 
     } else {
       transactionType.value = 1; 

@@ -2,6 +2,7 @@ import 'package:atlas_coins/common/button_widget.dart';
 import 'package:atlas_coins/common/input_text_widget.dart';
 import 'package:atlas_coins/common/outiline_button_widget.dart';
 import 'package:atlas_coins/controllers/auth_controller.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/services/utils/validators.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:atlas_coins/views/auth/save_name_screen.dart';
@@ -22,7 +23,7 @@ class OnboardingScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Image.asset(
-              "assets/images/background 1.png",
+              AppInformation.backgroundAppPath,
               fit: BoxFit.cover,
             ),
           ),
@@ -34,7 +35,7 @@ class OnboardingScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  "assets/icons/logo_start.png",
+                  AppInformation.appLogoSecondaryPath,
                   height: 120,
                   width: 120,
                 ),
@@ -48,12 +49,12 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 ButtonWidget(
-                  label: "Entrar na minha conta",
+                  label: ButtonLabel.logInAccount,
                   onPressed: () => {login(context)},
                 ),
                 const SizedBox(height: 15),
-                OutilineuttonWidget(
-                  label: "Não tenho conta",
+                OutilineButtonWidget(
+                  label: ButtonLabel.noHaveAccount,
                   onPressed: () {
                     Get.to(SaveNameScreen());
                   },
@@ -141,7 +142,7 @@ class OnboardingScreen extends StatelessWidget {
                     GetX<AuthController>( 
                       builder: (controller) {
                         return ButtonWidget(
-                          label: "Entrar",
+                          label: ButtonLabel.logIn,
                           onPressed: controller.loading.value
                           ? null
                           : () { 
@@ -158,8 +159,8 @@ class OnboardingScreen extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 20),
-                    OutilineuttonWidget(
-                      label: "Cancelar",
+                    OutilineButtonWidget(
+                      label: ButtonLabel.cancel,
                       color: primaryColor,
                       onPressed: () { Get.back(); }
                     )

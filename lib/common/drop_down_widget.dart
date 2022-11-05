@@ -1,10 +1,11 @@
 import 'package:atlas_coins/controllers/transaction_controller.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../theme/colors_theme.dart';
 
-const List<String> list = <String>['Depósito', 'Despesa'];
+const List<String> list = <String>[TransactionType.deposit, TransactionType.expense];
 
 class DropDownWidget extends StatefulWidget {
   final String label;

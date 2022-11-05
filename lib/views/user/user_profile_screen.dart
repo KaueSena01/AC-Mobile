@@ -2,6 +2,7 @@ import 'package:atlas_coins/common/button_widget.dart';
 import 'package:atlas_coins/common/input_text_widget.dart';
 import 'package:atlas_coins/common/outiline_button_widget.dart';
 import 'package:atlas_coins/controllers/auth_controller.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/services/utils/validators.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text("ATLAS COINS",
+                    const Text(AppInformation.appNameUpperCase,
                       style: TextStyle(
                         color: primaryColor,
                         fontSize: 26,
@@ -180,7 +181,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     GetX<AuthController>( 
                       builder: (controller) {
                         return ButtonWidget(
-                          label: "Entrar",
+                          label: ButtonLabel.save,
                           onPressed: controller.loading.value
                           ? null
                           : () { 
@@ -196,8 +197,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    OutilineuttonWidget(
-                      label: "Cancelar",
+                    OutilineButtonWidget(
+                      label: ButtonLabel.cancel,
                       color: primaryColor,
                       onPressed: () { Get.back(); }
                     )

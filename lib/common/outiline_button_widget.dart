@@ -1,13 +1,13 @@
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 
-class OutilineuttonWidget extends StatelessWidget {
+class OutilineButtonWidget extends StatelessWidget {
   
   final String label;
   final Color? color;
   final void Function()? onPressed;
   
-  const OutilineuttonWidget({ 
+  const OutilineButtonWidget({ 
     Key? key,
     required this.label,
     required this.onPressed,

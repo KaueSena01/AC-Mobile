@@ -1,5 +1,6 @@
 import 'package:atlas_coins/controllers/auth_controller.dart';
 import 'package:atlas_coins/controllers/transaction_controller.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class CardWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [ 
                     Image.asset(
-                      'assets/icons/logo.png',
+                      AppInformation.appLogoPath,
                       height: 75,
                     ),
                     Column(
@@ -94,10 +95,10 @@ class CardWidget extends StatelessWidget {
                   child: Text(
                     // ignore: unrelated_type_equality_checks
                     controller.loading == true
-                    ? "..."
+                    ? TransactionInformation.loading
                     : 
                     controller.allTransactions.isEmpty 
-                    ? "Última movimentação:"
+                    ? TransactionInformation.lastMove
                     : 
                     utilsServices.lastTransactionType(controller.lastTransaction()), style: const TextStyle(
                     color: Colors.white,  
@@ -112,10 +113,10 @@ class CardWidget extends StatelessWidget {
                   children: [
                     Image.asset(
                       controller.loading.value == true
-                      ? 'assets/icons/no_transactions.png'
+                      ? TransactionInformation.noTransactionsPath
                       : 
                       controller.allTransactions.isEmpty 
-                      ? 'assets/icons/no_transactions.png'
+                      ? TransactionInformation.noTransactionsPath
                       : 
                       utilsServices.lastTransactionTypeAsset(controller.lastTransaction()),
                       width: 12,
@@ -124,10 +125,10 @@ class CardWidget extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       controller.loading.value == true
-                      ? "R\$ 0,00"
+                      ? TransactionInformation.zero
                       : 
                       controller.allTransactions.isEmpty 
-                      ? "R\$ 0,00"
+                      ? TransactionInformation.zero
                       : utilsServices.lastTransactionValue(controller.lastTransaction()), style: const TextStyle(
                           color: Colors.white,  
                           fontSize: 15,

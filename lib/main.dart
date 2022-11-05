@@ -1,4 +1,5 @@
 import 'package:atlas_coins/controllers/auth_controller.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:atlas_coins/views/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'ATLAS COINS',
+      title: AppInformation.appName,
       localizationsDelegates: const [
         GlobalWidgetsLocalizations.delegate,
         GlobalMaterialLocalizations.delegate

@@ -2,6 +2,7 @@ import 'package:atlas_coins/common/button_widget.dart';
 import 'package:atlas_coins/common/drop_down_widget.dart';
 import 'package:atlas_coins/common/input_text_widget.dart';
 import 'package:atlas_coins/controllers/transaction_controller.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/services/utils/validators.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class TransactionScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [ 
-                      const Text("ATLAS COINS",
+                      const Text(AppInformation.appNameUpperCase,
                         style: TextStyle(
                           color: primaryColor,
                           fontSize: 26,
@@ -89,7 +90,7 @@ class TransactionScreen extends StatelessWidget {
                       GetX<TransactionController>(
                         builder: (controller) {
                           return ButtonWidget(
-                            label: "Salvar", 
+                            label: ButtonLabel.save, 
                             onPressed: controller.loading.value
                             ? null
                             :

@@ -1,4 +1,5 @@
 import 'package:atlas_coins/models/transaction_model.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +85,9 @@ class Transaction extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: transactionList!.type! == 1 ? 'Depósito: ' : 'Despesa: ', 
+                            text: transactionList!.type! == 1 
+                              ? TransactionType.deposit 
+                              : TransactionType.expense, 
                             style: const TextStyle(
                             fontWeight: FontWeight.w500
                           )),
@@ -98,9 +101,9 @@ class Transaction extends StatelessWidget {
                   top: 25,
                   left: 10,
                   child: Image.asset(
-                    transactionList!.type! == 1 ?
-                    'assets/icons/deposit.png' :
-                    'assets/icons/expense.png',
+                    transactionList!.type! == 1 
+                    ? TransactionInformation.deposiTransactionPath 
+                    : TransactionInformation.expenseTransactionPath,
                     width: 12,
                     height: 12,
                   )
