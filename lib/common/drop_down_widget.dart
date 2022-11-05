@@ -34,50 +34,43 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             widget.label, 
             style: const TextStyle(
               color: darkColor,
-              fontSize: 16
+              fontSize: 18
             )
           ),
-          const SizedBox(height: 3),
           GetBuilder<TransactionController>(
             builder: (_) {
               return SizedBox( 
-            height: 50,
-            child: DropdownButtonFormField(
-              style: const TextStyle(fontSize: 16, color: darkColor, backgroundColor: Colors.transparent),
-              value: dropdownValue,
-              isExpanded: true,
-              elevation: 0,
-              isDense: true, 
-              onChanged: (String? value) { 
-                setState(() {
-                  dropdownValue = value!;
-                  _.setTransactionType(value);
-                });
-              },
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: darkColor,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(12)
-                ), 
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: darkColor,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(12)
+              height: 50,
+              child: DropdownButtonFormField(
+                style: const TextStyle(color: Colors.black, fontSize: 16, backgroundColor: Colors.transparent),
+                value: dropdownValue,
+                dropdownColor: mainGreyColor,
+                isExpanded: true,
+                elevation: 0,
+                isDense: true, 
+                onChanged: (String? value) { 
+                  setState(() {
+                    dropdownValue = value!;
+                    _.setTransactionType(value);
+                  });
+                },
+                decoration: const InputDecoration(
+                  isDense: false,
+                  hintStyle: TextStyle(color: mainDarkColor, fontSize: 16),
+                  border: UnderlineInputBorder(),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: mainDarkColor, width: 2)),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: mainDarkColor, width: 2)
+                  )
                 ),
-              ),
               items: list.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-            ),
-          );
+                  child: Text(value));
+                  }).toList()
+                ),
+              );
             }
           ) 
         ],

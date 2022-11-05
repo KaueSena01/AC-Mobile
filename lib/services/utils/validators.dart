@@ -37,3 +37,35 @@ String? validatePasswordConfirmation(newPassword) {
 
   return null;
 }
+
+String? validateTransacionTitle(title) {
+  if(title == null || title.isEmpty) {
+    return "Por favor, informe um título";
+  }
+
+  return null;
+}
+
+String? validateTransacionValue(value) {
+  if(value == null || value.isEmpty) {
+    return "Por favor, insira um valor válido";
+  }
+
+  return null;
+}
+
+String? validateTransacionDate(date) {
+  if(date == null || date.isEmpty) {
+    return "A data deve ser preenchida";
+  }
+
+  return null;
+}
+
+String? validateTransacionDescription(description) {
+  if(description == null || description.isEmpty) {
+    return "Por favor, informe uma descrição";
+  }
+
+  return null;
+}

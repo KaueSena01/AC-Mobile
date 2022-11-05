@@ -16,7 +16,10 @@ class TransactionController extends GetxController{
 
   List<TransactionModel> allTransactions = [];
 
-  RxString dateNow = ''.obs; 
+  TransactionModel transaciton = TransactionModel();
+
+  RxString dateNow = "".obs; 
+  RxString newValue = "".obs;
   RxInt transactionType = 1.obs;
 
   TransactionRepository transactionRepository = TransactionRepository();
@@ -35,10 +38,16 @@ class TransactionController extends GetxController{
 
     String? token = await utilsServices.getLocalData(key: 'key');
 
+    var newValue = utilsServices.valueFormater(value);
+
+    if(transactionType.value == 0) {
+      newValue = "-$newValue";   
+    }
+
     TransactionResult result = await 
       transactionRepository.createNewTransaction(
         token!,
-        title, transactionType.value, date, value, description
+        title, transactionType.value, date, newValue, description
     );
 
     loading.value = false;

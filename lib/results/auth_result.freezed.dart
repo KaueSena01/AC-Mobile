@@ -24,8 +24,8 @@ mixin _$AuthResult {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AuthModel auth)? success,
-    TResult Function(String error)? error,
+    TResult? Function(AuthModel auth)? success,
+    TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$AuthResult {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,40 +60,42 @@ mixin _$AuthResult {
 abstract class $AuthResultCopyWith<$Res> {
   factory $AuthResultCopyWith(
           AuthResult value, $Res Function(AuthResult) then) =
-      _$AuthResultCopyWithImpl<$Res>;
+      _$AuthResultCopyWithImpl<$Res, AuthResult>;
 }
 
 /// @nodoc
-class _$AuthResultCopyWithImpl<$Res> implements $AuthResultCopyWith<$Res> {
+class _$AuthResultCopyWithImpl<$Res, $Val extends AuthResult>
+    implements $AuthResultCopyWith<$Res> {
   _$AuthResultCopyWithImpl(this._value, this._then);
 
-  final AuthResult _value;
   // ignore: unused_field
-  final $Res Function(AuthResult) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$SuccessCopyWith<$Res> {
   factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
       __$$SuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({AuthModel auth});
 }
 
 /// @nodoc
-class __$$SuccessCopyWithImpl<$Res> extends _$AuthResultCopyWithImpl<$Res>
+class __$$SuccessCopyWithImpl<$Res>
+    extends _$AuthResultCopyWithImpl<$Res, _$Success>
     implements _$$SuccessCopyWith<$Res> {
   __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
-      : super(_value, (v) => _then(v as _$Success));
+      : super(_value, _then);
 
-  @override
-  _$Success get _value => super._value as _$Success;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? auth = freezed,
+    Object? auth = null,
   }) {
     return _then(_$Success(
-      auth == freezed
+      null == auth
           ? _value.auth
           : auth // ignore: cast_nullable_to_non_nullable
               as AuthModel,
@@ -119,15 +121,15 @@ class _$Success implements Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Success &&
-            const DeepCollectionEquality().equals(other.auth, auth));
+            (identical(other.auth, auth) || other.auth == auth));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(auth));
+  int get hashCode => Object.hash(runtimeType, auth);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$SuccessCopyWith<_$Success> get copyWith =>
       __$$SuccessCopyWithImpl<_$Success>(this, _$identity);
 
@@ -143,8 +145,8 @@ class _$Success implements Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AuthModel auth)? success,
-    TResult Function(String error)? error,
+    TResult? Function(AuthModel auth)? success,
+    TResult? Function(String error)? error,
   }) {
     return success?.call(auth);
   }
@@ -174,8 +176,8 @@ class _$Success implements Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) {
     return success?.call(this);
   }
@@ -207,24 +209,24 @@ abstract class Success implements AuthResult {
 abstract class _$$ErrorCopyWith<$Res> {
   factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
       __$$ErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res> extends _$AuthResultCopyWithImpl<$Res>
+class __$$ErrorCopyWithImpl<$Res>
+    extends _$AuthResultCopyWithImpl<$Res, _$Error>
     implements _$$ErrorCopyWith<$Res> {
   __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
-      : super(_value, (v) => _then(v as _$Error));
+      : super(_value, _then);
 
-  @override
-  _$Error get _value => super._value as _$Error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$Error(
-      error == freezed
+      null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
@@ -250,15 +252,15 @@ class _$Error implements Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Error &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ErrorCopyWith<_$Error> get copyWith =>
       __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
 
@@ -274,8 +276,8 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AuthModel auth)? success,
-    TResult Function(String error)? error,
+    TResult? Function(AuthModel auth)? success,
+    TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
   }
@@ -305,8 +307,8 @@ class _$Error implements Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Success value)? success,
-    TResult Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
   }

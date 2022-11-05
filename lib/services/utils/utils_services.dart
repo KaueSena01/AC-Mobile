@@ -59,6 +59,13 @@ class UtilsServices {
     return day;
   }
 
+  String valueFormater(String value) {
+
+    String newValue = value.substring(3);
+
+    return newValue;
+  }
+
   String monthFormater(String date) {
 
     var month = date.substring(3, 5);

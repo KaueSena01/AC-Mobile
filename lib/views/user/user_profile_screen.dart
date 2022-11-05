@@ -30,7 +30,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             children: [
               SafeArea(
                 child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 100, 20, 30),
+                padding: const EdgeInsets.fromLTRB(20, 80, 20, 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -139,7 +139,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 20, bottom: 70),
+                      margin: const EdgeInsets.only(top: 20),
                       height: 3,
                       width: 50,
                       decoration: BoxDecoration(
@@ -150,6 +150,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     Expanded(
                       child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InputTextWidget(
                           hint: true,
@@ -158,7 +159,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           controller: currentPasswordController,
                           validator: validatePassword,
                         ),
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 25),
                         InputTextWidget(
                           hint: true,
                           label: "Nova senha:",
@@ -166,7 +167,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           controller: newPasswordController,
                           validator: validateNewPassword,
                         ),
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 25),
                         InputTextWidget(
                           hint: true,
                           label: "Confirmar senha:",
