@@ -12,7 +12,7 @@ class TransactionRepository {
       url: EndPoints.listtransactions, 
       method: HttpMethods.post,
       headers: {
-        'Authorization': 'Bearer '+token
+        'Authorization': 'Bearer ' + token
     });
 
     if(result['result'] != null) {

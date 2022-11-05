@@ -1,3 +1,4 @@
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class SplashScreen extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: Center(
             child: Image.asset( 
-              'assets/icons/logo.png',
+              AppInformation.appLogoPath,
               height: 80,
             ), 
           ),

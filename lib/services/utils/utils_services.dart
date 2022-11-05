@@ -1,4 +1,5 @@
 import 'package:atlas_coins/models/transaction_model.dart';
+import 'package:atlas_coins/services/utils/static_value.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
 
@@ -33,16 +34,16 @@ class UtilsServices {
 
   String lastTransactionType(TransactionModel transaction) {
 
-    if(transaction.type == 1) return "Depósito";
+    if(transaction.type == 1) return TransactionType.deposit;
     
-    return "Despesa";
+    return TransactionType.expense;
   }
 
   String lastTransactionTypeAsset(TransactionModel transaction) {
 
-    if(transaction.type == 1) return "assets/icons/deposit.png";
+    if(transaction.type == 1) return TransactionInformation.deposiTransactionPath;
     
-    return "assets/icons/expense.png";
+    return TransactionInformation.expenseTransactionPath;
   }
 
   String lastTransactionValue(TransactionModel transaction) {
