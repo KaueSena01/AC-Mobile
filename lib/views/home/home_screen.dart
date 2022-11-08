@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     animation = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 250)
-    );
+    ); 
   }
 
   @override

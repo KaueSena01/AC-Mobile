@@ -1,12 +1,14 @@
-const String apiBaseUrl = 'http://localhost:3000/atlascoins';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+String apiBaseUrl =  dotenv.get("APIBASEURL", fallback: "");
 
 abstract class EndPoints {
 
-  static const String signin = '$apiBaseUrl/login';
-  static const String register = '$apiBaseUrl/register';
-  static const String checktoken = '$apiBaseUrl/checktoken';
-  static const String listtransactions = '$apiBaseUrl/listtransactions';
-  static const String createtransaction = '$apiBaseUrl/createtransaction';
-  static const String updatePassword = '$apiBaseUrl/editpassword';
+  static String signin = '$apiBaseUrl/login';
+  static String register = '$apiBaseUrl/register';
+  static String checktoken = '$apiBaseUrl/checktoken';
+  static String listtransactions = '$apiBaseUrl/listtransactions';
+  static String createtransaction = '$apiBaseUrl/createtransaction';
+  static String updatePassword = '$apiBaseUrl/editpassword';
 
 }

@@ -1,6 +1,6 @@
 import 'package:atlas_coins/controllers/auth_controller.dart';
 import 'package:atlas_coins/controllers/transaction_controller.dart';
-import 'package:atlas_coins/services/utils/static_value.dart';
+import 'package:atlas_coins/services/utils/static_values.dart';
 import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:flutter/material.dart';

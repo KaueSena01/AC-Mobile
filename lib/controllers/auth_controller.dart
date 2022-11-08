@@ -6,6 +6,7 @@ import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/views/auth/save_email_and_password_screen.dart';
 import 'package:atlas_coins/views/home/home_screen.dart';
 import 'package:atlas_coins/views/onboarding/onboarding_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
@@ -15,6 +16,8 @@ class AuthController extends GetxController {
   UtilsServices utilsServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
   RxBool loading = false.obs;
+  
+  String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
 
   @override
   void onInit() {
@@ -23,7 +26,7 @@ class AuthController extends GetxController {
   }
 
   void saveToken() {
-    utilsServices.saveLocalData(key: 'key', data: auth.token!); 
+    utilsServices.saveLocalData(key: tokenKey, data: auth.token!); 
   } 
 
   void saveName(String name) {
@@ -87,7 +90,7 @@ class AuthController extends GetxController {
 
     loading.value = true;  
 
-    String? token = await utilsServices.getLocalData(key: 'key'); 
+    String? token = await utilsServices.getLocalData(key: tokenKey); 
     
     AuthResult result = await authRepository.updatePassword(token: token!, newPassword: newPassword);
 
@@ -106,14 +109,14 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     auth = AuthModel();
 
-    await utilsServices.deleteLocalData(key: 'key');
+    await utilsServices.deleteLocalData(key: tokenKey);
 
     Get.to(const OnboardingScreen());
   }
  
   Future<void> validateToken() async {
 
-    String? token = await utilsServices.getLocalData(key: 'key'); 
+    String? token = await utilsServices.getLocalData(key: tokenKey); 
     
     if (token == null) {
       Get.to(const OnboardingScreen());
