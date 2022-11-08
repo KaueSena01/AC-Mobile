@@ -1,7 +1,7 @@
 import 'package:atlas_coins/common/button_widget.dart';
 import 'package:atlas_coins/common/input_text_widget.dart';
 import 'package:atlas_coins/controllers/auth_controller.dart';
-import 'package:atlas_coins/services/utils/static_value.dart';
+import 'package:atlas_coins/services/utils/static_values.dart';
 import 'package:atlas_coins/services/utils/validators.dart';
 import 'package:atlas_coins/theme/colors_theme.dart';
 import 'package:atlas_coins/views/auth/save_name_screen.dart';

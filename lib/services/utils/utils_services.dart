@@ -1,5 +1,5 @@
 import 'package:atlas_coins/models/transaction_model.dart';
-import 'package:atlas_coins/services/utils/static_value.dart';
+import 'package:atlas_coins/services/utils/static_values.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
 

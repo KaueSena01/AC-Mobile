@@ -1,10 +1,11 @@
 import 'package:atlas_coins/models/transaction_model.dart';
 import 'package:atlas_coins/repositories/transaction_repository.dart';
 import 'package:atlas_coins/results/transaction_result.dart';
-import 'package:atlas_coins/services/utils/static_value.dart';
+import 'package:atlas_coins/services/utils/static_values.dart';
 import 'package:atlas_coins/services/utils/utils_services.dart';
 import 'package:atlas_coins/views/home/home_screen.dart';
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 class TransactionController extends GetxController{
@@ -14,6 +15,8 @@ class TransactionController extends GetxController{
     getAllTransactions();
     super.onInit();
   }
+
+  String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
 
   List<TransactionModel> allTransactions = [];
 
@@ -37,7 +40,7 @@ class TransactionController extends GetxController{
 
     loading.value = true; 
 
-    String? token = await utilsServices.getLocalData(key: 'key');
+    String? token = await utilsServices.getLocalData(key: tokenKey);
 
     var newValue = utilsServices.valueFormater(value);
 
@@ -68,7 +71,7 @@ class TransactionController extends GetxController{
 
     loading.value = true;
 
-    String? token = await utilsServices.getLocalData(key: 'key');
+    String? token = await utilsServices.getLocalData(key: tokenKey);
 
     TransactionResult<List<TransactionModel>> result = await transactionRepository.getAllTransactions(token!);
 
