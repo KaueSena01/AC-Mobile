@@ -29,7 +29,24 @@ class UtilsServices {
   String transactionValue(double transactionValue) {
     NumberFormat numberFormat = NumberFormat.simpleCurrency(locale: 'pt_BR');
 
-    return numberFormat.format(transactionValue);
+    final String value = numberFormat.format(transactionValue);
+
+    return value;
+  }
+
+  String listTransactionValue(double transactionValue) {
+    NumberFormat numberFormat = NumberFormat.simpleCurrency(locale: 'pt_BR');
+
+    late String value = numberFormat.format(transactionValue);
+
+    if(transactionValue > 0) {
+      return value = "+ $value";
+    }
+
+    value = value.substring(1, value.length);
+    value = "- $value";
+
+    return value;
   }
 
   String lastTransactionType(TransactionModel transaction) {
@@ -64,6 +81,13 @@ class UtilsServices {
 
     String newValue = value.substring(3);
 
+    if(newValue.length >= 8) { 
+      String cen = newValue.substring(0, 2);
+      String dez = newValue.substring(3, newValue.length);
+
+      newValue = '$cen$dez';
+    }
+
     return newValue;
   }
 
@@ -74,51 +98,51 @@ class UtilsServices {
 
     switch(month) {
       case "01" :
-        result = "Jan";
+        result = " de janeiro";
       break;
 
       case "02":
-        result = "Fev"; 
+        result = " de fevereiro"; 
       break;
         
       case "03":
-        result = "Mar"; 
+        result = " de março"; 
       break;
 
       case "04":
-        result = "Abr"; 
+        result = " de abril"; 
       break;
       
       case "05":
-        result ="Mai"; 
+        result =" de maio"; 
       break;
 
       case "06":
-        result = "Jun"; 
+        result = " de junho"; 
       break;
 
       case "07":
-        result = "Jul"; 
+        result = " de julho"; 
       break;
 
       case "08":
-        result = "Ago"; 
+        result = " de agosto"; 
       break;
 
       case "09":
-        result = "Set"; 
+        result = " de setembro"; 
       break;
 
       case "10":
-        result = "Out"; 
+        result = " de outubro"; 
       break;
 
       case "11":
-        result = "Nov"; 
+        result = " de novembro"; 
       break;
 
       case "12":
-        result = "Dez"; 
+        result = " de dezembro"; 
       break;  
     }
 

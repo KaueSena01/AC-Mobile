@@ -56,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return Scaffold(
+      backgroundColor: backgroundColor,
       body: SizedBox(
         child: GetBuilder<TransactionController>(
           builder: (controller) {
@@ -99,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                             child: RefreshIndicator(
                               onRefresh: () => controller.getAllTransactions(),
                               child: ListView.builder(
-                                padding: const EdgeInsets.all(0),
+                                padding: const EdgeInsets.all(0), 
                                 scrollDirection: Axis.vertical,
                                 shrinkWrap: true,
                                 itemBuilder: (_, index) => Transaction(
