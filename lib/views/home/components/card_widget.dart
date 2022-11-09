@@ -21,19 +21,11 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: AlignmentDirectional.center,
+    return Column( 
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: 180,
-          color: primaryColor,
-        ),
-        Positioned(
-          top: 60,
-          child: Container( 
-          width: MediaQuery.of(context).size.width - 20,
+        Container( 
+          width: MediaQuery.of(context).size.width - 20, 
           decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           gradient: const LinearGradient(
@@ -47,98 +39,129 @@ class CardWidget extends StatelessWidget {
             tertiaryColor,
             secondaryColor, 
             ],
-          )
-          ),
+          )),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 5, 10, 5),
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [ 
+                  children: [
                     Image.asset(
                       AppInformation.appLogoPath,
-                      height: 75,
+                      height: 40,
+                    ),
+                    const SizedBox(width: 10),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(authController.auth.user!.name!, style: const TextStyle(
+                          color: Colors.white,  
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500
+                          )
+                        ),
+                        const Text("Focado", style: TextStyle(
+                          color: Colors.white,  
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300
+                          )
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10, bottom: 10),
+                  color: mainGreyColor,
+                  height: 0.5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: const [
+                        Text("Todas", style: TextStyle(
+                          color: Colors.white,  
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400
+                          )
+                        ),
+                        SizedBox(
+                          height: 15,
+                        )
+                      ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Saldo total: ',style: TextStyle(
+                        Text( 
+                          controller.loading.value == true
+                          ? TransactionInformation.loading
+                          : 
+                          controller.allTransactions.isEmpty 
+                          ? TransactionInformation.lastMove
+                          : 
+                          utilsServices.lastTransactionType(controller.lastTransaction()), style: const TextStyle(
                           color: Colors.white,  
-                          fontSize: 18,
+                          fontSize: 15,
                           fontWeight: FontWeight.w300
                           )
-                        ),  
-                        Text(utilsServices.transactionValue(controller.totalPrice()), style: const TextStyle(
-                          color:  Colors.white,  
-                          fontSize: 24,
-                          fontWeight: FontWeight.w800,
-                          decoration: TextDecoration.underline
-                          )
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Image.asset(
+                              controller.loading.value == true
+                              ? TransactionInformation.noTransactionsPath
+                              : 
+                              controller.allTransactions.isEmpty 
+                              ? TransactionInformation.noTransactionsPath
+                              : 
+                              utilsServices.lastTransactionTypeAsset(controller.lastTransaction()),
+                              width: 12,
+                              height: 12,
+                            ),
+                            const SizedBox(width: 5),
+                            Text(
+                              controller.loading.value == true
+                              ? TransactionInformation.zero
+                              : 
+                              controller.allTransactions.isEmpty 
+                              ? TransactionInformation.zero
+                              : utilsServices.lastTransactionValue(controller.lastTransaction()), style: const TextStyle(
+                                  color: Colors.white,  
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500
+                                )
+                              )
+                            ],
+                          )
                       ],
                     )
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5, left: 10),
-                  child: Text(authController.auth.user!.name!, style: const TextStyle(
-                    color: Colors.white,  
-                    fontSize: 22,
-                    fontWeight: FontWeight.w400
-                    )
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 25, left: 10),
-                  child: Text(
-                    // ignore: unrelated_type_equality_checks
-                    controller.loading == true
-                    ? TransactionInformation.loading
-                    : 
-                    controller.allTransactions.isEmpty 
-                    ? TransactionInformation.lastMove
-                    : 
-                    utilsServices.lastTransactionType(controller.lastTransaction()), style: const TextStyle(
-                    color: Colors.white,  
-                    fontSize: 15,
-                    fontWeight: FontWeight.w300
-                    )
-                  )
-                ),
-                Padding(
-                padding: const EdgeInsets.only(left: 10, bottom: 5),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      controller.loading.value == true
-                      ? TransactionInformation.noTransactionsPath
-                      : 
-                      controller.allTransactions.isEmpty 
-                      ? TransactionInformation.noTransactionsPath
-                      : 
-                      utilsServices.lastTransactionTypeAsset(controller.lastTransaction()),
-                      width: 12,
-                      height: 12,
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      controller.loading.value == true
-                      ? TransactionInformation.zero
-                      : 
-                      controller.allTransactions.isEmpty 
-                      ? TransactionInformation.zero
-                      : utilsServices.lastTransactionValue(controller.lastTransaction()), style: const TextStyle(
+                ), 
+                SizedBox(height: 12),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start, 
+                    children: [
+                      Text("Saldo total:", style: TextStyle(
                           color: Colors.white,  
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300
                         )
-                      )
+                      ),
+                      Text(utilsServices.transactionValue(controller.totalPrice()), style: const TextStyle(
+                        color:  Colors.white,  
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600, 
+                        )
+                      ),
                     ],
-                  ))
-                ]
-              )
+                  ),
+                )
+              ],
             ),
           )
         )

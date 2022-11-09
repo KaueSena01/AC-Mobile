@@ -81,7 +81,7 @@ class UtilsServices {
 
     String newValue = value.substring(3);
 
-    if(newValue.length >= 8) { 
+    if(newValue.length == 9) { 
       String cen = newValue.substring(0, 2);
       String dez = newValue.substring(3, newValue.length);
 
