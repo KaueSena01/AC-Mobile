@@ -109,6 +109,10 @@ class AuthController extends GetxController {
   Future<void> signOut() async {
     auth = AuthModel();
 
+    final transactionController = Get.find<TransactionController>();
+
+    transactionController.allTransactions = [];
+
     await utilsServices.deleteLocalData(key: tokenKey);
 
     Get.to(const OnboardingScreen());
