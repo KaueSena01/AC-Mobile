@@ -47,8 +47,8 @@ class CardWidget extends StatelessWidget {
                 Row(
                   children: [
                     Image.asset(
-                      AppInformation.appLogoPath,
-                      height: 40,
+                      AppInformation.appIconLogo,
+                      height: 30,
                     ),
                     const SizedBox(width: 10),
                     Column(
@@ -140,13 +140,13 @@ class CardWidget extends StatelessWidget {
                     )
                   ],
                 ), 
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Container(
                   alignment: Alignment.topLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start, 
                     children: [
-                      Text("Saldo total:", style: TextStyle(
+                      const Text("Saldo total:", style: TextStyle(
                           color: Colors.white,  
                           fontSize: 16,
                           fontWeight: FontWeight.w300

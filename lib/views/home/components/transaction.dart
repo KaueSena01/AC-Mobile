@@ -70,6 +70,7 @@ class Transaction extends StatelessWidget {
                               ),
                           children: <ListTile>[
                             ListTile(
+                              dense: true,
                               contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
                               title: Text(transactionList!.description!, style: const TextStyle(
                                 color: darkColor,
@@ -78,6 +79,7 @@ class Transaction extends StatelessWidget {
                               )), 
                             ),
                             ListTile(
+                              dense: true,
                               title: Text(transactionList!.date!, style: const TextStyle(
                                 color: darkColor,
                                 fontSize: 16,

@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                HeadWidget(),
+                const HeadWidget(),
                 CardWidget(
                   controller: controller,
                   ), 
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                HeadWidget(),
+                const HeadWidget(),
                 CardWidget(
                   controller: controller,
                 ),
