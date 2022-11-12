@@ -59,6 +59,7 @@ class TransactionController extends GetxController{
     result.when(
       success: (transactions) {
         refresh(); 
+        getAllTransactions();
         Get.to(const HomeScreen());
       }, 
       error: (message) {
