@@ -17,6 +17,7 @@ abstract class AppInformation {
   static const String appNameLowerCase = "atlas coins";
   static const String appIconLogo = "assets/icons/icon_logo.png";
   static const String appLogoPath = "assets/icons/logo.png";
+  static const String appWithoutConnection = "assets/icons/no_connec.png";
   static const String appLogoSecondaryPath = "assets/icons/logo_start.png";
   static const String backgroundAppPath = "assets/images/background 1.png";
 

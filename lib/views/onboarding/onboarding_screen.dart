@@ -152,7 +152,7 @@ class OnboardingScreen extends StatelessWidget {
                               controller.login(
                                 email: emailController.text, 
                                 password: passwordController.text
-                              );
+                              ); 
                             }
                           }
                         );
