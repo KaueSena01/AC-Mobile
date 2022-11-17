@@ -12,9 +12,9 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
   SaveEmailAndPasswordScreen({Key? key}) : super(key: key);
 
   final TextEditingController emailController = TextEditingController();
-  final AuthController authController = Get.find<AuthController>();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +39,21 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text.rich(TextSpan(
-                                    style: const TextStyle(
-                                      color: darkColor,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w400),
-                                    children: [
-                                      const TextSpan(text: "Olá "),
-                                      TextSpan(
-                                        text: authController.userName,
-                                        style: const TextStyle(
+                            Text.rich(
+                              TextSpan(
+                                style: const TextStyle(
+                                    color: darkColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w400),
+                                children: [
+                                  const TextSpan(text: "Olá "),
+                                  TextSpan(
+                                      text: authController.userName.value,
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.w600)),
-                                      const TextSpan(
-                                        text: "! Qual o seu e-mail?"),
-                                    ]
-                            )
+                                  const TextSpan(text: "! Qual o seu e-mail?"),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 20),
                             InputTextWidget(
@@ -82,7 +82,7 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
                                   ? null
                                   : () {
                                       if (_formKey.currentState!.validate()) {
-                                        controller.register( 
+                                        controller.register(
                                             email: emailController.text,
                                             password: passwordController.text);
                                       }

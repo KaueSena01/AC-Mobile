@@ -8,8 +8,6 @@ import 'package:atlas_coins/src/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-final authController = Get.find<AuthController>();
-
 class UserProfileScreen extends StatefulWidget {
   const UserProfileScreen({Key? key}) : super(key: key);
 
@@ -18,8 +16,12 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  
+  final authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
+
     final size = MediaQuery.of(context).size;
 
     return Scaffold(

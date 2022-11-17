@@ -46,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     menuIsOpen.value = !menuIsOpen.value;
   } 
 
+  final authController = Get.find<AuthController>();
   final TransactionController transactionController = TransactionController();
   final UtilsServices utilsServices = UtilsServices();
 

@@ -22,7 +22,10 @@ abstract class AppPages{
     ),
     GetPage(
       name: AppRoutes.registerNameRoute, 
-      page: () => SaveNameScreen()
+      page: () => SaveNameScreen(),
+      bindings: [
+        AuthBinding()
+      ]
     ),
     GetPage(
       name: AppRoutes.registerLoginRoute, 

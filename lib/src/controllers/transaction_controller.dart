@@ -4,7 +4,6 @@ import 'package:atlas_coins/src/results/transaction_result.dart';
 import 'package:atlas_coins/src/router/app_routes.dart';
 import 'package:atlas_coins/src/services/utils/static_values.dart';
 import 'package:atlas_coins/src/services/utils/utils_services.dart';
-import 'package:atlas_coins/src/views/home/home_screen.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
@@ -23,8 +22,7 @@ class TransactionController extends GetxController{
 
   TransactionModel transaciton = TransactionModel();
 
-  RxString dateNow = "".obs; 
-  RxString newValue = "".obs;
+  RxString dateNow = "".obs;  
   RxInt transactionType = 1.obs;
 
   TransactionRepository transactionRepository = TransactionRepository();
