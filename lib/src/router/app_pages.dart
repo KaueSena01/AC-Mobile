@@ -9,43 +9,39 @@ import 'package:atlas_coins/src/views/splash/splash_screen.dart';
 import 'package:atlas_coins/src/views/user/user_profile_screen.dart';
 import 'package:get/get.dart';
 
-abstract class AppPages{
-
-  static final pages = <GetPage> [
+abstract class AppPages {
+  static final pages = <GetPage>[
     GetPage(
-      name: AppRoutes.splashRoute, 
-      page: () => const SplashScreen()
+      name: AppRoutes.splashRoute,
+      page: () => const SplashScreen(),
     ),
     GetPage(
-      name: AppRoutes.onboardingRoute, 
-      page: () => const OnboardingScreen()
+      name: AppRoutes.onboardingRoute,
+      page: () => const OnboardingScreen(),
     ),
     GetPage(
-      name: AppRoutes.registerNameRoute, 
+      name: AppRoutes.registerNameRoute,
       page: () => SaveNameScreen(),
-      bindings: [
-        AuthBinding()
-      ]
     ),
     GetPage(
-      name: AppRoutes.registerLoginRoute, 
-      page: () => SaveEmailAndPasswordScreen()
+      name: AppRoutes.registerLoginRoute,
+      page: () => SaveEmailAndPasswordScreen(),
+      binding: AuthBinding(),
     ),
     GetPage(
-      name: AppRoutes.homeRoute, 
+      name: AppRoutes.homeRoute,
       page: () => const HomeScreen(),
       bindings: [
-        TransactionBinding()
-      ]
+        TransactionBinding(),
+      ],
     ),
     GetPage(
-      name: AppRoutes.profileRoute, 
-      page: () => const SplashScreen()
+      name: AppRoutes.profileRoute,
+      page: () => const SplashScreen(),
     ),
     GetPage(
-      name: AppRoutes.newTransactionRoute, 
-      page: () => const UserProfileScreen()
+      name: AppRoutes.newTransactionRoute,
+      page: () => const UserProfileScreen(),
     ),
-  ]; 
-
-} 
+  ];
+}

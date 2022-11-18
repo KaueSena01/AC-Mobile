@@ -8,63 +8,35 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
-
-  AuthModel auth = AuthModel();
-  UtilsServices utilsServices = UtilsServices();
-  AuthRepository authRepository = AuthRepository();
-  RxBool loading = false.obs;
-  RxString userName = "".obs;
-  
-  String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
-
   @override
   void onInit() {
     super.onInit();
     validateToken();
   }
 
+  AuthModel auth = AuthModel();
+  UtilsServices utilsServices = UtilsServices();
+  AuthRepository authRepository = AuthRepository();
+  RxBool loading = false.obs;
+  RxString userName = "".obs;
+
+  String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
+
   void saveToken() {
-    utilsServices.saveLocalData(key: tokenKey, data: auth.token!); 
-  } 
+    utilsServices.saveLocalData(key: tokenKey, data: auth.token!);
+  }
 
   void saveName(String name) async {
-    userName.value = name;
-    Get.toNamed(AppRoutes.registerLoginRoute);
-  }
- 
-  Future login({
-    required String email,
-    required String password
-  }) async {
-    loading.value = true;  
- 
-    AuthResult result = await authRepository.login(
-      email: email, 
-      password: password
-    );
-
-    loading.value = false;
-
-    result.when(
-      success: (auth) { 
-        this.auth = auth;
-        saveToken(); 
-        Get.toNamed(AppRoutes.homeRoute);
-      },
-      error: (message) {
-        
-      },
-    ); 
+    Get.toNamed(AppRoutes.registerLoginRoute, arguments: [
+      {"Name": name},
+    ]);
   }
 
-  Future<void> register({ 
-    required String email,
-    required String password
-  }) async {
+  Future login({required String email, required String password}) async {
+    loading.value = true;
 
-    loading.value = true;  
-
-    AuthResult result = await authRepository.register(name: userName.value, email: email, password: password);
+    AuthResult result =
+        await authRepository.login(email: email, password: password);
 
     loading.value = false;
 
@@ -73,47 +45,58 @@ class AuthController extends GetxController {
         this.auth = auth;
         saveToken();
         Get.toNamed(AppRoutes.homeRoute);
-      }, 
-      error: (message) async {
-      }
+      },
+      error: (message) {},
     );
   }
 
-  Future<void> updatePassword({
-    required String newPassword
-  }) async {
+  Future<void> register(
+      {required String name,
+      required String email,
+      required String password}) async {
+    loading.value = true;
 
-    loading.value = true;  
+    AuthResult result = await authRepository.register(
+      name: name,
+      email: email,
+      password: password,
+    );
 
-    String? token = await utilsServices.getLocalData(key: tokenKey); 
-    
-    AuthResult result = await authRepository.updatePassword(token: token!, newPassword: newPassword);
-
-    loading.value = false;  
+    loading.value = false;
 
     result.when(
-      success: (auth) {
-        
-      }, 
-      error: (message) async {
+        success: (auth) {
+          this.auth = auth;
+          saveToken();
+          Get.toNamed(AppRoutes.homeRoute);
+        },
+        error: (message) async {});
+  }
 
-      }
-    );
+  Future<void> updatePassword({required String newPassword}) async {
+    loading.value = true;
+
+    String? token = await utilsServices.getLocalData(key: tokenKey);
+
+    AuthResult result = await authRepository.updatePassword(
+        token: token!, newPassword: newPassword);
+
+    loading.value = false;
+
+    result.when(success: (auth) {}, error: (message) async {});
   }
 
   Future<void> signOut() async {
-    
     Get.delete<TransactionController>();
 
     await utilsServices.deleteLocalData(key: tokenKey);
 
     Get.toNamed(AppRoutes.onboardingRoute);
   }
- 
-  Future<void> validateToken() async {
 
-    String? token = await utilsServices.getLocalData(key: tokenKey); 
-    
+  Future<void> validateToken() async {
+    String? token = await utilsServices.getLocalData(key: tokenKey);
+
     if (token == null) {
       Get.toNamed(AppRoutes.onboardingRoute);
       return;
@@ -123,7 +106,7 @@ class AuthController extends GetxController {
 
     result.when(
       success: (auth) {
-        this.auth = auth; 
+        this.auth = auth;
         saveToken();
         Get.toNamed(AppRoutes.homeRoute);
       },
@@ -132,5 +115,4 @@ class AuthController extends GetxController {
       },
     );
   }
-  
 }

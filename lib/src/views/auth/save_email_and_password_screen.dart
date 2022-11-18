@@ -14,7 +14,7 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final authController = Get.find<AuthController>();
+  dynamic getName = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
                                 children: [
                                   const TextSpan(text: "Olá "),
                                   TextSpan(
-                                      text: authController.userName.value,
+                                      text: getName[0]['Name'],
                                       style: const TextStyle(
                                           fontWeight: FontWeight.w600)),
                                   const TextSpan(text: "! Qual o seu e-mail?"),
@@ -83,6 +83,7 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
                                   : () {
                                       if (_formKey.currentState!.validate()) {
                                         controller.register(
+                                            name: getName[0]['Name'],
                                             email: emailController.text,
                                             password: passwordController.text);
                                       }
