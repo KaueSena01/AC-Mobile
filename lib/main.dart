@@ -1,7 +1,8 @@
-import 'package:atlas_coins/controllers/auth_controller.dart';
-import 'package:atlas_coins/services/utils/static_values.dart';
-import 'package:atlas_coins/theme/colors_theme.dart';
-import 'package:atlas_coins/views/splash/splash_screen.dart';
+import 'package:atlas_coins/src/controllers/auth_controller.dart';
+import 'package:atlas_coins/src/router/app_pages.dart';
+import 'package:atlas_coins/src/router/app_routes.dart';
+import 'package:atlas_coins/src/services/utils/static_values.dart';
+import 'package:atlas_coins/src/theme/colors_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -30,8 +31,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData( 
         primarySwatch: MaterialColor(0xFF0A3470, primarySwatch)
       ),
-      // home: LoginScreen(),
-      home: const SplashScreen()
+      getPages: AppPages.pages,
+      initialRoute: AppRoutes.splashRoute,
     );
   }
 }

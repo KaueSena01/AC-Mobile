@@ -1,5 +1,6 @@
 # Miscellaneous
 *.env
+*.vscode
 *.class
 *.log
 *.pyc
