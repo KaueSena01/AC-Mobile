@@ -1,13 +1,19 @@
 String? validateName(name) {
-  if(name == null || name.isEmpty) {
+  if (name == null || name.isEmpty) {
     return "Digite seu nome";
+  }
+
+  final names = name.split(' ');
+
+  if (names.length == 1) {
+    return 'Digite seu nome completo!';
   }
 
   return null;
 }
 
 String? validateEmail(email) {
-  if(email == null || email.isEmpty) {
+  if (email == null || email.isEmpty) {
     return "Digite seu e-mail";
   }
 
@@ -15,7 +21,7 @@ String? validateEmail(email) {
 }
 
 String? validatePassword(password) {
-  if(password == null || password.isEmpty) {
+  if (password == null || password.isEmpty) {
     return "Digite sua senha";
   }
 
@@ -23,7 +29,7 @@ String? validatePassword(password) {
 }
 
 String? validateNewPassword(newPassword) {
-  if(newPassword == null || newPassword.isEmpty) {
+  if (newPassword == null || newPassword.isEmpty) {
     return "Digite a nova senha";
   }
 
@@ -31,7 +37,7 @@ String? validateNewPassword(newPassword) {
 }
 
 String? validatePasswordConfirmation(newPassword) {
-  if(newPassword == null || newPassword.isEmpty) {
+  if (newPassword == null || newPassword.isEmpty) {
     return "Por favor, confime a senha";
   }
 
@@ -39,7 +45,7 @@ String? validatePasswordConfirmation(newPassword) {
 }
 
 String? validateTransacionTitle(title) {
-  if(title == null || title.isEmpty) {
+  if (title == null || title.isEmpty) {
     return "Por favor, informe um título";
   }
 
@@ -47,7 +53,7 @@ String? validateTransacionTitle(title) {
 }
 
 String? validateTransacionValue(value) {
-  if(value == null || value.isEmpty) {
+  if (value == null || value.isEmpty) {
     return "Por favor, insira um valor válido";
   }
 
@@ -55,7 +61,7 @@ String? validateTransacionValue(value) {
 }
 
 String? validateTransacionDate(date) {
-  if(date == null || date.isEmpty) {
+  if (date == null || date.isEmpty) {
     return "A data deve ser preenchida";
   }
 
@@ -63,7 +69,7 @@ String? validateTransacionDate(date) {
 }
 
 String? validateTransacionDescription(description) {
-  if(description == null || description.isEmpty) {
+  if (description == null || description.isEmpty) {
     return "Por favor, informe uma descrição";
   }
 

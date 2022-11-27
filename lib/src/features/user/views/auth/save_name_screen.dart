@@ -43,7 +43,7 @@ class SaveNameScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Text(
-                                "Olá, para começar precisamos\nque informe seu nome.",
+                                "Olá, para começar precisamos\nque informe seu nome e sobrenome.",
                                 style: AppTheme.lightText.displaySmall!.apply(
                                   color: primaryDarkColor,
                                 ),

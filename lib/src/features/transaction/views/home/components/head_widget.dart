@@ -14,7 +14,7 @@ class HeadWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Painel",
+              "Extrato",
               style: AppTheme.lightText.bodyLarge!.apply(
                 color: primaryColor,
               ),

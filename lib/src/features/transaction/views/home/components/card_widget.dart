@@ -53,7 +53,7 @@ class CardWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Roberto José...",
+                          authController.auth.user!.name!,
                           style: AppTheme.lightText.headlineLarge!.apply(
                             color: whiteColor,
                           ),
