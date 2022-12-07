@@ -1,5 +1,5 @@
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/user/model/auth_model.dart';
+import 'package:atlas_coins/src/features/user/model/user_model.dart';
 import 'package:atlas_coins/src/features/user/result/auth_result.dart';
 import 'package:atlas_coins/src/features/user/repository/auth_repository.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
@@ -14,7 +14,7 @@ class AuthController extends GetxController {
     validateToken();
   }
 
-  AuthModel auth = AuthModel();
+  UserModel auth = UserModel();
   UtilsServices utilsServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
   RxBool loading = false.obs;
@@ -22,7 +22,7 @@ class AuthController extends GetxController {
 
   String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
 
-  void saveToken() {
+  void saveToken(UserModel auth) {
     utilsServices.saveLocalData(key: tokenKey, data: auth.token!);
   }
 
@@ -43,7 +43,7 @@ class AuthController extends GetxController {
     result.when(
       success: (auth) {
         this.auth = auth;
-        saveToken();
+        saveToken(auth);
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) {},
@@ -67,7 +67,7 @@ class AuthController extends GetxController {
     result.when(
         success: (auth) {
           this.auth = auth;
-          saveToken();
+          saveToken(auth);
           Get.toNamed(AppRoutes.homeRoute);
         },
         error: (message) async {});
@@ -107,7 +107,7 @@ class AuthController extends GetxController {
     result.when(
       success: (auth) {
         this.auth = auth;
-        saveToken();
+        saveToken(auth);
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {
