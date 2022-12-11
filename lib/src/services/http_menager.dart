@@ -9,39 +9,35 @@ abstract class HttpMethods {
 }
 
 class HttpManager {
-
   Future<Map> restRequest({
     required String url,
     required String method,
     Map? headers,
-    Map? body
-    }) async {
- 
-    final defaultHeaders = headers?.cast<String, String>() ?? {}..addAll(
-      {
-      }
-    );
+    Map? body,
+  }) async {
+    final defaultHeaders = headers?.cast<String, String>() ?? {}
+      ..addAll(
+        {
+          'content-type': 'application/json',
+          'accept': 'application/json',
+          'X-Parse-Application-Id': 'jcWlaydMGK4tdSW1f1QiLyJf5g3ZtYJfcqJoHGht',
+          'X-Parse-REST-API-Key': 'PjGilH7TDTXAkxsIXdtyeYpX9mXjPW17GkzA2NXa',
+        },
+      );
 
     Dio dio = Dio();
 
     try {
       Response response = await dio.request(
         url,
-        options: Options(
-          headers: defaultHeaders,
-          method: method
-        ),
-        data: body
+        options: Options(headers: defaultHeaders, method: method),
+        data: body,
       );
 
       return response.data;
-    } on DioError catch(error) {
-
-      if(error.message != "") return {}; 
-
+    } on DioError catch (error) {
       return error.response?.data ?? {};
     } catch (error) {
- 
       return {};
     }
   }

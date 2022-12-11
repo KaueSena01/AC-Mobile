@@ -29,23 +29,28 @@ class TransactionController extends GetxController {
 
   RxBool loading = false.obs;
 
+  RxDouble newValue = 0.0.obs;
+
   Future createNewTransaction(
       {required String title,
       required String date,
-      required String value,
+      required double value,
       required String description}) async {
     loading.value = true;
 
     String? token = await utilsServices.getLocalData(key: tokenKey);
 
-    var newValue = utilsServices.valueFormater(value);
-
     if (transactionType.value == 0) {
-      newValue = "-$newValue";
+      newValue.value = -value;
     }
 
     TransactionResult result = await transactionRepository.createNewTransaction(
-        token!, title, transactionType.value, date, newValue, description);
+        token!,
+        title,
+        transactionType.value,
+        date,
+        newValue.value == 0 ? value : newValue.value,
+        description);
 
     loading.value = false;
 

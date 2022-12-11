@@ -60,14 +60,14 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             label: "Nome:",
                             hint: true,
                             readOnly: true,
-                            initialValue: authController.auth.user!.name,
+                            initialValue: authController.auth.name,
                           ),
                           const SizedBox(height: size30),
                           InputTextWidget(
                             label: "E-mail:",
                             hint: true,
                             readOnly: true,
-                            initialValue: authController.auth.user!.email,
+                            initialValue: authController.auth.email,
                           ),
                           const SizedBox(height: size15),
                           GestureDetector(
