@@ -32,11 +32,16 @@ class AuthController extends GetxController {
     ]);
   }
 
-  Future login({required String email, required String password}) async {
+  Future login({
+    required String email,
+    required String password,
+  }) async {
     loading.value = true;
 
-    AuthResult result =
-        await authRepository.login(email: email, password: password);
+    AuthResult result = await authRepository.login(
+      email: email,
+      password: password,
+    );
 
     loading.value = false;
 
@@ -50,10 +55,11 @@ class AuthController extends GetxController {
     );
   }
 
-  Future<void> register(
-      {required String name,
-      required String email,
-      required String password}) async {
+  Future<void> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
     loading.value = true;
 
     AuthResult result = await authRepository.register(
@@ -65,12 +71,13 @@ class AuthController extends GetxController {
     loading.value = false;
 
     result.when(
-        success: (auth) {
-          this.auth = auth;
-          saveToken(auth);
-          Get.toNamed(AppRoutes.homeRoute);
-        },
-        error: (message) async {});
+      success: (auth) {
+        this.auth = auth;
+        saveToken(auth);
+        Get.toNamed(AppRoutes.homeRoute);
+      },
+      error: (message) async {},
+    );
   }
 
   Future<void> updatePassword({required String newPassword}) async {
@@ -79,11 +86,16 @@ class AuthController extends GetxController {
     String? token = await utilsServices.getLocalData(key: tokenKey);
 
     AuthResult result = await authRepository.updatePassword(
-        token: token!, newPassword: newPassword);
+      token: token!,
+      newPassword: newPassword,
+    );
 
     loading.value = false;
 
-    result.when(success: (auth) {}, error: (message) async {});
+    result.when(
+      success: (auth) {},
+      error: (message) async {},
+    );
   }
 
   Future<void> signOut() async {

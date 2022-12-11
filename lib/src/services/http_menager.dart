@@ -9,11 +9,12 @@ abstract class HttpMethods {
 }
 
 class HttpManager {
-  Future<Map> restRequest(
-      {required String url,
-      required String method,
-      Map? headers,
-      Map? body}) async {
+  Future<Map> restRequest({
+    required String url,
+    required String method,
+    Map? headers,
+    Map? body,
+  }) async {
     final defaultHeaders = headers?.cast<String, String>() ?? {}
       ..addAll(
         {
@@ -27,14 +28,14 @@ class HttpManager {
     Dio dio = Dio();
 
     try {
-      Response response = await dio.request(url,
-          options: Options(headers: defaultHeaders, method: method),
-          data: body);
+      Response response = await dio.request(
+        url,
+        options: Options(headers: defaultHeaders, method: method),
+        data: body,
+      );
 
       return response.data;
     } on DioError catch (error) {
-      if (error.message != "") return {};
-
       return error.response?.data ?? {};
     } catch (error) {
       return {};

@@ -17,19 +17,28 @@ class AuthRepository {
 
   Future<AuthResult> validateToken(String token) async {
     final result = await _httpManager.restRequest(
-        url: EndPoints.checktoken,
-        method: HttpMethods.post,
-        headers: {'Authorization': 'Bearer ' + token});
+      url: EndPoints.checktoken,
+      method: HttpMethods.post,
+      headers: {
+        'X-Parse-Session-Token': token,
+      },
+    );
 
     return handleUserOrError(result);
   }
 
-  Future<AuthResult> login(
-      {required String email, required String password}) async {
+  Future<AuthResult> login({
+    required String email,
+    required String password,
+  }) async {
     final result = await _httpManager.restRequest(
-        url: EndPoints.signin,
-        method: HttpMethods.post,
-        body: {'email': email, 'password': password});
+      url: EndPoints.signin,
+      method: HttpMethods.post,
+      body: {
+        'email': email,
+        'password': password,
+      },
+    );
 
     return handleUserOrError(result);
   }

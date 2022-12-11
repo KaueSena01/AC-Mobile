@@ -56,21 +56,19 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          const InputTextWidget(
-                              label: "Nome:",
-                              hint: true,
-                              readOnly: true,
-                              initialValue: ''
-                              // authController.auth.user!.name,
-                              ),
+                          InputTextWidget(
+                            label: "Nome:",
+                            hint: true,
+                            readOnly: true,
+                            initialValue: authController.auth.name,
+                          ),
                           const SizedBox(height: size30),
-                          const InputTextWidget(
-                              label: "E-mail:",
-                              hint: true,
-                              readOnly: true,
-                              initialValue: ''
-                              // authController.auth.user!.email,
-                              ),
+                          InputTextWidget(
+                            label: "E-mail:",
+                            hint: true,
+                            readOnly: true,
+                            initialValue: authController.auth.email,
+                          ),
                           const SizedBox(height: size15),
                           GestureDetector(
                             onTap: updatePassword,

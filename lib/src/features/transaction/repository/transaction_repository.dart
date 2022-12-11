@@ -9,9 +9,12 @@ class TransactionRepository {
   Future<TransactionResult<List<TransactionModel>>> getAllTransactions(
       String token) async {
     final result = await _httpManager.restRequest(
-        url: EndPoints.listtransactions,
-        method: HttpMethods.post,
-        headers: {'Authorization': 'Bearer ' + token});
+      url: EndPoints.listtransactions,
+      method: HttpMethods.post,
+      headers: {
+        'X-Parse-Session-Token': token,
+      },
+    );
 
     if (result['result'] != null) {
       List<TransactionModel> data =
@@ -25,21 +28,28 @@ class TransactionRepository {
     }
   }
 
-  Future<TransactionResult> createNewTransaction(String token, String title,
-      int type, String date, String value, String description) async {
+  Future<TransactionResult> createNewTransaction(
+    String token,
+    String title,
+    int type,
+    String date,
+    double value,
+    String description,
+  ) async {
     final result = await _httpManager.restRequest(
-        url: EndPoints.createtransaction,
-        method: HttpMethods.post,
-        headers: {
-          'Authorization': 'Bearer ' + token
-        },
-        body: {
-          'type': type,
-          'title': title,
-          'description': description,
-          'date': date,
-          'value': value
-        });
+      url: EndPoints.createtransaction,
+      method: HttpMethods.post,
+      headers: {
+        'X-Parse-Session-Token': token,
+      },
+      body: {
+        'type': type,
+        'title': title,
+        'description': description,
+        'date': date,
+        'value': value,
+      },
+    );
 
     if (result['result'] != null) {
       TransactionModel data = TransactionModel.fromJson(result['result']);
