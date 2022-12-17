@@ -11,16 +11,16 @@ class TransactionModel {
   double? value;
 
   TransactionModel({
-    this.type,
     this.title,
-    this.description,
-    this.date,
     this.value,
+    this.type,
+    this.date,
+    this.description,
   });
 
-  factory TransactionModel.fromJson(Map<String, dynamic> json) => 
-    _$TransactionModelFromJson(json);
-    
+  factory TransactionModel.fromJson(Map<String, dynamic> json) =>
+      _$TransactionModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$TransactionModelToJson(this);
 
   transactionValue() => value;

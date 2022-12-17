@@ -1,5 +1,5 @@
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/user/model/auth_model.dart';
+import 'package:atlas_coins/src/features/user/model/user_model.dart';
 import 'package:atlas_coins/src/features/user/result/auth_result.dart';
 import 'package:atlas_coins/src/features/user/repository/auth_repository.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
@@ -14,7 +14,7 @@ class AuthController extends GetxController {
     validateToken();
   }
 
-  AuthModel auth = AuthModel();
+  UserModel auth = UserModel();
   UtilsServices utilsServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
   RxBool loading = false.obs;
@@ -22,7 +22,7 @@ class AuthController extends GetxController {
 
   String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
 
-  void saveToken() {
+  void saveToken(UserModel auth) {
     utilsServices.saveLocalData(key: tokenKey, data: auth.token!);
   }
 
@@ -32,28 +32,34 @@ class AuthController extends GetxController {
     ]);
   }
 
-  Future login({required String email, required String password}) async {
+  Future login({
+    required String email,
+    required String password,
+  }) async {
     loading.value = true;
 
-    AuthResult result =
-        await authRepository.login(email: email, password: password);
+    AuthResult result = await authRepository.login(
+      email: email,
+      password: password,
+    );
 
     loading.value = false;
 
     result.when(
       success: (auth) {
         this.auth = auth;
-        saveToken();
+        saveToken(auth);
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) {},
     );
   }
 
-  Future<void> register(
-      {required String name,
-      required String email,
-      required String password}) async {
+  Future<void> register({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
     loading.value = true;
 
     AuthResult result = await authRepository.register(
@@ -65,12 +71,13 @@ class AuthController extends GetxController {
     loading.value = false;
 
     result.when(
-        success: (auth) {
-          this.auth = auth;
-          saveToken();
-          Get.toNamed(AppRoutes.homeRoute);
-        },
-        error: (message) async {});
+      success: (auth) {
+        this.auth = auth;
+        saveToken(auth);
+        Get.toNamed(AppRoutes.homeRoute);
+      },
+      error: (message) async {},
+    );
   }
 
   Future<void> updatePassword({required String newPassword}) async {
@@ -79,11 +86,16 @@ class AuthController extends GetxController {
     String? token = await utilsServices.getLocalData(key: tokenKey);
 
     AuthResult result = await authRepository.updatePassword(
-        token: token!, newPassword: newPassword);
+      token: token!,
+      newPassword: newPassword,
+    );
 
     loading.value = false;
 
-    result.when(success: (auth) {}, error: (message) async {});
+    result.when(
+      success: (auth) {},
+      error: (message) async {},
+    );
   }
 
   Future<void> signOut() async {
@@ -107,7 +119,7 @@ class AuthController extends GetxController {
     result.when(
       success: (auth) {
         this.auth = auth;
-        saveToken();
+        saveToken(auth);
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {

@@ -9,8 +9,6 @@ import 'package:atlas_coins/src/widgets/button_widget.dart';
 import 'package:atlas_coins/src/widgets/drop_down_widget.dart';
 import 'package:atlas_coins/src/widgets/input_text_widget.dart';
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
@@ -21,9 +19,7 @@ class TransactionScreen extends StatelessWidget {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-
-  var valueController = MoneyMaskedTextController(
-      leftSymbol: 'R\$ ', thousandSeparator: '.', decimalSeparator: '.');
+  final TextEditingController valueController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -103,12 +99,13 @@ class TransactionScreen extends StatelessWidget {
                                       String title = titleController.text;
                                       String date = dateController.text;
                                       String value = valueController.text;
+                                      var finalValue = double.parse(value);
                                       String description =
                                           descriptionController.text;
                                       controller.createNewTransaction(
                                         title: title,
                                         date: date,
-                                        value: value,
+                                        value: finalValue,
                                         description: description,
                                       );
                                     }
