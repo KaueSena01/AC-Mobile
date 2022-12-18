@@ -31,7 +31,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(widget.label,
-              style: const TextStyle(color: primaryDarkColor, fontSize: 18)),
+              style: const TextStyle(color: tertiaryColor, fontSize: 18)),
           GetBuilder<TransactionController>(builder: (_) {
             return SizedBox(
               height: size50,
@@ -41,7 +41,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                       fontSize: 16,
                       backgroundColor: Colors.transparent),
                   value: dropdownValue,
-                  dropdownColor: tertiaryGreyColor,
+                  dropdownColor: tertiaryColor,
                   isExpanded: true,
                   elevation: 0,
                   isDense: true,
@@ -53,15 +53,14 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                   },
                   decoration: const InputDecoration(
                       isDense: false,
-                      hintStyle:
-                          TextStyle(color: secondaryDarkColor, fontSize: 16),
+                      hintStyle: TextStyle(color: tertiaryColor, fontSize: 16),
                       border: UnderlineInputBorder(),
                       focusedBorder: UnderlineInputBorder(
                           borderSide:
-                              BorderSide(color: secondaryDarkColor, width: 2)),
+                              BorderSide(color: tertiaryColor, width: 2)),
                       enabledBorder: UnderlineInputBorder(
                           borderSide:
-                              BorderSide(color: secondaryDarkColor, width: 2))),
+                              BorderSide(color: tertiaryColor, width: 2))),
                   items: list.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                         value: value, child: Text(value));

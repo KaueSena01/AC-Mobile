@@ -19,7 +19,7 @@ class ArrowBackWidget extends StatelessWidget {
           onPressed: onPressed,
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: primaryDarkColor,
+            color: darkColor,
           ),
         ),
       ),

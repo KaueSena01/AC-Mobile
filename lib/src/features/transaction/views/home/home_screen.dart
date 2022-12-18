@@ -128,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen>
             backgroundColor: primaryColor,
             child: const Icon(
               Icons.currency_exchange_rounded,
-              color: ligthColor,
+              color: lightColor,
             ),
           ),
           FloatingActionButton(
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen>
             backgroundColor: primaryColor,
             child: const Icon(
               Icons.arrow_back,
-              color: ligthColor,
+              color: lightColor,
             ),
           ),
           FloatingActionButton(
@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen>
             backgroundColor: primaryColor,
             child: const Icon(
               Icons.attach_money_sharp,
-              color: ligthColor,
+              color: lightColor,
             ),
           ),
           FloatingActionButton(
@@ -158,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen>
             backgroundColor: primaryColor,
             child: const Icon(
               Icons.person_2_outlined,
-              color: ligthColor,
+              color: lightColor,
             ),
           ),
         ],

@@ -31,7 +31,7 @@ class AppTheme {
     brightness: Brightness.light,
     canvasColor: primaryColor,
     primaryColor: primaryColor,
-    scaffoldBackgroundColor: ligthColor,
+    scaffoldBackgroundColor: lightColor,
     colorScheme: const ColorScheme.light(
       primary: primaryColor,
       secondary: secondaryColor,
@@ -47,13 +47,13 @@ class AppTheme {
       border: UnderlineInputBorder(),
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: secondaryDarkColor,
+          color: primaryColor,
           width: 2,
         ),
       ),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: secondaryDarkColor,
+          color: primaryColor,
           width: 2,
         ),
       ),

@@ -4,10 +4,10 @@ import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/utils/validators.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/widgets/arrow_back_widget.dart';
-import 'package:atlas_coins/src/widgets/button_widget.dart';
-import 'package:atlas_coins/src/widgets/input_text_widget.dart';
-import 'package:atlas_coins/src/widgets/outiline_button_widget.dart';
+import 'package:atlas_coins/src/components/arrow_back_widget.dart';
+import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/components/input_text_widget.dart';
+import 'package:atlas_coins/src/components/outiline_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,7 +48,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     Text(
                       "Planejar cenários futuros e calcular riscos  aumentara a taxa de crescimento do capital investido!",
                       style: AppTheme.lightText.bodySmall!.apply(
-                        color: primaryDarkColor,
+                        color: tertiaryColor,
                       ),
                     ),
                     const SizedBox(height: size40),
@@ -133,7 +133,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       width: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3),
-                        color: secondaryDarkColor,
+                        color: tertiaryColor,
                       ),
                     ),
                     Expanded(

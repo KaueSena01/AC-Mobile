@@ -11,7 +11,7 @@ class OutilineButtonWidget extends StatelessWidget {
       {Key? key,
       required this.label,
       required this.onPressed,
-      this.color = ligthColor})
+      this.color = lightColor})
       : super(key: key);
 
   @override

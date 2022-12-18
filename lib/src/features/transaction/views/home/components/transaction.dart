@@ -34,7 +34,7 @@ class Transaction extends StatelessWidget {
                     child: Container(
                       decoration: const BoxDecoration(
                         border: Border(
-                          bottom: BorderSide(color: ligthColor, width: 1),
+                          bottom: BorderSide(color: tertiaryColor, width: 1),
                         ),
                       ),
                       child: ExpansionTile(
@@ -50,8 +50,8 @@ class Transaction extends StatelessWidget {
                               .listTransactionValue(transactionList!.value!),
                           style: AppTheme.lightText.titleSmall!.apply(
                             color: transactionList!.type == 1
-                                ? depositColor
-                                : expenseColor,
+                                ? primaryColor
+                                : tertiaryColor,
                           ),
                         ),
                         title: Text(
@@ -63,7 +63,7 @@ class Transaction extends StatelessWidget {
                         subtitle: Text.rich(
                           TextSpan(
                             style: AppTheme.lightText.labelMedium!.apply(
-                              color: secondaryGreyColor,
+                              color: primaryColor,
                             ),
                             children: [
                               TextSpan(
@@ -86,7 +86,7 @@ class Transaction extends StatelessWidget {
                             title: Text(
                               transactionList!.description!,
                               style: AppTheme.lightText.headlineSmall!.apply(
-                                color: primaryDarkColor,
+                                color: primaryColor,
                               ),
                             ),
                           ),
@@ -95,7 +95,7 @@ class Transaction extends StatelessWidget {
                             title: Text(
                               transactionList!.date!,
                               style: AppTheme.lightText.headlineSmall!.apply(
-                                color: primaryDarkColor,
+                                color: primaryColor,
                               ),
                             ),
                           )

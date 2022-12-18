@@ -70,7 +70,7 @@ class CardWidget extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 10, bottom: 10),
-                  color: tertiaryGreyColor,
+                  color: tertiaryColor,
                   height: 0.5,
                 ),
                 Row(

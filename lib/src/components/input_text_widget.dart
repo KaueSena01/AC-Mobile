@@ -42,7 +42,7 @@ class _InputTextWidgetState extends State<InputTextWidget> {
           Text(
             widget.label!,
             style: const TextStyle(
-              color: primaryDarkColor,
+              color: tertiaryColor,
               fontSize: 17,
             ),
           ),
@@ -65,18 +65,18 @@ class _InputTextWidgetState extends State<InputTextWidget> {
               isDense: false,
               hintText: widget.placeholder,
               hintStyle: AppTheme.lightText.displaySmall!.apply(
-                color: secondaryDarkColor,
+                color: tertiaryColor,
               ),
               border: const UnderlineInputBorder(),
               focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: secondaryDarkColor,
+                  color: tertiaryColor,
                   width: 2,
                 ),
               ),
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: secondaryDarkColor,
+                  color: tertiaryColor,
                   width: 2,
                 ),
               ),
