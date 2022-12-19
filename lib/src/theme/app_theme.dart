@@ -22,17 +22,17 @@ class AppTheme {
     ),
     // label
     labelLarge: TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
       fontFamily: 'Poppins',
     ),
     labelMedium: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w300,
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
       fontFamily: 'Poppins',
     ),
     labelSmall: TextStyle(
-      fontSize: 13,
+      fontSize: 12,
       fontWeight: FontWeight.w300,
       fontFamily: 'Poppins',
     ),

@@ -2,13 +2,15 @@ import 'package:flutter/cupertino.dart';
 
 const primaryColor = Color(0xFF17A1FA);
 const secondaryColor = Color(0xFF7A61FF);
-const tertiaryColor = Color(0xFFFF004D);
+const tertiaryColor = Color(0xFFFF00FF);
 
 const whiteColor = Color(0xFFFFFFFF);
 const purpleColor = Color(0xFF9227EF);
 const blackColor = Color(0xFF000000);
 
-const iconsColor = Color(0xFFFF00FF);
+const expenseColor = Color(0xFFFF004D);
+const depositColor = Color(0xFF00BDAE);
+
 const labelColor = Color(0xFF7B78AA);
 
 const defaultColor = Color(0xFF636B78);
@@ -34,6 +36,8 @@ Map<int, Color> primarySwatch = {
 
 const double size00 = 00.0;
 const double size05 = 05.0;
+const double size06 = 06.0;
+const double size08 = 08.0;
 const double size10 = 10.0;
 const double size15 = 15.0;
 const double size20 = 20.0;
@@ -45,6 +49,7 @@ const double size45 = 45.0;
 const double size50 = 50.0;
 const double size60 = 60.0;
 const double size70 = 70.0;
+const double size75 = 75.0;
 const double size80 = 80.0;
 const double size90 = 90.0;
 const double size100 = 100.0;
