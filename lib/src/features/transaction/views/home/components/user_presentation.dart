@@ -15,7 +15,7 @@ class UserPresentation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(size15, size30, 0, size20),
+      margin: const EdgeInsets.fromLTRB(size15, size30, size00, size00),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -30,7 +30,7 @@ class UserPresentation extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      width: 2,
+                      width: 2.5,
                       color: primaryColor,
                     ),
                     image: const DecorationImage(

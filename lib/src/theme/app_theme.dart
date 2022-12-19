@@ -12,7 +12,7 @@ class AppTheme {
     ),
     displayMedium: TextStyle(
       fontSize: 22,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w800,
       fontFamily: 'Poppins',
     ),
     displaySmall: TextStyle(
@@ -27,8 +27,8 @@ class AppTheme {
       fontFamily: 'Poppins',
     ),
     labelMedium: TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.w400,
+      fontSize: 14,
+      fontWeight: FontWeight.w300,
       fontFamily: 'Poppins',
     ),
     labelSmall: TextStyle(
