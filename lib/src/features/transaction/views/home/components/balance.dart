@@ -15,7 +15,7 @@ class Balance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(size15, size30, size15, size00),
+      margin: const EdgeInsets.fromLTRB(size15, size30, size15, size20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

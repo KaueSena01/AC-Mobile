@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/components/input_search.dart';
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/balance.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/transactions.dart';
@@ -58,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen>
               children: [
                 UserPresentation(authController: authController),
                 Balance(transactionController: transactionController),
+                const InputSearch(description: "Pesquisar por..."),
                 Transactions(transactionController: transactionController),
               ],
             ),

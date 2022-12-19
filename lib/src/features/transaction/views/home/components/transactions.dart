@@ -15,7 +15,7 @@ class Transactions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: size20),
+      margin: const EdgeInsets.only(top: size30),
       width: double.infinity,
       decoration: const BoxDecoration(
         color: cardBackgroundColor,
