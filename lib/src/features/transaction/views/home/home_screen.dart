@@ -1,15 +1,9 @@
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/card_widget.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/head_widget.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/transaction.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/components/user_presentation.dart';
 import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
-import 'package:atlas_coins/src/theme/app_theme.dart';
-import 'package:atlas_coins/src/utils/utils_services.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/features/transaction/views/transaction/transaction_screen.dart';
 import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -47,77 +41,81 @@ class _HomeScreenState extends State<HomeScreen>
   }
 
   final authController = Get.find<AuthController>();
-  final TransactionController transactionController = TransactionController();
-  final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: SizedBox(
-        child: GetBuilder<TransactionController>(
-          builder: (controller) {
-            if (controller.allTransactions.isEmpty) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const HeadWidget(),
-                  CardWidget(
-                    controller: controller,
-                  ),
-                ],
-              );
-            }
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const HeadWidget(),
-                CardWidget(
-                  controller: controller,
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: size15, bottom: size15),
-                  padding: const EdgeInsets.symmetric(horizontal: size20),
-                  child: Text(
-                    'Meu extrato:',
-                    style: AppTheme.lightText.labelMedium!.apply(
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child:
-                      GetBuilder<TransactionController>(builder: (controller) {
-                    if (controller.loading.value == true) {
-                      return Container(
-                        padding: const EdgeInsets.only(left: size15),
-                        child: const Text("Carregando..."),
-                      );
-                    }
-                    return Container(
-                      margin: const EdgeInsets.all(size00),
-                      padding: const EdgeInsets.fromLTRB(
-                          size20, size00, size20, size00),
-                      child: RefreshIndicator(
-                        onRefresh: () => controller.getAllTransactions(),
-                        child: ListView.builder(
-                          padding: const EdgeInsets.all(size00),
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemBuilder: (_, index) => Transaction(
-                              transactionList:
-                                  controller.allTransactions[index]),
-                          itemCount: controller.allTransactions.length,
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ],
-            );
-          },
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              UserPresentation(authController: authController),
+            ],
+          ),
         ),
+        // child: GetBuilder<TransactionController>(
+        //   builder: (controller) {
+        //     if (controller.allTransactions.isEmpty) {
+        //       return Column(
+        //         crossAxisAlignment: CrossAxisAlignment.stretch,
+        //         children: [
+        //           const HeadWidget(),
+        //           CardWidget(
+        //             controller: controller,
+        //           ),
+        //         ],
+        //       );
+        //     }
+        //     return Column(
+        //       crossAxisAlignment: CrossAxisAlignment.stretch,
+        //       children: [
+        //         const HeadWidget(),
+        //         CardWidget(
+        //           controller: controller,
+        //         ),
+        //         Container(
+        //           margin: const EdgeInsets.only(top: size15, bottom: size15),
+        //           padding: const EdgeInsets.symmetric(horizontal: size20),
+        //           child: Text(
+        //             'Meu extrato:',
+        //             style: AppTheme.lightText.labelMedium!.apply(
+        //               color: primaryColor,
+        //             ),
+        //           ),
+        //         ),
+        //         Expanded(
+        //           child:
+        //               GetBuilder<TransactionController>(builder: (controller) {
+        //             if (controller.loading.value == true) {
+        //               return Container(
+        //                 padding: const EdgeInsets.only(left: size15),
+        //                 child: const Text("Carregando..."),
+        //               );
+        //             }
+        //             return Container(
+        //               margin: const EdgeInsets.all(size00),
+        //               padding: const EdgeInsets.fromLTRB(
+        //                   size20, size00, size20, size00),
+        //               child: RefreshIndicator(
+        //                 onRefresh: () => controller.getAllTransactions(),
+        //                 child: ListView.builder(
+        //                   padding: const EdgeInsets.all(size00),
+        //                   scrollDirection: Axis.vertical,
+        //                   shrinkWrap: true,
+        //                   itemBuilder: (_, index) => Transaction(
+        //                       transactionList:
+        //                           controller.allTransactions[index]),
+        //                   itemCount: controller.allTransactions.length,
+        //                 ),
+        //               ),
+        //             );
+        //           }),
+        //         ),
+        //       ],
+        //     );
+        //   },
+        // ),
       ),
       floatingActionButton: Flow(
         clipBehavior: Clip.none,
