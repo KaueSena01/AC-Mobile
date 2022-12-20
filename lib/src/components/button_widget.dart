@@ -4,22 +4,33 @@ import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String label;
+  final Color backgroundColor;
   final void Function()? onPressed;
 
-  const ButtonWidget({Key? key, required this.label, required this.onPressed})
-      : super(key: key);
+  const ButtonWidget({
+    Key? key,
+    required this.label,
+    this.backgroundColor = primaryColor,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width - size30,
-      height: size50,
+      height: size45,
       child: ElevatedButton(
         onPressed: onPressed,
-        style: AppTheme.lightTheme.elevatedButtonTheme.style,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          side: BorderSide(color: backgroundColor),
+          shadowColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
         child: Text(
           label,
-          style: AppTheme.lightText.labelMedium!.apply(color: whiteColor),
+          style: AppTheme.lightText.headlineMedium!.apply(color: whiteColor),
         ),
       ),
     );

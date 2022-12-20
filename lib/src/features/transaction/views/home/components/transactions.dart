@@ -3,6 +3,7 @@ import 'package:atlas_coins/src/features/transaction/views/home/components/trans
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Transactions extends StatelessWidget {
   const Transactions({
@@ -34,17 +35,21 @@ class Transactions extends StatelessWidget {
                 color: whiteColor,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: size10),
-              child: Column(
-                children: transactionController.allTransactions
-                    .map(
-                      (e) => Transaction(
-                          transactionController: transactionController),
-                    )
-                    .toList(),
-              ),
-            )
+            GetBuilder<TransactionController>(
+              builder: (_) {
+                return Padding(
+                  padding: const EdgeInsets.only(top: size10),
+                  child: Column(
+                    children: transactionController.allTransactions
+                        .map(
+                          (e) => Transaction(
+                              transactionController: transactionController),
+                        )
+                        .toList(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

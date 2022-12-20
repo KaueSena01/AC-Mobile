@@ -43,8 +43,8 @@ class AppTheme {
       fontFamily: 'Poppins',
     ),
     headlineMedium: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
+      fontSize: 15,
+      fontWeight: FontWeight.w600,
       fontFamily: 'Poppins',
     ),
     headlineSmall: TextStyle(
