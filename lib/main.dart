@@ -1,14 +1,22 @@
 import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: backgroundColor,
+      statusBarIconBrightness: Brightness.light,
+    ),
+  );
   Get.put(AuthController());
   runApp(const MyApp());
 }
@@ -24,6 +32,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalMaterialLocalizations.delegate
       ],
+      debugShowCheckedModeBanner: false,
       supportedLocales: const [Locale("pt", "BR")],
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,

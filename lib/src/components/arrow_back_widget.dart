@@ -11,16 +11,15 @@ class ArrowBackWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 10,
-      left: 10,
-      child: SafeArea(
-        child: IconButton(
-          onPressed: onPressed,
-          icon: const Icon(
-            Icons.arrow_back_rounded,
-            color: primaryDarkColor,
-          ),
+    return InkWell(
+      onTap: onPressed,
+      borderRadius: BorderRadius.circular(size70),
+      child: const Padding(
+        padding: EdgeInsets.fromLTRB(15, 10, 5, 10),
+        child: Icon(
+          Icons.arrow_back_ios,
+          color: whiteColor,
+          size: size15,
         ),
       ),
     );

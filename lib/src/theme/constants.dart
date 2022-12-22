@@ -1,24 +1,25 @@
 import 'package:flutter/cupertino.dart';
 
-const primaryColor = Color(0xFF0A3470);
-const secondaryColor = Color(0xFF0082F0);
-const tertiaryColor = Color(0xFF0B2B63);
+const primaryColor = Color(0xFF17A1FA);
+const secondaryColor = Color(0xFF7A61FF);
+const tertiaryColor = Color(0xFFFF00FF);
 
 const whiteColor = Color(0xFFFFFFFF);
-const ligthColor = Color(0xFFE6E6E6);
-
-const primaryDarkColor = Color(0xFF4A4D4A);
-const secondaryDarkColor = Color(0xFFC3C3C3);
+const purpleColor = Color.fromARGB(255, 187, 109, 255);
 const blackColor = Color(0xFF000000);
 
-const primaryGreyColor = Color(0xFFE3E3E3);
-const secondaryGreyColor = Color(0xFF8A908A);
-const tertiaryGreyColor = Color.fromARGB(255, 241, 241, 241);
+const expenseColor = Color(0xFFFF004D);
+const depositColor = Color(0xFF00BDAE);
 
-const backgroundColor = Color(0xFFF5F5F5);
+const labelColor = Color(0xFF7B78AA);
 
-const depositColor = Color(0xFF368B34);
-const expenseColor = Color(0xFFE03E3E);
+const defaultColor = Color(0xFF636B78);
+const lightColor = Color(0xFFA1A6AD);
+const lighterColor = Color(0xFFD1D4D6);
+const darkColor = Color(0xFF0A2942);
+
+const backgroundColor = Color(0xFF25113E);
+const cardBackgroundColor = Color(0xFF301D47);
 
 Map<int, Color> primarySwatch = {
   50: const Color.fromRGBO(51, 153, 255, .1),
@@ -35,6 +36,8 @@ Map<int, Color> primarySwatch = {
 
 const double size00 = 00.0;
 const double size05 = 05.0;
+const double size06 = 06.0;
+const double size08 = 08.0;
 const double size10 = 10.0;
 const double size15 = 15.0;
 const double size20 = 20.0;
@@ -46,6 +49,7 @@ const double size45 = 45.0;
 const double size50 = 50.0;
 const double size60 = 60.0;
 const double size70 = 70.0;
+const double size75 = 75.0;
 const double size80 = 80.0;
 const double size90 = 90.0;
 const double size100 = 100.0;

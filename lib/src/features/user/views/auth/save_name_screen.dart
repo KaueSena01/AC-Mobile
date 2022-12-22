@@ -4,9 +4,9 @@ import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/utils/validators.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/widgets/arrow_back_widget.dart';
-import 'package:atlas_coins/src/widgets/button_widget.dart';
-import 'package:atlas_coins/src/widgets/input_text_widget.dart';
+import 'package:atlas_coins/src/components/arrow_back_widget.dart';
+import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/components/input_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,7 +45,7 @@ class SaveNameScreen extends StatelessWidget {
                               Text(
                                 "Olá, para começar precisamos\nque informe seu nome e sobrenome.",
                                 style: AppTheme.lightText.displaySmall!.apply(
-                                  color: primaryDarkColor,
+                                  color: tertiaryColor,
                                 ),
                               ),
                               const SizedBox(height: maxPadding),
