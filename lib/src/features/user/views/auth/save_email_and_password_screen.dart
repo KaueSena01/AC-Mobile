@@ -4,9 +4,9 @@ import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/utils/validators.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/widgets/arrow_back_widget.dart';
-import 'package:atlas_coins/src/widgets/button_widget.dart';
-import 'package:atlas_coins/src/widgets/input_text_widget.dart';
+import 'package:atlas_coins/src/components/arrow_back_widget.dart';
+import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/components/input_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,7 +44,7 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
                               Text.rich(
                                 TextSpan(
                                   style: AppTheme.lightText.displaySmall!.apply(
-                                    color: primaryDarkColor,
+                                    color: tertiaryColor,
                                   ),
                                   children: [
                                     const TextSpan(text: "Olá "),
@@ -52,7 +52,7 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
                                       text: getName[0]['Name'],
                                       style:
                                           AppTheme.lightText.bodyLarge!.apply(
-                                        color: primaryDarkColor,
+                                        color: tertiaryColor,
                                       ),
                                     ),
                                     const TextSpan(
@@ -70,7 +70,7 @@ class SaveEmailAndPasswordScreen extends StatelessWidget {
                               Text(
                                 "Agora, crie uma senha",
                                 style: AppTheme.lightText.displaySmall!.apply(
-                                  color: primaryDarkColor,
+                                  color: tertiaryColor,
                                 ),
                               ),
                               const SizedBox(height: 20),

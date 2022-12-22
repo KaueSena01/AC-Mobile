@@ -5,25 +5,85 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static const TextTheme lightText = TextTheme(
     // display
-    displayLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
-    displayMedium: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-    displaySmall: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+    displayLarge: TextStyle(
+      fontSize: 26,
+      fontWeight: FontWeight.w800,
+      fontFamily: 'Poppins',
+    ),
+    displayMedium: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.w800,
+      fontFamily: 'Poppins',
+    ),
+    displaySmall: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Poppins',
+    ),
     // label
-    labelLarge: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-    labelMedium: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
-    labelSmall: TextStyle(fontSize: 15, fontWeight: FontWeight.w300),
+    labelLarge: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Poppins',
+    ),
+    labelMedium: TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w500,
+      fontFamily: 'Poppins',
+    ),
+    labelSmall: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w300,
+      fontFamily: 'Poppins',
+    ),
     // headline
-    headlineLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-    headlineMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-    headlineSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+    headlineLarge: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      fontFamily: 'Poppins',
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Poppins',
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Poppins',
+    ),
     // title
-    titleLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
-    titleMedium: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
-    titleSmall: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+    titleLarge: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Poppins',
+    ),
+    titleMedium: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Poppins',
+    ),
+    titleSmall: TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.w500,
+      fontFamily: 'Poppins',
+    ),
     // body
-    bodyLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-    bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-    bodySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+    bodyLarge: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Poppins',
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      fontFamily: 'Poppins',
+    ),
+    bodySmall: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      fontFamily: 'Poppins',
+    ),
   );
 
   static final ThemeData lightTheme = ThemeData(
@@ -31,7 +91,7 @@ class AppTheme {
     brightness: Brightness.light,
     canvasColor: primaryColor,
     primaryColor: primaryColor,
-    scaffoldBackgroundColor: ligthColor,
+    scaffoldBackgroundColor: lightColor,
     colorScheme: const ColorScheme.light(
       primary: primaryColor,
       secondary: secondaryColor,
@@ -47,13 +107,13 @@ class AppTheme {
       border: UnderlineInputBorder(),
       focusedBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: secondaryDarkColor,
+          color: primaryColor,
           width: 2,
         ),
       ),
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          color: secondaryDarkColor,
+          color: primaryColor,
           width: 2,
         ),
       ),

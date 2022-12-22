@@ -25,7 +25,7 @@ class HeadWidget extends StatelessWidget {
               width: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(3),
-                color: ligthColor,
+                color: tertiaryColor,
               ),
             ),
           ],

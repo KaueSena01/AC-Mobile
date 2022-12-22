@@ -4,9 +4,9 @@ import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/utils/validators.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/widgets/button_widget.dart';
-import 'package:atlas_coins/src/widgets/input_text_widget.dart';
-import 'package:atlas_coins/src/widgets/outiline_button_widget.dart';
+import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/components/input_text_widget.dart';
+import 'package:atlas_coins/src/components/outiline_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +40,7 @@ class OnboardingScreen extends StatelessWidget {
                   Text(
                     "Muitos gastos desnecessários são\n evitados ao fazer uma simples\n análise.",
                     style: AppTheme.lightText.labelMedium?.apply(
-                      color: ligthColor,
+                      color: tertiaryColor,
                     ),
                   ),
                   const SizedBox(height: size50),
@@ -104,7 +104,7 @@ class OnboardingScreen extends StatelessWidget {
                       width: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3),
-                        color: secondaryDarkColor,
+                        color: tertiaryColor,
                       ),
                     ),
                     Expanded(
@@ -114,7 +114,7 @@ class OnboardingScreen extends StatelessWidget {
                           Text(
                             "E-mail:",
                             style: AppTheme.lightText.displaySmall!.apply(
-                              color: primaryDarkColor,
+                              color: tertiaryColor,
                             ),
                           ),
                           InputTextWidget(
@@ -126,7 +126,7 @@ class OnboardingScreen extends StatelessWidget {
                           Text(
                             "Senha:",
                             style: AppTheme.lightText.displaySmall!.apply(
-                              color: primaryDarkColor,
+                              color: tertiaryColor,
                             ),
                           ),
                           InputTextWidget(

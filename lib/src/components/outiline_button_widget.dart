@@ -2,11 +2,16 @@ import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
 
-class ButtonWidget extends StatelessWidget {
+class OutilineButtonWidget extends StatelessWidget {
   final String label;
+  final Color? color;
   final void Function()? onPressed;
 
-  const ButtonWidget({Key? key, required this.label, required this.onPressed})
+  const OutilineButtonWidget(
+      {Key? key,
+      required this.label,
+      required this.onPressed,
+      this.color = lightColor})
       : super(key: key);
 
   @override
@@ -14,12 +19,12 @@ class ButtonWidget extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width - size30,
       height: size50,
-      child: ElevatedButton(
+      child: OutlinedButton(
         onPressed: onPressed,
-        style: AppTheme.lightTheme.elevatedButtonTheme.style,
+        style: AppTheme.lightTheme.outlinedButtonTheme.style,
         child: Text(
           label,
-          style: AppTheme.lightText.labelMedium!.apply(color: whiteColor),
+          style: AppTheme.lightText.labelMedium!.apply(color: color),
         ),
       ),
     );

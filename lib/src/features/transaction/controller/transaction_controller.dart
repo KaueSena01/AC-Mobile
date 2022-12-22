@@ -115,4 +115,13 @@ class TransactionController extends GetxController {
 
     update();
   }
+
+  RxBool showBalance = false.obs;
+
+  bool showAndHideBalance() {
+    showBalance.value = !showBalance.value;
+    update();
+
+    return showBalance.value;
+  }
 }

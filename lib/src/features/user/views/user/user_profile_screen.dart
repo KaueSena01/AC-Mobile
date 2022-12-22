@@ -1,13 +1,14 @@
-import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
+import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
+import 'package:atlas_coins/src/features/user/views/user/components/user_details.dart';
+import 'package:atlas_coins/src/features/user/views/user/components/user_options.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/utils/validators.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/widgets/arrow_back_widget.dart';
-import 'package:atlas_coins/src/widgets/button_widget.dart';
-import 'package:atlas_coins/src/widgets/input_text_widget.dart';
-import 'package:atlas_coins/src/widgets/outiline_button_widget.dart';
+import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/components/input_text_widget.dart';
+import 'package:atlas_coins/src/components/outiline_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,69 +27,21 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Stack(
-            children: [
-              SafeArea(
-                  child: Padding(
-                padding:
-                    const EdgeInsets.fromLTRB(size20, size80, size20, size30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      AppInformation.appNameUpperCase,
-                      style: AppTheme.lightText.displayLarge!.apply(
-                        color: primaryColor,
-                      ),
-                    ),
-                    Text(
-                      "Planejar cenários futuros e calcular riscos  aumentara a taxa de crescimento do capital investido!",
-                      style: AppTheme.lightText.bodySmall!.apply(
-                        color: primaryDarkColor,
-                      ),
-                    ),
-                    const SizedBox(height: size40),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          InputTextWidget(
-                            label: "Nome:",
-                            hint: true,
-                            readOnly: true,
-                            initialValue: authController.auth.name,
-                          ),
-                          const SizedBox(height: size30),
-                          InputTextWidget(
-                            label: "E-mail:",
-                            hint: true,
-                            readOnly: true,
-                            initialValue: authController.auth.email,
-                          ),
-                          const SizedBox(height: size15),
-                          GestureDetector(
-                            onTap: updatePassword,
-                            child: Text(
-                              "Alterar senha",
-                              style: AppTheme.lightText.bodyMedium!.apply(
-                                color: secondaryColor,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
+      backgroundColor: backgroundColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Hero(
+            tag: "Hero",
+            child: Column(
+              children: [
+                AppBarApp(
+                  onPressed: () => Get.back(),
+                  title: "Perfil",
                 ),
-              )),
-              ArrowBackWidget(
-                onPressed: () => Get.to(const HomeScreen()),
-              )
-            ],
+                UserDetails(authController: authController),
+                const UserOptions(),
+              ],
+            ),
           ),
         ),
       ),
@@ -133,7 +86,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       width: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3),
-                        color: secondaryDarkColor,
+                        color: tertiaryColor,
                       ),
                     ),
                     Expanded(
