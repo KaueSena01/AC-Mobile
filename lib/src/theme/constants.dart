@@ -5,7 +5,7 @@ const secondaryColor = Color(0xFF7A61FF);
 const tertiaryColor = Color(0xFFFF00FF);
 
 const whiteColor = Color(0xFFFFFFFF);
-const purpleColor = Color(0xFF9227EF);
+const purpleColor = Color.fromARGB(255, 187, 109, 255);
 const blackColor = Color(0xFF000000);
 
 const expenseColor = Color(0xFFFF004D);

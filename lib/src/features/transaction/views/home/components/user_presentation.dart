@@ -1,8 +1,10 @@
 import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
+import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class UserPresentation extends StatelessWidget {
   const UserPresentation({
@@ -20,7 +22,7 @@ class UserPresentation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: () => Get.to(const UserProfileScreen()),
             child: Row(
               children: [
                 Container(

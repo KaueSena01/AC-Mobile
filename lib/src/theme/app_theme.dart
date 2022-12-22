@@ -54,12 +54,12 @@ class AppTheme {
     ),
     // title
     titleLarge: TextStyle(
-      fontSize: 26,
+      fontSize: 18,
       fontWeight: FontWeight.w600,
       fontFamily: 'Poppins',
     ),
     titleMedium: TextStyle(
-      fontSize: 17,
+      fontSize: 18,
       fontWeight: FontWeight.w600,
       fontFamily: 'Poppins',
     ),

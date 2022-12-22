@@ -80,7 +80,7 @@ class Transaction extends StatelessWidget {
             Text(
               "+ R\$ 1000.00",
               style: AppTheme.lightText.labelLarge!.apply(
-                color: depositColor,
+                color: primaryColor,
               ),
             ),
           ],

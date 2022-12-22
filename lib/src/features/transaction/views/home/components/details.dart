@@ -60,7 +60,7 @@ class Details extends StatelessWidget {
                               Text(
                                 "+ R\$ 1000.00",
                                 style: AppTheme.lightText.titleMedium!.apply(
-                                  color: depositColor,
+                                  color: primaryColor,
                                 ),
                               ),
                             ],
@@ -96,7 +96,7 @@ class Details extends StatelessWidget {
             ),
             ButtonWidget(
               label: "Fechar",
-              backgroundColor: depositColor,
+              backgroundColor: primaryColor,
               onPressed: () => Get.back(),
             ),
           ],
@@ -120,7 +120,7 @@ class Details extends StatelessWidget {
           Text(
             description,
             style: AppTheme.lightText.headlineMedium!.apply(
-              color: depositColor,
+              color: primaryColor,
             ),
           ),
         ],

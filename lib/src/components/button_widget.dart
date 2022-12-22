@@ -6,21 +6,32 @@ class ButtonWidget extends StatelessWidget {
   final String label;
   final Color backgroundColor;
   final void Function()? onPressed;
+  final double marginTop;
+  final double marginBottom;
+  final double marginLeft;
+  final double marginRight;
 
   const ButtonWidget({
     Key? key,
     required this.label,
     this.backgroundColor = primaryColor,
     required this.onPressed,
+    this.marginTop = 0.0,
+    this.marginBottom = 0.0,
+    this.marginLeft = 0.0,
+    this.marginRight = 0.0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: size45,
+      margin:
+          EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: size30),
           backgroundColor: backgroundColor,
           side: BorderSide(color: backgroundColor),
           shadowColor: Colors.transparent,

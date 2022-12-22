@@ -65,68 +65,6 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ),
         ),
-        // child: GetBuilder<TransactionController>(
-        //   builder: (controller) {
-        //     if (controller.allTransactions.isEmpty) {
-        //       return Column(
-        //         crossAxisAlignment: CrossAxisAlignment.stretch,
-        //         children: [
-        //           const HeadWidget(),
-        //           CardWidget(
-        //             controller: controller,
-        //           ),
-        //         ],
-        //       );
-        //     }
-        //     return Column(
-        //       crossAxisAlignment: CrossAxisAlignment.stretch,
-        //       children: [
-        //         const HeadWidget(),
-        //         CardWidget(
-        //           controller: controller,
-        //         ),
-        //         Container(
-        //           margin: const EdgeInsets.only(top: size15, bottom: size15),
-        //           padding: const EdgeInsets.symmetric(horizontal: size20),
-        //           child: Text(
-        //             'Meu extrato:',
-        //             style: AppTheme.lightText.labelMedium!.apply(
-        //               color: primaryColor,
-        //             ),
-        //           ),
-        //         ),
-        //         Expanded(
-        //           child:
-        //               GetBuilder<TransactionController>(builder: (controller) {
-        //             if (controller.loading.value == true) {
-        //               return Container(
-        //                 padding: const EdgeInsets.only(left: size15),
-        //                 child: const Text("Carregando..."),
-        //               );
-        //             }
-        //             return Container(
-        //               margin: const EdgeInsets.all(size00),
-        //               padding: const EdgeInsets.fromLTRB(
-        //                   size20, size00, size20, size00),
-        //               child: RefreshIndicator(
-        //                 onRefresh: () => controller.getAllTransactions(),
-        //                 child: ListView.builder(
-        //                   padding: const EdgeInsets.all(size00),
-        //                   scrollDirection: Axis.vertical,
-        //                   shrinkWrap: true,
-        //                   itemBuilder: (_, index) => Transaction(
-        //                       transactionList:
-        //                           controller.allTransactions[index]),
-        //                   itemCount: controller.allTransactions.length,
-        //                 ),
-        //               ),
-        //             );
-        //           }),
-        //         ),
-        //       ],
-        //     );
-        //   },
-        // ),
       ),
       floatingActionButton: Flow(
         clipBehavior: Clip.none,
