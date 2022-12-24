@@ -5,25 +5,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class InputTextWidget extends StatefulWidget {
-  final String? placeholder;
-  final String? label;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final String? initialValue;
-  final bool? hint;
+  final int maxLines;
+  final int minLines;
   final bool readOnly;
+  final TextInputType textInputType;
+  final String? label;
+  final String? placeholder;
   final bool? isDescription;
   final bool? isDate;
 
   const InputTextWidget({
     Key? key,
-    this.placeholder,
-    this.label,
     this.controller,
     this.validator,
     this.initialValue,
-    this.hint = false,
+    this.maxLines = 1,
+    this.minLines = 1,
     this.readOnly = false,
+    this.textInputType = TextInputType.text,
+    this.label = "",
+    this.placeholder,
     this.isDescription = false,
     this.isDate = false,
   }) : super(key: key);
@@ -38,23 +42,28 @@ class _InputTextWidgetState extends State<InputTextWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (widget.hint!)
-          Text(
-            widget.label!,
-            style: const TextStyle(
-              color: tertiaryColor,
-              fontSize: 17,
-            ),
-          ),
+        // if (widget.label!.isNotEmpty)
+        //   Text(
+        //     widget.label!,
+        //     style: const TextStyle(
+        //       color: primaryColor,
+        //       fontSize: 15,
+        //     ),
+        //   ),
         SizedBox(
-          height: !widget.isDescription! ? size50 : null,
+          height: !widget.isDescription! ? size60 : null,
           child: TextFormField(
             controller: widget.controller,
             validator: widget.validator,
             initialValue: widget.initialValue,
+            maxLines: widget.maxLines,
+            minLines: widget.minLines,
             readOnly: widget.readOnly,
-            minLines: widget.isDescription! ? 3 : null,
-            maxLines: widget.isDescription! ? 4 : null,
+            keyboardType: widget.textInputType,
+            cursorColor: whiteColor,
+            style: AppTheme.lightText.headlineSmall!.apply(
+              color: whiteColor,
+            ),
             inputFormatters: !widget.isDate!
                 ? null
                 : [
@@ -62,21 +71,25 @@ class _InputTextWidgetState extends State<InputTextWidget> {
                     DataInputFormatter(),
                   ],
             decoration: InputDecoration(
-              isDense: false,
+              labelText: widget.label,
+              labelStyle: AppTheme.lightText.labelSmall!.apply(
+                color: labelColor,
+              ),
+              isDense: true,
               hintText: widget.placeholder,
-              hintStyle: AppTheme.lightText.displaySmall!.apply(
-                color: tertiaryColor,
+              floatingLabelStyle: AppTheme.lightText.labelLarge!.apply(
+                color: primaryColor,
               ),
               border: const UnderlineInputBorder(),
               focusedBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: tertiaryColor,
+                  color: primaryColor,
                   width: 2,
                 ),
               ),
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: tertiaryColor,
+                  color: labelColor,
                   width: 2,
                 ),
               ),

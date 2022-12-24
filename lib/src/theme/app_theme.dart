@@ -75,8 +75,8 @@ class AppTheme {
       fontFamily: 'Poppins',
     ),
     bodyMedium: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
       fontFamily: 'Poppins',
     ),
     bodySmall: TextStyle(

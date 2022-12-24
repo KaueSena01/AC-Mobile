@@ -1,11 +1,11 @@
 import 'package:atlas_coins/src/bindigs/auth_binding.dart';
 import 'package:atlas_coins/src/bindigs/transaction_binding.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
+import 'package:atlas_coins/src/features/transaction/views/transaction/new_transaction_screen_step_one.dart';
 import 'package:atlas_coins/src/features/user/views/auth/save_email_and_password_screen.dart';
 import 'package:atlas_coins/src/features/user/views/auth/save_name_screen.dart';
 import 'package:atlas_coins/src/features/user/views/onboarding/onboarding_screen.dart';
 import 'package:atlas_coins/src/features/user/views/splash/splash_screen.dart';
-import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
 import 'package:get/get.dart';
 
 abstract class AppPages {
@@ -40,7 +40,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.newTransactionRoute,
-      page: () => const UserProfileScreen(),
+      page: () => const NewTransactionScreenStepOne(),
     ),
   ];
 }
