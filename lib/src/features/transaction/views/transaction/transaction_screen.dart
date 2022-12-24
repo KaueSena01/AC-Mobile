@@ -6,7 +6,6 @@ import 'package:atlas_coins/src/utils/validators.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/arrow_back_widget.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
-import 'package:atlas_coins/src/components/drop_down_widget.dart';
 import 'package:atlas_coins/src/components/input_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,17 +51,15 @@ class TransactionScreen extends StatelessWidget {
                       InputTextWidget(
                         label: "Título:",
                         placeholder: "Título para transação",
-                        hint: true,
                         controller: titleController,
                         validator: validateTransacionTitle,
                       ),
                       const SizedBox(height: size20),
-                      const DropDownWidget(label: "Tipo:"),
+                      // const DropDownWidget(label: "Tipo:"),
                       const SizedBox(height: size20),
                       InputTextWidget(
                         label: "Valor:",
                         placeholder: "Valor da transação",
-                        hint: true,
                         controller: valueController,
                         validator: validateTransacionValue,
                       ),
@@ -70,7 +67,6 @@ class TransactionScreen extends StatelessWidget {
                       InputTextWidget(
                         label: "Data:",
                         placeholder: "Data da transação",
-                        hint: true,
                         controller: dateController,
                         validator: validateTransacionDate,
                         isDate: true,
@@ -80,7 +76,6 @@ class TransactionScreen extends StatelessWidget {
                         label: "Descrição:",
                         placeholder:
                             "Escreva uma breve frase para esta\n transação...",
-                        hint: true,
                         isDescription: true,
                         controller: descriptionController,
                         validator: validateTransacionDescription,
