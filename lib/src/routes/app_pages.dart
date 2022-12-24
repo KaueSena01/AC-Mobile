@@ -40,7 +40,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.newTransactionRoute,
-      page: () => const NewTransactionScreenStepOne(),
+      page: () => NewTransactionScreenStepOne(),
     ),
   ];
 }
