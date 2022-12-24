@@ -3,6 +3,7 @@ import 'package:atlas_coins/src/features/transaction/controller/transaction_cont
 import 'package:atlas_coins/src/features/transaction/views/home/components/balance.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/transactions.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/user_presentation.dart';
+import 'package:atlas_coins/src/features/transaction/views/transaction/new_transaction_screen_step_one.dart';
 import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/features/transaction/views/transaction/transaction_screen.dart';
@@ -90,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           FloatingActionButton(
             onPressed: () {
-              Get.to(TransactionScreen());
+              Get.to(const NewTransactionScreenStepOne());
             },
             backgroundColor: primaryColor,
             child: const Icon(

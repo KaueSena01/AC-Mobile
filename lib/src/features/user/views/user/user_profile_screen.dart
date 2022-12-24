@@ -95,7 +95,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InputTextWidget(
-                            hint: true,
                             label: "Senha atual:",
                             placeholder: "Sua senha atual",
                             controller: currentPasswordController,
@@ -103,7 +102,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                           const SizedBox(height: size25),
                           InputTextWidget(
-                            hint: true,
                             label: "Nova senha:",
                             placeholder: "Sua nova senha",
                             controller: newPasswordController,
@@ -111,7 +109,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           ),
                           const SizedBox(height: size25),
                           InputTextWidget(
-                            hint: true,
                             label: "Confirmar senha:",
                             placeholder: "Confirme sua nova senha",
                             controller: newPasswordConfirmationController,
