@@ -47,6 +47,7 @@ dependencies:
   brasil_fields: ^1.6.0
   flutter_masked_text: ^0.8.0
   flutter_dotenv: ^5.0.2
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class UserOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final AuthController authController = AuthController();
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: size15),
@@ -36,7 +38,7 @@ class UserOptions extends StatelessWidget {
             color: lightColor,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () => authController.signOut(),
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: size10),
               child: Row(
