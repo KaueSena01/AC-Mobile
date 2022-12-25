@@ -1,6 +1,9 @@
 import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:atlas_coins/src/features/transaction/repository/transaction_repository.dart';
 import 'package:atlas_coins/src/features/transaction/result/transaction_result.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
+import 'package:atlas_coins/src/features/transaction/views/transaction/new_transaction_screen_step_one.dart';
+import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/utils/utils_services.dart';
@@ -123,5 +126,29 @@ class TransactionController extends GetxController {
     update();
 
     return showBalance.value;
+  }
+
+  RxInt pageIndex = 0.obs;
+
+  int navigatePageView(int page) {
+    switch (page) {
+      case 0:
+        Get.to(const HomeScreen());
+        break;
+      case 1:
+        Get.to(NewTransactionScreenStepOne());
+        break;
+      case 2:
+        Get.to(NewTransactionScreenStepOne());
+        break;
+      case 3:
+        Get.to(const UserProfileScreen());
+        break;
+    }
+
+    pageIndex.value = page;
+    update();
+
+    return pageIndex.value;
   }
 }
