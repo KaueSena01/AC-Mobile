@@ -1,4 +1,5 @@
 abstract class BottomNavigationBarOptions {
+  //
   static String home = "home";
   static String money = "money";
   static String card = "credit_card";
