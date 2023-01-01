@@ -42,14 +42,6 @@ class _InputTextWidgetState extends State<InputTextWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // if (widget.label!.isNotEmpty)
-        //   Text(
-        //     widget.label!,
-        //     style: const TextStyle(
-        //       color: primaryColor,
-        //       fontSize: 15,
-        //     ),
-        //   ),
         SizedBox(
           height: !widget.isDescription! ? size60 : null,
           child: TextFormField(

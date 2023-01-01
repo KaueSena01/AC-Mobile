@@ -53,6 +53,7 @@ const double size75 = 75.0;
 const double size80 = 80.0;
 const double size90 = 90.0;
 const double size100 = 100.0;
+const double size110 = 110.0;
 const double size120 = 120.0;
 
 const double minPadding = 10;

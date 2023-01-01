@@ -1,5 +1,5 @@
-import 'package:atlas_coins/src/features/user/model/user_model.dart';
-import 'package:atlas_coins/src/features/user/result/auth_result.dart';
+import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
+import 'package:atlas_coins/src/features/auth/result/auth_result.dart';
 import 'package:atlas_coins/src/services/endpoints.dart';
 import 'package:atlas_coins/src/services/http_menager.dart';
 
@@ -8,7 +8,7 @@ class AuthRepository {
 
   AuthResult handleUserOrError(Map<dynamic, dynamic> result) {
     if (result['result'] != null) {
-      final auth = UserModel.fromJson(result['result']);
+      final auth = AuthModel.fromJson(result['result']);
       return AuthResult.success(auth);
     } else {
       return AuthResult.error('Ocorreu um erro inesperado!');

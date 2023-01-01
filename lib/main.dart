@@ -1,5 +1,3 @@
-import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
-import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
@@ -9,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'src/routes/app_pages.dart';
+
 void main() async {
   await dotenv.load(fileName: ".env");
   SystemChrome.setSystemUIOverlayStyle(
@@ -17,7 +17,6 @@ void main() async {
       statusBarIconBrightness: Brightness.light,
     ),
   );
-  Get.put(AuthController());
   runApp(const MyApp());
 }
 
@@ -38,6 +37,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       getPages: AppPages.pages,
       initialRoute: AppRoutes.splashRoute,
+      // home: const SplashScreen(),
     );
   }
 }

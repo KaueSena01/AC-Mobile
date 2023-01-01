@@ -18,7 +18,7 @@ class TransactionFormStepOne extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: size20),
               child: Text(
                 "Por favor, selecione o tipo e o meio de transação",
-                style: AppTheme.lightText.displaySmall!.apply(
+                style: AppTheme.lightText.displayMedium!.apply(
                   color: whiteColor,
                 ),
               ),

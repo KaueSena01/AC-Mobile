@@ -41,7 +41,7 @@ class Balance extends StatelessWidget {
                             transactionController.showBalance.value
                                 ? "R\$ 5.643,50"
                                 : "R\$ ...",
-                            style: AppTheme.lightText.displayMedium!.apply(
+                            style: AppTheme.lightText.displayLarge!.apply(
                               color: whiteColor,
                             ),
                           ),
