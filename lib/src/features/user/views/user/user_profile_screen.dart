@@ -1,6 +1,6 @@
 import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:atlas_coins/src/features/user/views/user/components/user_details.dart';
 import 'package:atlas_coins/src/features/user/views/user/components/user_options.dart';
 import 'package:atlas_coins/src/theme/constants.dart';

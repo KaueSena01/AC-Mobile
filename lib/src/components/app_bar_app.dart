@@ -16,7 +16,7 @@ class AppBarApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: size20, horizontal: size05),
+      margin: const EdgeInsets.fromLTRB(size05, size20, size05, size00),
       padding: const EdgeInsets.all(size00),
       height: size35,
       color: Colors.transparent,

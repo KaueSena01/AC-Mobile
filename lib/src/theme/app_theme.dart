@@ -6,17 +6,17 @@ class AppTheme {
   static const TextTheme lightText = TextTheme(
     // display
     displayLarge: TextStyle(
-      fontSize: 26,
-      fontWeight: FontWeight.w800,
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
       fontFamily: 'Poppins',
     ),
     displayMedium: TextStyle(
-      fontSize: 22,
-      fontWeight: FontWeight.w800,
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
       fontFamily: 'Poppins',
     ),
     displaySmall: TextStyle(
-      fontSize: 20,
+      fontSize: 14,
       fontWeight: FontWeight.w400,
       fontFamily: 'Poppins',
     ),

@@ -1,4 +1,4 @@
-import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';

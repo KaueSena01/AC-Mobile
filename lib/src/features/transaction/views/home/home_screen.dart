@@ -1,9 +1,10 @@
 import 'package:atlas_coins/src/components/input_search.dart';
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/balance.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/components/no_transactions.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/transactions.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/user_presentation.dart';
-import 'package:atlas_coins/src/features/user/controller/auth_controller.dart';
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,6 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController animation;
   final menuIsOpen = ValueNotifier<bool>(false);
-
-  @override
-  initState() {
-    super.initState();
-  }
 
   final authController = Get.find<AuthController>();
   final transactionController = Get.find<TransactionController>();
@@ -56,8 +52,19 @@ class _HomeScreenState extends State<HomeScreen>
                         UserPresentation(authController: authController),
                         Balance(transactionController: transactionController),
                         const InputSearch(description: "Pesquisar por..."),
-                        Transactions(
-                            transactionController: transactionController)
+                        GetBuilder<TransactionController>(
+                          builder: (_) {
+                            return _.allTransactions.isNotEmpty
+                                ? Transactions(
+                                    transactionController:
+                                        transactionController,
+                                  )
+                                : NoTransactions(
+                                    transactionController:
+                                        transactionController,
+                                  );
+                          },
+                        ),
                       ],
                     ),
                   ),

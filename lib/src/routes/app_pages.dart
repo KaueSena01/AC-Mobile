@@ -1,11 +1,10 @@
 import 'package:atlas_coins/src/bindigs/auth_binding.dart';
 import 'package:atlas_coins/src/bindigs/transaction_binding.dart';
+import 'package:atlas_coins/src/features/auth/view/auth/register_screen_step_two.dart';
+import 'package:atlas_coins/src/features/auth/view/splash/splash_screen.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
 import 'package:atlas_coins/src/features/transaction/views/transaction/new_transaction_screen_step_one.dart';
-import 'package:atlas_coins/src/features/user/views/auth/save_email_and_password_screen.dart';
-import 'package:atlas_coins/src/features/user/views/auth/save_name_screen.dart';
-import 'package:atlas_coins/src/features/user/views/onboarding/onboarding_screen.dart';
-import 'package:atlas_coins/src/features/user/views/splash/splash_screen.dart';
+import 'package:atlas_coins/src/features/auth/view/onboarding/onboarding_screen.dart';
 import 'package:get/get.dart';
 
 abstract class AppPages {
@@ -13,24 +12,26 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.splashRoute,
       page: () => const SplashScreen(),
+      binding: AuthBinding(),
     ),
     GetPage(
       name: AppRoutes.onboardingRoute,
       page: () => const OnboardingScreen(),
     ),
     GetPage(
-      name: AppRoutes.registerNameRoute,
-      page: () => SaveNameScreen(),
-    ),
-    GetPage(
       name: AppRoutes.registerLoginRoute,
-      page: () => SaveEmailAndPasswordScreen(),
-      binding: AuthBinding(),
+      page: () => RegisterScreenSteepTwo(),
     ),
+    // GetPage(
+    //   name: AppRoutes.registerLoginRoute,
+    //   page: () => SaveEmailAndPasswordScreen(),
+    //   binding: AuthBinding(),
+    // ),
     GetPage(
       name: AppRoutes.homeRoute,
       page: () => const HomeScreen(),
       bindings: [
+        AuthBinding(),
         TransactionBinding(),
       ],
     ),
