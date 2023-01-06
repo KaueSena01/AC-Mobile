@@ -133,16 +133,16 @@ class TransactionController extends GetxController {
   int navigatePageView(int page) {
     switch (page) {
       case 0:
-        Get.to(const HomeScreen());
+        Get.to(() => const HomeScreen());
         break;
       case 1:
-        Get.to(NewTransactionScreenStepOne());
+        Get.to(() => NewTransactionScreenStepOne());
         break;
       case 2:
-        Get.to(NewTransactionScreenStepOne());
+        Get.to(() => NewTransactionScreenStepOne());
         break;
       case 3:
-        Get.to(const UserProfileScreen());
+        Get.to(() => const UserProfileScreen());
         break;
     }
 
