@@ -49,21 +49,17 @@ Widget bottomNavigationBar(
 
 Widget _item(
     TransactionController transactionController, String item, int? pageIndex) {
-  return GestureDetector(
-    child: SizedBox(
-      height: 30,
-      width: 30,
-      child: Padding(
-        padding: const EdgeInsets.all(size05),
-        child: SvgPicture.asset(
-          // ignore: unrelated_type_equality_checks
-          transactionController.pageIndex == pageIndex
-              ? "assets/icons/${item}_selected.svg"
-              : "assets/icons/$item.svg",
-          height: 10,
-        ),
+  return SizedBox(
+    height: 30,
+    width: 30,
+    child: Padding(
+      padding: const EdgeInsets.all(size05),
+      child: SvgPicture.asset(
+        transactionController.pageIndex.value == pageIndex
+            ? "assets/icons/${item}_selected.svg"
+            : "assets/icons/$item.svg",
+        height: 10,
       ),
     ),
-    onTap: () {},
   );
 }
