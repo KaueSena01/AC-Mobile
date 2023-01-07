@@ -1,4 +1,4 @@
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/details.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 class Transaction extends StatelessWidget {
   const Transaction({
     Key? key,
-    required this.transactionController,
+    required this.transaction,
   }) : super(key: key);
 
-  final TransactionController transactionController;
+  final TransactionModel transaction;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Transaction extends StatelessWidget {
           context: context,
           backgroundColor: Colors.transparent,
           builder: (context) => Details(
-            transactionController: transactionController,
+            transactionDetails: transaction,
           ),
         );
       },

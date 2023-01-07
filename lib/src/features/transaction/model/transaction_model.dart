@@ -4,16 +4,18 @@ part 'transaction_model.g.dart';
 
 @JsonSerializable()
 class TransactionModel {
-  int? type;
   String? title;
-  String? description;
-  String? date;
+  int? type;
+  int? paymentOption;
   double? value;
+  String? date;
+  String? description;
 
   TransactionModel({
     this.title,
-    this.value,
     this.type,
+    this.paymentOption,
+    this.value,
     this.date,
     this.description,
   });

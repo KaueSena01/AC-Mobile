@@ -42,8 +42,9 @@ class Transactions extends StatelessWidget {
                   child: Column(
                     children: transactionController.allTransactions
                         .map(
-                          (e) => Transaction(
-                              transactionController: transactionController),
+                          (transaction) => Transaction(
+                            transaction: transaction,
+                          ),
                         )
                         .toList(),
                   ),

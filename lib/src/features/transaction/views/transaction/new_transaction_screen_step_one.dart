@@ -40,7 +40,7 @@ class NewTransactionScreenStepOne extends StatelessWidget {
                 margin: const EdgeInsets.all(size20),
                 child: ButtonWidget(
                   label: "Continuar",
-                  onPressed: () => Get.to(const NewTransactionScreenStepTwo()),
+                  onPressed: () => Get.to(NewTransactionScreenStepTwo()),
                 ),
               )
             ],

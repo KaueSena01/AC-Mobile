@@ -1,6 +1,7 @@
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../theme/constants.dart';
 
@@ -39,67 +40,70 @@ class _DropDownWidgetState extends State<DropDownWidget> {
     final size = MediaQuery.of(context).size;
     String dropdownValue =
         widget.isPaymentOptions ? payment.first : transactionType.first;
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, size30, 30, 5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.label,
-            style: const TextStyle(color: primaryColor, fontSize: 15),
-          ),
-          SizedBox(
-            height: size45,
-            width: size.width,
-            child: DropdownButtonFormField(
-              style: const TextStyle(
-                color: defaultColor,
-                fontSize: 15,
-                // backgroundColor: Colors.transparent,
-              ),
-              value: dropdownValue,
-              dropdownColor: cardBackgroundColor,
-              // isExpanded: true,
-              elevation: 0,
-              // isDense: true,
-              onChanged: (String? value) {
-                setState(() {
-                  dropdownValue = value!;
-                  // _.setTransactionType(value);
-                });
-              },
-              decoration: const InputDecoration(
-                // isDense: false,
-                hintStyle: TextStyle(color: primaryColor, fontSize: 16),
-                border: UnderlineInputBorder(),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: primaryColor, width: 2),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: primaryColor, width: 2),
-                ),
-              ),
-              items: widget.isPaymentOptions
-                  ? payment.map<DropdownMenuItem<String>>(
-                      (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList()
-                  : transactionType.map<DropdownMenuItem<String>>(
-                      (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList(),
+    return GetBuilder<TransactionController>(builder: (_) {
+      return Container(
+        padding: const EdgeInsets.fromLTRB(20, size30, 30, 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.label,
+              style: const TextStyle(color: primaryColor, fontSize: 15),
             ),
-          ),
-        ],
-      ),
-    );
+            SizedBox(
+              height: size45,
+              width: size.width,
+              child: DropdownButtonFormField(
+                style: const TextStyle(
+                  color: whiteColor,
+                  fontSize: 15,
+                ),
+                value: dropdownValue,
+                dropdownColor: cardBackgroundColor,
+                elevation: 0,
+                onChanged: (String? value) {
+                  setState(
+                    () {
+                      dropdownValue = value!;
+                      _.setTransactionType(
+                        value,
+                        widget.isPaymentOptions ? "Payment" : "Transaction",
+                      );
+                    },
+                  );
+                },
+                decoration: const InputDecoration(
+                  hintStyle: TextStyle(color: primaryColor, fontSize: 16),
+                  border: UnderlineInputBorder(),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: primaryColor, width: 2),
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: primaryColor, width: 2),
+                  ),
+                ),
+                items: widget.isPaymentOptions
+                    ? payment.map<DropdownMenuItem<String>>(
+                        (String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        },
+                      ).toList()
+                    : transactionType.map<DropdownMenuItem<String>>(
+                        (String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        },
+                      ).toList(),
+              ),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
