@@ -1,16 +1,18 @@
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/utils/utils_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Balance extends StatelessWidget {
-  const Balance({
+  Balance({
     Key? key,
     required this.transactionController,
   }) : super(key: key);
 
   final TransactionController transactionController;
+  final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class Balance extends StatelessWidget {
                         children: [
                           Text(
                             transactionController.showBalance.value
-                                ? "R\$ 5.643,50"
+                                ? transactionController.totalPrice()
                                 : "R\$ ...",
                             style: AppTheme.lightText.displayLarge!.apply(
                               color: whiteColor,

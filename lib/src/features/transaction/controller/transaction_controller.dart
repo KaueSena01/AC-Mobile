@@ -125,14 +125,16 @@ class TransactionController extends GetxController {
         error: (message) {});
   }
 
-  double totalPrice() {
+  String totalPrice() {
     double total = 0;
 
     for (var transaction in allTransactions) {
       total += transaction.transactionValue();
     }
 
-    return total;
+    String value = utilsServices.valueFormater(total);
+
+    return value;
   }
 
   TransactionModel lastTransaction() {

@@ -39,7 +39,7 @@ class NoTransactions extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: size110),
               child: Text(
-                "Você ainda não realizou\nnenhumatransação :-(",
+                "Você ainda não realizou\nnenhuma transação :-(",
                 style: AppTheme.lightText.headlineSmall!.apply(
                   color: labelColor,
                 ),
