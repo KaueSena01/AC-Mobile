@@ -56,10 +56,16 @@ class UtilsServices {
     double transactionValue,
     int transactionType,
   ) {
-    late String value;
-    late String transactionValueFormater;
+    String value;
+    String transactionValueFormater;
 
-    value = valueFormater(transactionValue);
+    String total = transactionValue.toString();
+
+    String removeMinusSign = total.replaceAll(RegExp('-'), '');
+
+    double cleanTransactionAmount = double.parse(removeMinusSign);
+
+    value = valueFormater(cleanTransactionAmount);
 
     transactionValueFormater = transactionType == 0 ? "+ $value" : "- $value";
 
@@ -73,10 +79,10 @@ class UtilsServices {
   }
 
   String titleFormart(String transactionTitle) {
-    if (transactionTitle.length < 10) {
+    if (transactionTitle.length < 11) {
       return transactionTitle;
     } else {
-      var title = transactionTitle.substring(0, 10);
+      var title = transactionTitle.substring(0, 11);
       return "$title...";
     }
   }

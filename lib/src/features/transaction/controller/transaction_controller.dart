@@ -33,7 +33,7 @@ class TransactionController extends GetxController {
 
   RxBool loading = false.obs;
 
-  RxDouble newValue = 0.0.obs;
+  RxDouble transactionValue = 0.0.obs;
 
   Future createNewTransaction({
     required String title,
@@ -45,12 +45,18 @@ class TransactionController extends GetxController {
 
     String? token = await utilsServices.getLocalData(key: tokenKey);
 
+    if (transactionType.value == 1) {
+      transactionValue.value = -value;
+    } else {
+      transactionValue.value = value;
+    }
+
     TransactionResult result = await transactionRepository.createNewTransaction(
       token!,
       title,
       transactionType.value,
       paymentOptions.value,
-      value,
+      transactionValue.value,
       date,
       description,
     );
@@ -127,6 +133,7 @@ class TransactionController extends GetxController {
 
   String totalPrice() {
     double total = 0;
+    double depositTotal = 0;
 
     for (var transaction in allTransactions) {
       total += transaction.transactionValue();
