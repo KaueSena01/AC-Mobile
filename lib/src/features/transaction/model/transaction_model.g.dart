@@ -9,17 +9,19 @@ part of 'transaction_model.dart';
 TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) =>
     TransactionModel(
       title: json['title'] as String?,
-      value: (json['value'] as num?)?.toDouble(),
       type: json['type'] as int?,
+      paymentOption: json['paymentOption'] as int?,
+      value: (json['value'] as num?)?.toDouble(),
       date: json['date'] as String?,
       description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$TransactionModelToJson(TransactionModel instance) =>
     <String, dynamic>{
-      'type': instance.type,
       'title': instance.title,
-      'description': instance.description,
-      'date': instance.date,
+      'type': instance.type,
+      'paymentOption': instance.paymentOption,
       'value': instance.value,
+      'date': instance.date,
+      'description': instance.description,
     };

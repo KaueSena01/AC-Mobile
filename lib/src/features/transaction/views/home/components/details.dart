@@ -1,20 +1,26 @@
 import 'package:atlas_coins/src/components/button_widget.dart';
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/utils/utils_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Details extends StatelessWidget {
   const Details({
     Key? key,
-    required this.transactionController,
+    required this.transactionDetails,
   }) : super(key: key);
 
-  final TransactionController transactionController;
+  final TransactionModel transactionDetails;
 
   @override
   Widget build(BuildContext context) {
+    final Color detailsColor =
+        transactionDetails.type == 0 ? primaryColor : expenseColor;
+
+    final UtilsServices utilsServices = UtilsServices();
+
     return DraggableScrollableSheet(
       initialChildSize: 0.81,
       minChildSize: 0.5,
@@ -52,15 +58,20 @@ class Details extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Depósito de",
+                                utilsServices.transactionType(
+                                  transactionDetails.type!,
+                                ),
                                 style: AppTheme.lightText.labelMedium!.apply(
                                   color: whiteColor,
                                 ),
                               ),
                               Text(
-                                "+ R\$ 1000.00",
+                                utilsServices.transactionValueFormater(
+                                  transactionDetails.value!,
+                                  transactionDetails.type!,
+                                ),
                                 style: AppTheme.lightText.titleMedium!.apply(
-                                  color: primaryColor,
+                                  color: detailsColor,
                                 ),
                               ),
                             ],
@@ -77,7 +88,7 @@ class Details extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.",
+                      transactionDetails.description!,
                       style: AppTheme.lightText.labelSmall!.apply(
                         color: lighterColor,
                       ),
@@ -87,16 +98,33 @@ class Details extends StatelessWidget {
                       height: 0.5,
                       color: lightColor,
                     ),
-                    infoDetails(context, "Idenficação", "Monitor 4K"),
-                    infoDetails(context, "Forma de pagamento", "Dinheiro"),
-                    infoDetails(context, "Data", "10/12/2022"),
+                    infoDetails(
+                      context,
+                      "Idenficação",
+                      transactionDetails.title!,
+                      detailsColor,
+                    ),
+                    infoDetails(
+                      context,
+                      "Forma de pagamento",
+                      utilsServices.paymentOptionsFormater(
+                        transactionDetails.paymentOption!,
+                      ),
+                      detailsColor,
+                    ),
+                    infoDetails(
+                      context,
+                      "Data",
+                      transactionDetails.date!,
+                      detailsColor,
+                    ),
                   ],
                 ),
               ),
             ),
             ButtonWidget(
               label: "Fechar",
-              backgroundColor: primaryColor,
+              backgroundColor: detailsColor,
               onPressed: () => Get.back(),
             ),
           ],
@@ -105,7 +133,8 @@ class Details extends StatelessWidget {
     );
   }
 
-  Widget infoDetails(BuildContext context, String title, String description) {
+  Widget infoDetails(BuildContext context, String title, String description,
+      Color detailsColor) {
     return Container(
       padding: const EdgeInsets.only(bottom: size20),
       child: Column(
@@ -120,7 +149,7 @@ class Details extends StatelessWidget {
           Text(
             description,
             style: AppTheme.lightText.headlineMedium!.apply(
-              color: primaryColor,
+              color: detailsColor,
             ),
           ),
         ],

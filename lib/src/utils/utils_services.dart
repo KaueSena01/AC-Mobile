@@ -1,5 +1,3 @@
-import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
-import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:intl/intl.dart';
 
@@ -25,7 +23,28 @@ class UtilsServices {
     await storage.delete(key: key);
   }
 
-  String transactionValue(double transactionValue) {
+  String paymentOptionsFormater(int paymentOption) {
+    var option = "";
+
+    switch (paymentOption) {
+      case 0:
+        option = "Dinheiro";
+        break;
+      case 1:
+        option = "PIX";
+        break;
+      case 2:
+        option = "Cartão";
+        break;
+      case 3:
+        option = "Agência";
+        break;
+    }
+
+    return option;
+  }
+
+  String valueFormater(double transactionValue) {
     NumberFormat numberFormat = NumberFormat.simpleCurrency(locale: 'pt_BR');
 
     final String value = numberFormat.format(transactionValue);
@@ -33,114 +52,116 @@ class UtilsServices {
     return value;
   }
 
-  String listTransactionValue(double transactionValue) {
-    NumberFormat numberFormat = NumberFormat.simpleCurrency(locale: 'pt_BR');
+  String transactionValueFormater(
+    double transactionValue,
+    int transactionType,
+  ) {
+    String value;
+    String transactionValueFormater;
 
-    late String value = numberFormat.format(transactionValue);
+    String total = transactionValue.toString();
 
-    if (transactionValue > 0) {
-      return value = "+ $value";
+    String removeMinusSign = total.replaceAll(RegExp('-'), '');
+
+    double cleanTransactionAmount = double.parse(removeMinusSign);
+
+    value = valueFormater(cleanTransactionAmount);
+
+    transactionValueFormater = transactionType == 0 ? "+ $value" : "- $value";
+
+    return transactionValueFormater;
+  }
+
+  String transactionType(int transactionType) {
+    if (transactionType == 1) return "Despesa de";
+
+    return "Depósito de";
+  }
+
+  String titleFormart(String transactionTitle) {
+    if (transactionTitle.length < 11) {
+      return transactionTitle;
+    } else {
+      var title = transactionTitle.substring(0, 11);
+      return "$title...";
     }
-
-    value = value.substring(1, value.length);
-    value = "- $value";
-
-    return value;
   }
 
-  String lastTransactionType(TransactionModel transaction) {
-    if (transaction.type == 1) return TransactionType.deposit;
-
-    return TransactionType.expense;
-  }
-
-  String lastTransactionTypeAsset(TransactionModel transaction) {
-    if (transaction.type == 1) {
-      return TransactionInformation.deposiTransactionPath;
-    }
-
-    return TransactionInformation.expenseTransactionPath;
-  }
-
-  String lastTransactionValue(TransactionModel transaction) {
-    var value = transactionValue(transaction.value!);
-
-    return value;
-  }
-
-  String dayFormater(String date) {
-    var day = date.substring(0, 2);
-
-    return day;
-  }
-
-  String valueFormater(String value) {
-    String newValue = value.substring(3);
-
-    if (newValue.length == 9) {
-      String cen = newValue.substring(0, 2);
-      String dez = newValue.substring(3, newValue.length);
-
-      newValue = '$cen$dez';
-    }
-
-    return newValue;
-  }
-
-  String monthFormater(String date) {
+  String dateFormart(String date) {
     var month = date.substring(3, 5);
+    var day = date.substring(0, 2);
+    var year = date.substring(6, 10);
+
     var result = "";
 
     switch (month) {
       case "01":
-        result = " de janeiro";
+        result = "$day de Janeiro, $year";
         break;
 
       case "02":
-        result = " de fevereiro";
+        result = "$day de Fevereiro, $year";
         break;
 
       case "03":
-        result = " de março";
+        result = "$day de Março, $year";
         break;
 
       case "04":
-        result = " de abril";
+        result = "$day de Abril, $year";
         break;
 
       case "05":
-        result = " de maio";
+        result = "$day de Maio, $year";
         break;
 
       case "06":
-        result = " de junho";
+        result = "$day de Junho, $year";
         break;
 
       case "07":
-        result = " de julho";
+        result = "$day de Julho, $year";
         break;
 
       case "08":
-        result = " de agosto";
+        result = "$day de Agosto, $year";
         break;
 
       case "09":
-        result = " de setembro";
+        result = "$day de Setembro, $year";
         break;
 
       case "10":
-        result = " de outubro";
+        result = "$day de Outubro, $year";
         break;
 
       case "11":
-        result = " de novembro";
+        result = "$day de Novembro, $year";
         break;
 
       case "12":
-        result = " de dezembro";
+        result = "$day de Dezembro, $year";
         break;
     }
 
     return result;
+  }
+
+  String imageFormat(int paymentOption) {
+    late String path;
+
+    switch (paymentOption) {
+      case 0:
+        path = "assets/icons/money_logo.svg";
+        break;
+      case 2:
+        path = "assets/icons/card.svg";
+        break;
+      case 3:
+        path = "assets/icons/money_logo.svg";
+        break;
+    }
+
+    return path;
   }
 }

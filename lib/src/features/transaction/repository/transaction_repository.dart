@@ -32,8 +32,9 @@ class TransactionRepository {
     String token,
     String title,
     int type,
-    String date,
+    int paymentOption,
     double value,
+    String date,
     String description,
   ) async {
     final result = await _httpManager.restRequest(
@@ -43,11 +44,12 @@ class TransactionRepository {
         'X-Parse-Session-Token': token,
       },
       body: {
-        'type': type,
         'title': title,
-        'description': description,
-        'date': date,
+        'type': type,
+        'paymentOption': paymentOption,
         'value': value,
+        'date': date,
+        'description': description,
       },
     );
 

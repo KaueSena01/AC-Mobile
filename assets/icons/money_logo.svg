@@ -1,0 +1,13 @@
+<svg width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_457_94" fill="white">
+<rect width="29" height="17" rx="2"/>
+</mask>
+<rect width="29" height="17" rx="2" stroke="#61DE70" stroke-width="6" mask="url(#path-1-inside-1_457_94)"/>
+<circle cx="2.5" cy="2.5" r="1.5" fill="#61DE70"/>
+<circle cx="2.5" cy="14.5" r="1.5" fill="#61DE70"/>
+<circle cx="26.5" cy="14.5" r="1.5" fill="#61DE70"/>
+<circle cx="26.5" cy="2.5" r="1.5" fill="#61DE70"/>
+<circle cx="7.5" cy="8.5" r="1.5" fill="#61DE70"/>
+<circle cx="14.5" cy="8.5" r="2.5" fill="#61DE70"/>
+<circle cx="21.5" cy="8.5" r="1.5" fill="#61DE70"/>
+</svg>

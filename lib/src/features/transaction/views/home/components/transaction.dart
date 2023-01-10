@@ -1,16 +1,19 @@
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/components/details.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/utils/utils_services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Transaction extends StatelessWidget {
-  const Transaction({
+  Transaction({
     Key? key,
-    required this.transactionController,
+    required this.transaction,
   }) : super(key: key);
 
-  final TransactionController transactionController;
+  final TransactionModel transaction;
+  final UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class Transaction extends StatelessWidget {
           context: context,
           backgroundColor: Colors.transparent,
           builder: (context) => Details(
-            transactionController: transactionController,
+            transactionDetails: transaction,
           ),
         );
       },
@@ -46,15 +49,15 @@ class Transaction extends StatelessWidget {
                     color: cardBackgroundColor,
                     borderRadius: BorderRadius.circular(size50),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.all(size06),
-                    child: CircleAvatar(
-                      radius: size30,
-                      backgroundColor: cardBackgroundColor,
-                      backgroundImage: NetworkImage(
-                        'https://devtools.com.br/img/pix/logo-pix-png-icone-520x520.png',
-                      ),
-                    ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(size08),
+                    child: transaction.paymentOption == 1
+                        ? Image.asset("assets/icons/pix_logo.png")
+                        : SvgPicture.asset(
+                            utilsServices.imageFormat(
+                              transaction.paymentOption!,
+                            ),
+                          ),
                   ),
                 ),
                 Column(
@@ -62,13 +65,15 @@ class Transaction extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Transação",
+                      utilsServices.titleFormart(
+                        transaction.title!,
+                      ),
                       style: AppTheme.lightText.labelMedium!.apply(
                         color: whiteColor,
                       ),
                     ),
                     Text(
-                      "10 de Dezembro, 2022",
+                      utilsServices.dateFormart(transaction.date!),
                       style: AppTheme.lightText.labelSmall!.apply(
                         color: labelColor,
                       ),
@@ -78,9 +83,12 @@ class Transaction extends StatelessWidget {
               ],
             ),
             Text(
-              "+ R\$ 1000.00",
+              utilsServices.transactionValueFormater(
+                transaction.value!,
+                transaction.type!,
+              ),
               style: AppTheme.lightText.labelLarge!.apply(
-                color: primaryColor,
+                color: transaction.type == 0 ? primaryColor : expenseColor,
               ),
             ),
           ],

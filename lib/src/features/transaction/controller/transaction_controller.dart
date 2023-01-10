@@ -2,7 +2,6 @@ import 'package:atlas_coins/src/features/transaction/model/transaction_model.dar
 import 'package:atlas_coins/src/features/transaction/repository/transaction_repository.dart';
 import 'package:atlas_coins/src/features/transaction/result/transaction_result.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
-import 'package:atlas_coins/src/features/transaction/views/transaction/new_transaction_screen_step_one.dart';
 import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
@@ -25,45 +24,89 @@ class TransactionController extends GetxController {
   TransactionModel transaciton = TransactionModel();
 
   RxString dateNow = "".obs;
-  RxInt transactionType = 1.obs;
 
   TransactionRepository transactionRepository = TransactionRepository();
   UtilsServices utilsServices = UtilsServices();
 
+  RxInt transactionType = 0.obs;
+  RxInt paymentOptions = 0.obs;
+
   RxBool loading = false.obs;
 
-  RxDouble newValue = 0.0.obs;
+  RxDouble transactionValue = 0.0.obs;
 
-  Future createNewTransaction(
-      {required String title,
-      required String date,
-      required double value,
-      required String description}) async {
+  Future createNewTransaction({
+    required String title,
+    required String date,
+    required double value,
+    required String description,
+  }) async {
     loading.value = true;
 
     String? token = await utilsServices.getLocalData(key: tokenKey);
 
-    if (transactionType.value == 0) {
-      newValue.value = -value;
+    if (transactionType.value == 1) {
+      transactionValue.value = -value;
+    } else {
+      transactionValue.value = value;
     }
 
     TransactionResult result = await transactionRepository.createNewTransaction(
-        token!,
-        title,
-        transactionType.value,
-        date,
-        newValue.value == 0 ? value : newValue.value,
-        description);
+      token!,
+      title,
+      transactionType.value,
+      paymentOptions.value,
+      transactionValue.value,
+      date,
+      description,
+    );
 
     loading.value = false;
 
     result.when(
-        success: (transactions) {
-          refresh();
-          getAllTransactions();
-          Get.toNamed(AppRoutes.homeRoute);
-        },
-        error: (message) {});
+      success: (transactions) {
+        refresh();
+        getAllTransactions();
+        Get.toNamed(AppRoutes.homeRoute);
+      },
+      error: (message) {},
+    );
+  }
+
+  int setTransactionType(String value, String functionType) {
+    if (functionType == "Payment") {
+      switch (value) {
+        case "Dinheiro":
+          paymentOptions.value = 0;
+          break;
+
+        case "PIX":
+          paymentOptions.value = 1;
+          break;
+
+        case "Cartão":
+          paymentOptions.value = 2;
+          break;
+
+        case "Agência":
+          paymentOptions.value = 3;
+          break;
+      }
+    } else {
+      switch (value) {
+        case TransactionType.deposit:
+          transactionType.value = 0;
+          break;
+
+        case TransactionType.expense:
+          transactionType.value = 1;
+          break;
+      }
+    }
+
+    update();
+
+    return transactionType.value | paymentOptions.value;
   }
 
   Future<void> getAllTransactions() async {
@@ -88,14 +131,17 @@ class TransactionController extends GetxController {
         error: (message) {});
   }
 
-  double totalPrice() {
+  String totalPrice() {
     double total = 0;
+    double depositTotal = 0;
 
     for (var transaction in allTransactions) {
       total += transaction.transactionValue();
     }
 
-    return total;
+    String value = utilsServices.valueFormater(total);
+
+    return value;
   }
 
   TransactionModel lastTransaction() {
@@ -107,16 +153,6 @@ class TransactionController extends GetxController {
 
     dateNow.value = UtilData.obterDataDDMMAAAA(a);
     refresh();
-  }
-
-  void setTransactionType(String value) {
-    if (value == TransactionType.expense) {
-      transactionType.value = 0;
-    } else {
-      transactionType.value = 1;
-    }
-
-    update();
   }
 
   RxBool showBalance = false.obs;
@@ -136,10 +172,10 @@ class TransactionController extends GetxController {
         Get.to(() => const HomeScreen());
         break;
       case 1:
-        Get.to(() => NewTransactionScreenStepOne());
+        Get.toNamed(AppRoutes.newTransactionRoute);
         break;
       case 2:
-        Get.to(() => NewTransactionScreenStepOne());
+        Get.toNamed(AppRoutes.newTransactionRoute);
         break;
       case 3:
         Get.to(() => const UserProfileScreen());
