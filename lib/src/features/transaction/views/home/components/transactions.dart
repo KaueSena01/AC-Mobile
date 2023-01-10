@@ -51,6 +51,10 @@ class Transactions extends StatelessWidget {
                 );
               },
             ),
+            if (transactionController.allTransactions.length <= 2)
+              Container(
+                height: transactionController.allTransactions.length * 100,
+              ),
           ],
         ),
       ),

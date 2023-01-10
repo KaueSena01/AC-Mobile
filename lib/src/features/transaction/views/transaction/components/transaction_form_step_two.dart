@@ -64,7 +64,7 @@ class TransactionFormStepTwo extends StatelessWidget {
                   ),
                   Text(
                     transactionController.showBalance.value
-                        ? "R\$ 5.643,50"
+                        ? transactionController.totalPrice()
                         : "R\$ ...",
                     style: AppTheme.lightText.labelLarge!.apply(
                       color: whiteColor,
