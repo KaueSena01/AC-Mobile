@@ -43,7 +43,7 @@ class RegisterScreenSteepTwo extends StatelessWidget {
                 label: "Finalizar",
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    authController.register(
+                    authController.signUpController(
                       name: arguments[0]['Name'],
                       email: emailController.text,
                       password: passwordController.text,

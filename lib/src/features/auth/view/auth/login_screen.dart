@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 label: "Entrar",
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    authController.login(
+                    authController.signInController(
                       email: emailController.text,
                       password: passwordController.text,
                     );

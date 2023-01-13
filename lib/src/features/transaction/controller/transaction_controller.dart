@@ -43,7 +43,7 @@ class TransactionController extends GetxController {
   }) async {
     loading.value = true;
 
-    String? token = await utilsServices.getLocalData(key: tokenKey);
+    String? token = await utilsServices.getStoredToken();
 
     if (transactionType.value == 1) {
       transactionValue.value = -value;
@@ -112,7 +112,7 @@ class TransactionController extends GetxController {
   Future<void> getAllTransactions() async {
     loading.value = true;
 
-    String? token = await utilsServices.getLocalData(key: tokenKey);
+    String? token = await utilsServices.getStoredToken();
 
     TransactionResult<List<TransactionModel>> result =
         await transactionRepository.getAllTransactions(token!);

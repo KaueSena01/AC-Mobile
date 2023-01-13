@@ -15,7 +15,7 @@ class AuthRepository {
     }
   }
 
-  Future<AuthResult> validateToken(String token) async {
+  Future<AuthResult> checkTokenRepository(String token) async {
     final result = await _httpManager.restRequest(
       url: EndPoints.checktoken,
       method: HttpMethods.post,
@@ -27,7 +27,7 @@ class AuthRepository {
     return handleUserOrError(result);
   }
 
-  Future<AuthResult> login({
+  Future<AuthResult> signInRepository({
     required String email,
     required String password,
   }) async {
@@ -43,7 +43,7 @@ class AuthRepository {
     return handleUserOrError(result);
   }
 
-  Future<AuthResult> register(
+  Future<AuthResult> signUpRepository(
       {required String name,
       required String email,
       required String password}) async {
@@ -55,7 +55,7 @@ class AuthRepository {
     return handleUserOrError(result);
   }
 
-  Future<AuthResult> updatePassword(
+  Future<AuthResult> passwordUpdateRepository(
       {required String token, required String newPassword}) async {
     final result = await _httpManager.restRequest(
         url: EndPoints.updatePassword,

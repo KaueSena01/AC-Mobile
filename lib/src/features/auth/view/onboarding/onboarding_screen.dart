@@ -158,13 +158,13 @@ class OnboardingScreen extends StatelessWidget {
                       builder: (controller) {
                         return ButtonWidget(
                           label: ButtonLabel.logIn,
-                          onPressed: controller.loading.value
+                          onPressed: controller.authModel.token!.isEmpty
                               ? null
                               : () {
                                   FocusScope.of(context).unfocus();
 
                                   if (_formKey.currentState!.validate()) {
-                                    controller.login(
+                                    controller.signInController(
                                       email: emailController.text,
                                       password: passwordController.text,
                                     );

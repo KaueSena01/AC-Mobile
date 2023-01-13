@@ -22,13 +22,13 @@ class UserDetails extends StatelessWidget {
       children: [
         const UserImage(marginBottom: size20),
         Text(
-          authController.auth.name!,
+          authController.authModel.name!,
           style: AppTheme.lightText.titleLarge!.apply(
             color: whiteColor,
           ),
         ),
         Text(
-          authController.auth.email!,
+          authController.authModel.email!,
           style: AppTheme.lightText.labelSmall!.apply(
             color: labelColor,
           ),

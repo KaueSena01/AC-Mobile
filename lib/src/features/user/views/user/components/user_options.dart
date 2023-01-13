@@ -38,7 +38,7 @@ class UserOptions extends StatelessWidget {
             color: lightColor,
           ),
           InkWell(
-            onTap: () => authController.signOut(),
+            onTap: () => authController.signOutController(),
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: size10),
               child: Row(

@@ -54,7 +54,7 @@ class UserPresentation extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      authController.auth.name!,
+                      authController.authModel.name!,
                       style: AppTheme.lightText.labelMedium!.apply(
                         color: labelColor,
                       ),

@@ -1,128 +1,116 @@
-import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
-import 'package:atlas_coins/src/features/auth/result/auth_result.dart';
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/auth/repository/auth_repository.dart';
+import 'package:get/get.dart';
+
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/utils/utils_services.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:get/get.dart';
+import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
+import 'package:atlas_coins/src/features/auth/result/auth_result.dart';
+import 'package:atlas_coins/src/features/auth/repository/auth_repository.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 
 class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    validateToken();
+    checkTokenController();
   }
 
-  AuthModel auth = AuthModel();
-  UtilsServices utilsServices = UtilsServices();
+  AuthModel authModel = AuthModel();
+  UtilsServices utilServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
-  RxBool loading = false.obs;
-  RxString userName = "".obs;
 
-  String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
-
-  void saveToken(AuthModel auth) {
-    utilsServices.saveLocalData(key: tokenKey, data: auth.token!);
-
-    Get.toNamed(AppRoutes.homeRoute);
-  }
-
-  void saveName(String name) async {
-    Get.toNamed(AppRoutes.registerLoginRoute, arguments: [
-      {"Name": name},
-    ]);
-  }
-
-  Future login({
-    required String email,
-    required String password,
-  }) async {
-    loading.value = true;
-
-    AuthResult result = await authRepository.login(
-      email: email,
-      password: password,
-    );
-
-    loading.value = false;
-
-    result.when(
-      success: (auth) {
-        this.auth = auth;
-        saveToken(auth);
-      },
-      error: (message) {},
-    );
-  }
-
-  Future<void> register({
+  Future<void> signUpController({
     required String name,
     required String email,
     required String password,
   }) async {
-    loading.value = true;
-
-    AuthResult result = await authRepository.register(
+    AuthResult authResult = await authRepository.signUpRepository(
       name: name,
       email: email,
       password: password,
     );
 
-    loading.value = false;
+    authResult.when(
+      success: (authModel) {
+        this.authModel = authModel;
+        utilServices.storeToken(authModel: authModel);
 
-    result.when(
-      success: (auth) {
-        this.auth = auth;
-        saveToken(this.auth);
+        Get.toNamed(AppRoutes.homeRoute);
       },
-      error: (message) async {},
+      error: (message) async {
+        // Mensagem de erro
+      },
     );
   }
 
-  Future<void> updatePassword({required String newPassword}) async {
-    loading.value = true;
-
-    String? token = await utilsServices.getLocalData(key: tokenKey);
-
-    AuthResult result = await authRepository.updatePassword(
-      token: token!,
-      newPassword: newPassword,
+  Future<void> signInController({
+    required String email,
+    required String password,
+  }) async {
+    AuthResult authResult = await authRepository.signInRepository(
+      email: email,
+      password: password,
     );
 
-    loading.value = false;
+    authResult.when(
+      success: (authModel) {
+        this.authModel = authModel;
+        utilServices.storeToken(authModel: authModel);
 
-    result.when(
-      success: (auth) {},
-      error: (message) async {},
+        Get.toNamed(AppRoutes.homeRoute);
+      },
+      error: (message) {
+        // Mensagem de erro
+      },
     );
   }
 
-  Future<void> signOut() async {
+  Future<void> signOutController() async {
     Get.delete<TransactionController>();
 
-    await utilsServices.deleteLocalData(key: tokenKey);
+    utilServices.deleteStoradToken();
 
     Get.toNamed(AppRoutes.onboardingRoute);
   }
 
-  Future<void> validateToken() async {
-    String? token = await utilsServices.getLocalData(key: tokenKey);
+  Future<void> passwordUpdateController({
+    required String newPassword,
+  }) async {
+    String? token = await utilServices.getStoredToken();
 
-    if (token == null) {
+    AuthResult authResult = await authRepository.passwordUpdateRepository(
+      token: token!,
+      newPassword: newPassword,
+    );
+
+    authResult.when(
+      success: (authModel) {
+        // Realizar ação
+      },
+      error: (message) async {
+        // Mensagem de erro
+      },
+    );
+  }
+
+  Future<void> checkTokenController() async {
+    String? token = await utilServices.getStoredToken();
+
+    if (token!.isEmpty) {
       Get.toNamed(AppRoutes.onboardingRoute);
       return;
     }
 
-    AuthResult result = await authRepository.validateToken(token);
+    AuthResult authResult = await authRepository.checkTokenRepository(token);
 
-    result.when(
-      success: (auth) {
-        this.auth = auth;
-        saveToken(auth);
+    authResult.when(
+      success: (authModel) {
+        this.authModel = authModel;
+        utilServices.storeToken(authModel: authModel);
+
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {
+        // Mensagem de erro
         Get.toNamed(AppRoutes.onboardingRoute);
       },
     );
