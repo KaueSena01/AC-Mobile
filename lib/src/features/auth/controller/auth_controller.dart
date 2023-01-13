@@ -74,7 +74,7 @@ class AuthController extends GetxController {
     result.when(
       success: (auth) {
         this.auth = auth;
-        saveToken(auth);
+        saveToken(this.auth);
       },
       error: (message) async {},
     );

@@ -22,11 +22,6 @@ abstract class AppPages {
       name: AppRoutes.registerLoginRoute,
       page: () => RegisterScreenSteepTwo(),
     ),
-    // GetPage(
-    //   name: AppRoutes.registerLoginRoute,
-    //   page: () => SaveEmailAndPasswordScreen(),
-    //   binding: AuthBinding(),
-    // ),
     GetPage(
       name: AppRoutes.homeRoute,
       page: () => const HomeScreen(),
