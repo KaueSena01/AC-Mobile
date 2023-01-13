@@ -1,11 +1,12 @@
-import 'package:atlas_coins/src/theme/app_theme.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/utils/settings.dart';
 
 import 'src/routes/app_pages.dart';
 

@@ -1,7 +1,8 @@
-import 'package:atlas_coins/src/components/arrow_back_widget.dart';
+import 'package:flutter/material.dart';
+
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:flutter/material.dart';
+import 'package:atlas_coins/src/components/arrow_back_widget.dart';
 
 class AppBarApp extends StatelessWidget {
   const AppBarApp({

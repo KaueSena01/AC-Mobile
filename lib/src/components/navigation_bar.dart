@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 import 'package:atlas_coins/src/services/bottom_navigation_bar.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 Widget bottomNavigationBar(
   TransactionController transactionController,

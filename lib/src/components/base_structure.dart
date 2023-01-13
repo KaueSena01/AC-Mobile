@@ -1,6 +1,7 @@
-import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:atlas_coins/src/theme/constants.dart';
 
 class BaseStructure extends StatelessWidget {
   const BaseStructure({

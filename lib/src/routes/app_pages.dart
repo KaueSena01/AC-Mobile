@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import 'package:atlas_coins/src/bindigs/auth_binding.dart';
 import 'package:atlas_coins/src/bindigs/transaction_binding.dart';
 import 'package:atlas_coins/src/features/auth/view/auth/register_screen_step_two.dart';
@@ -5,7 +7,6 @@ import 'package:atlas_coins/src/features/auth/view/splash/splash_screen.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
 import 'package:atlas_coins/src/features/transaction/views/transaction/new_transaction_screen_step_one.dart';
 import 'package:atlas_coins/src/features/auth/view/onboarding/onboarding_screen.dart';
-import 'package:get/get.dart';
 
 abstract class AppPages {
   static final pages = <GetPage>[
