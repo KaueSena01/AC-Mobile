@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+
+import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
 import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:atlas_coins/src/features/auth/view/auth/components/login_form.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);

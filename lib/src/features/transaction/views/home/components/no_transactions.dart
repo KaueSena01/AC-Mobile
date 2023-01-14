@@ -1,7 +1,8 @@
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+import 'package:flutter/material.dart';
+
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:flutter/material.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 
 class NoTransactions extends StatelessWidget {
   const NoTransactions({

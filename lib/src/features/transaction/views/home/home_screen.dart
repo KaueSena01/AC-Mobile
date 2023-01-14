@@ -1,17 +1,17 @@
-import 'package:atlas_coins/src/components/input_search.dart';
-import 'package:atlas_coins/src/components/base_structure.dart';
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/balance.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/no_transactions.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/transactions.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/user_presentation.dart';
-import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-import '../../../../components/navigation_bar.dart';
+import 'package:atlas_coins/src/components/input_search.dart';
+import 'package:atlas_coins/src/components/base_structure.dart';
+import 'package:atlas_coins/src/components/navigation_bar.dart';
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/components/balance.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/components/transactions.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/components/no_transactions.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/components/user_presentation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

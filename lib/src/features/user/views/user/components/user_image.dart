@@ -1,5 +1,6 @@
-import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
+
+import 'package:atlas_coins/src/theme/constants.dart';
 
 class UserImage extends StatelessWidget {
   const UserImage({Key? key, this.marginBottom = 0.0}) : super(key: key);

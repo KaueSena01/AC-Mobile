@@ -1,12 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
 import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/transaction/views/transaction/components/transaction_form_step_one.dart';
 import 'package:atlas_coins/src/features/transaction/views/transaction/new_transaction_screen_step_two.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:atlas_coins/src/features/transaction/views/transaction/components/transaction_form_step_one.dart';
 
 class NewTransactionScreenStepOne extends StatelessWidget {
   NewTransactionScreenStepOne({Key? key}) : super(key: key);

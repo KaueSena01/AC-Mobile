@@ -1,10 +1,11 @@
-import 'package:atlas_coins/src/components/base_structure.dart';
-import 'package:atlas_coins/src/theme/app_theme.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:atlas_coins/src/utils/settings.dart';
+import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/components/base_structure.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);

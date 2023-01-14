@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 
 const List<String> transactionType = <String>[
   TransactionType.deposit,
