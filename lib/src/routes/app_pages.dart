@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
 import 'package:get/get.dart';
 
 import 'package:atlas_coins/src/bindigs/auth_binding.dart';
@@ -33,7 +34,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.profileRoute,
-      page: () => const SplashScreen(),
+      page: () => const UserProfileScreen(),
     ),
     GetPage(
       name: AppRoutes.newTransactionRoute,

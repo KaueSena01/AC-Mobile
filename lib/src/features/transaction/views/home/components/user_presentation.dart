@@ -34,13 +34,15 @@ class UserPresentation extends StatelessWidget {
                     shape: BoxShape.circle,
                     border: Border.all(
                       width: 2.5,
-                      color: primaryColor,
+                      color: cardBackgroundColor,
                     ),
-                    image: const DecorationImage(
-                      image: NetworkImage(
-                        "https://avatars.githubusercontent.com/u/86299739?v=4",
-                      ),
-                      fit: BoxFit.cover,
+                    color: labelColor,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(size05),
+                    child: SvgPicture.asset(
+                      "assets/icons/person.svg",
+                      color: whiteColor,
                     ),
                   ),
                 ),

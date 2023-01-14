@@ -95,7 +95,7 @@ class AuthController extends GetxController {
   Future<void> checkTokenController() async {
     String? token = await utilServices.getStoredToken();
 
-    if (token!.isEmpty) {
+    if (token == null) {
       Get.toNamed(AppRoutes.onboardingRoute);
       return;
     }

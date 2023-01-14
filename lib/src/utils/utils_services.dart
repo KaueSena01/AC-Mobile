@@ -1,4 +1,3 @@
-import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 
 class UtilsServices {
   FlutterSecureStorage storage = const FlutterSecureStorage();
