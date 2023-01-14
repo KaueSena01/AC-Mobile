@@ -6,8 +6,8 @@ import 'package:atlas_coins/src/services/http_menager.dart';
 class TransactionRepository {
   final HttpManager _httpManager = HttpManager();
 
-  Future<TransactionResult<List<TransactionModel>>> getAllTransactions(
-      String token) async {
+  Future<TransactionResult<List<TransactionModel>>>
+      findAllTransactionsRepository(String token) async {
     final result = await _httpManager.restRequest(
       url: EndPoints.listtransactions,
       method: HttpMethods.post,
@@ -28,7 +28,7 @@ class TransactionRepository {
     }
   }
 
-  Future<TransactionResult> createNewTransaction(
+  Future<TransactionResult> transactionCreationRepository(
     String token,
     String title,
     int type,

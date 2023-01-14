@@ -1,94 +1,94 @@
-import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
-import 'package:atlas_coins/src/features/transaction/repository/transaction_repository.dart';
-import 'package:atlas_coins/src/features/transaction/result/transaction_result.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
-import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
-import 'package:atlas_coins/src/routes/app_pages.dart';
-import 'package:atlas_coins/src/utils/settings.dart';
-import 'package:atlas_coins/src/utils/utils_services.dart';
-import 'package:brasil_fields/brasil_fields.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+
+import 'package:atlas_coins/src/utils/settings.dart';
+import 'package:atlas_coins/src/routes/app_pages.dart';
+import 'package:atlas_coins/src/utils/utils_services.dart';
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
+import 'package:atlas_coins/src/features/transaction/result/transaction_result.dart';
+import 'package:atlas_coins/src/features/transaction/repository/transaction_repository.dart';
 
 class TransactionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getAllTransactions();
+    findAllTransactionsController();
   }
 
-  String tokenKey = dotenv.get("TOKEN_KEY", fallback: "");
-
-  List<TransactionModel> allTransactions = [];
-
-  TransactionModel transaciton = TransactionModel();
-
-  RxString dateNow = "".obs;
-
-  TransactionRepository transactionRepository = TransactionRepository();
+  List<TransactionModel> transacitonList = [];
   UtilsServices utilsServices = UtilsServices();
+  TransactionRepository transactionRepository = TransactionRepository();
 
-  RxInt transactionType = 0.obs;
-  RxInt paymentOptions = 0.obs;
+  Future<void> findAllTransactionsController() async {
+    String? token = await utilsServices.getStoredToken();
 
-  RxBool loading = false.obs;
+    TransactionResult<List<TransactionModel>> transactionResult =
+        await transactionRepository.findAllTransactionsRepository(token!);
 
-  RxDouble transactionValue = 0.0.obs;
+    transactionResult.when(
+      success: (transactionModel) {
+        transacitonList = transactionModel;
+        utilsServices.totalPrice(transacitonList);
+        update();
+      },
+      error: (message) {
+        // Mensagem de erro
+      },
+    );
+  }
 
-  Future createNewTransaction({
+  Future transactionCreationController({
     required String title,
     required String date,
     required double value,
     required String description,
   }) async {
-    loading.value = true;
-
     String? token = await utilsServices.getStoredToken();
 
-    if (transactionType.value == 1) {
-      transactionValue.value = -value;
-    } else {
-      transactionValue.value = value;
-    }
-
-    TransactionResult result = await transactionRepository.createNewTransaction(
+    TransactionResult result =
+        await transactionRepository.transactionCreationRepository(
       token!,
       title,
       transactionType.value,
       paymentOptions.value,
-      transactionValue.value,
+      transactionType.value == 0 ? value : -value,
       date,
       description,
     );
 
-    loading.value = false;
-
     result.when(
       success: (transactions) {
         refresh();
-        getAllTransactions();
+        findAllTransactionsController();
         Get.toNamed(AppRoutes.homeRoute);
       },
-      error: (message) {},
+      error: (message) {
+        // Mensagem de erro
+      },
     );
   }
 
-  int setTransactionType(String value, String functionType) {
-    if (functionType == "Payment") {
+  // Transaction utility services
+  RxInt pageIndex = 0.obs;
+  RxInt paymentOptions = 0.obs;
+  RxInt transactionType = 0.obs;
+  RxBool showBalance = false.obs;
+
+  int setTransactionType(String value, String dropDowType) {
+    if (dropDowType == DropDownType.paymentOptions) {
       switch (value) {
-        case "Dinheiro":
+        case PaymentOptions.money:
           paymentOptions.value = 0;
           break;
 
-        case "PIX":
+        case PaymentOptions.pix:
           paymentOptions.value = 1;
           break;
 
-        case "Cartão":
+        case PaymentOptions.card:
           paymentOptions.value = 2;
           break;
 
-        case "Agência":
+        case PaymentOptions.agency:
           paymentOptions.value = 3;
           break;
       }
@@ -109,54 +109,6 @@ class TransactionController extends GetxController {
     return transactionType.value | paymentOptions.value;
   }
 
-  Future<void> getAllTransactions() async {
-    loading.value = true;
-
-    String? token = await utilsServices.getStoredToken();
-
-    TransactionResult<List<TransactionModel>> result =
-        await transactionRepository.getAllTransactions(token!);
-
-    loading.value = false;
-
-    result.when(
-        success: (transactions) {
-          allTransactions = transactions;
-          update();
-          totalPrice();
-          if (allTransactions.isNotEmpty) {
-            lastTransaction();
-          }
-        },
-        error: (message) {});
-  }
-
-  String totalPrice() {
-    double total = 0;
-    double depositTotal = 0;
-
-    for (var transaction in allTransactions) {
-      total += transaction.transactionValue();
-    }
-
-    String value = utilsServices.valueFormater(total);
-
-    return value;
-  }
-
-  TransactionModel lastTransaction() {
-    return allTransactions.first;
-  }
-
-  void setDateNow() async {
-    DateTime a = DateTime.now();
-
-    dateNow.value = UtilData.obterDataDDMMAAAA(a);
-    refresh();
-  }
-
-  RxBool showBalance = false.obs;
-
   bool showAndHideBalance() {
     showBalance.value = !showBalance.value;
     update();
@@ -164,12 +116,10 @@ class TransactionController extends GetxController {
     return showBalance.value;
   }
 
-  RxInt pageIndex = 0.obs;
-
   int navigatePageView(int page) {
     switch (page) {
       case 0:
-        Get.to(() => const HomeScreen());
+        Get.toNamed(AppRoutes.homeRoute);
         break;
       case 1:
         Get.toNamed(AppRoutes.newTransactionRoute);
@@ -178,7 +128,7 @@ class TransactionController extends GetxController {
         Get.toNamed(AppRoutes.newTransactionRoute);
         break;
       case 3:
-        Get.to(() => const UserProfileScreen());
+        Get.toNamed(AppRoutes.profileRoute);
         break;
     }
 

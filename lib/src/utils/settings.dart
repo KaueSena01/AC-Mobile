@@ -20,6 +20,18 @@ abstract class AppInformation {
   static const String backgroundAppPath = "assets/images/background 1.png";
 }
 
+abstract class PaymentOptions {
+  static const String money = "Dinheiro";
+  static const String pix = "PIX";
+  static const String card = "Cartão";
+  static const String agency = "Agência";
+}
+
+abstract class DropDownType {
+  static const String paymentOptions = "Payment";
+  static const String transactionType = "Transaction";
+}
+
 abstract class TransactionType {
   static const String deposit = "Depósito";
   static const String expense = "Despesa";

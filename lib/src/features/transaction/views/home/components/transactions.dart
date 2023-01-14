@@ -40,7 +40,7 @@ class Transactions extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(top: size10),
                   child: Column(
-                    children: transactionController.allTransactions
+                    children: transactionController.transacitonList
                         .map(
                           (transaction) => Transaction(
                             transaction: transaction,
@@ -51,9 +51,9 @@ class Transactions extends StatelessWidget {
                 );
               },
             ),
-            if (transactionController.allTransactions.length <= 2)
+            if (transactionController.transacitonList.length <= 2)
               Container(
-                height: transactionController.allTransactions.length * 100,
+                height: transactionController.transacitonList.length * 100,
               ),
           ],
         ),

@@ -67,7 +67,9 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                       dropdownValue = value!;
                       _.setTransactionType(
                         value,
-                        widget.isPaymentOptions ? "Payment" : "Transaction",
+                        widget.isPaymentOptions
+                            ? DropDownType.paymentOptions
+                            : DropDownType.transactionType,
                       );
                     },
                   );

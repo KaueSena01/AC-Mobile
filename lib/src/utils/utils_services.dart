@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -29,6 +30,20 @@ class UtilsServices {
       {"Name": name},
     ]);
   }
+
+  String totalPrice(List<TransactionModel> transacitonList) {
+    double total = 0;
+
+    for (var transaction in transacitonList) {
+      total += transaction.transactionValue();
+    }
+
+    String value = valueFormater(total);
+
+    return value;
+  }
+
+  RxBool showBalance = false.obs;
 
   String paymentOptionsFormater(int paymentOption) {
     var option = "";

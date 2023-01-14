@@ -50,7 +50,7 @@ class NewTransactionScreenStepTwo extends StatelessWidget {
                   if (_formKey.currentState!.validate()) {
                     double valueConvert = double.parse(value.text);
 
-                    transactionController.createNewTransaction(
+                    transactionController.transactionCreationController(
                       title: title.text,
                       date: date.text,
                       value: valueConvert,

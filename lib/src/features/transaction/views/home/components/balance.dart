@@ -41,7 +41,9 @@ class Balance extends StatelessWidget {
                         children: [
                           Text(
                             transactionController.showBalance.value
-                                ? transactionController.totalPrice()
+                                ? utilsServices.totalPrice(
+                                    transactionController.transacitonList,
+                                  )
                                 : "R\$ ...",
                             style: AppTheme.lightText.displayLarge!.apply(
                               color: whiteColor,

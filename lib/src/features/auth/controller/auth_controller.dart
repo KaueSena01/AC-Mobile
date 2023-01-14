@@ -33,7 +33,7 @@ class AuthController extends GetxController {
       success: (authModel) {
         this.authModel = authModel;
         utilServices.storeToken(authModel: authModel);
-
+        update();
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {
@@ -55,7 +55,7 @@ class AuthController extends GetxController {
       success: (authModel) {
         this.authModel = authModel;
         utilServices.storeToken(authModel: authModel);
-
+        update();
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) {
@@ -106,7 +106,7 @@ class AuthController extends GetxController {
       success: (authModel) {
         this.authModel = authModel;
         utilServices.storeToken(authModel: authModel);
-
+        update();
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {

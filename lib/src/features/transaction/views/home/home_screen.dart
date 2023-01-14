@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen>
                     const InputSearch(description: "Pesquisar por..."),
                     GetBuilder<TransactionController>(
                       builder: (_) {
-                        return _.allTransactions.isNotEmpty
+                        return _.transacitonList.isNotEmpty
                             ? Transactions(
                                 transactionController: transactionController,
                               )
