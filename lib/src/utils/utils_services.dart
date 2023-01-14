@@ -1,27 +1,49 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'package:atlas_coins/src/routes/app_pages.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
 
 class UtilsServices {
-  final storage = const FlutterSecureStorage();
+  FlutterSecureStorage storage = const FlutterSecureStorage();
+  String key = dotenv.get("TOKEN_KEY", fallback: "");
 
-  Future<void> saveLocalData({
-    required String key,
-    required String data,
+  Future<void> storeToken({
+    required AuthModel authModel,
   }) async {
-    await storage.write(key: key, value: data);
+    await storage.write(key: key, value: authModel.token);
   }
 
-  Future<String?> getLocalData({
-    required String key,
-  }) async {
+  Future<String?> getStoredToken() async {
     return await storage.read(key: key);
   }
 
-  Future<void> deleteLocalData({
-    required String key,
-  }) async {
+  Future<void> deleteStoradToken() async {
     await storage.delete(key: key);
   }
+
+  void storeName(String name) async {
+    Get.toNamed(AppRoutes.registerLoginRoute, arguments: [
+      {"Name": name},
+    ]);
+  }
+
+  String totalPrice(List<TransactionModel> transacitonList) {
+    double total = 0;
+
+    for (var transaction in transacitonList) {
+      total += transaction.transactionValue();
+    }
+
+    String value = valueFormater(total);
+
+    return value;
+  }
+
+  RxBool showBalance = false.obs;
 
   String paymentOptionsFormater(int paymentOption) {
     var option = "";

@@ -1,7 +1,7 @@
-import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
-import 'package:atlas_coins/src/features/auth/result/auth_result.dart';
 import 'package:atlas_coins/src/services/endpoints.dart';
 import 'package:atlas_coins/src/services/http_menager.dart';
+import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
+import 'package:atlas_coins/src/features/auth/result/auth_result.dart';
 
 class AuthRepository {
   final HttpManager _httpManager = HttpManager();
@@ -11,12 +11,13 @@ class AuthRepository {
       final auth = AuthModel.fromJson(result['result']);
       return AuthResult.success(auth);
     } else {
+      // retornar mensagem de erro
       return AuthResult.error('Ocorreu um erro inesperado!');
     }
   }
 
-  Future<AuthResult> validateToken(String token) async {
-    final result = await _httpManager.restRequest(
+  Future<AuthResult> checkTokenRepository(String token) async {
+    final authResult = await _httpManager.restRequest(
       url: EndPoints.checktoken,
       method: HttpMethods.post,
       headers: {
@@ -24,10 +25,10 @@ class AuthRepository {
       },
     );
 
-    return handleUserOrError(result);
+    return handleUserOrError(authResult);
   }
 
-  Future<AuthResult> login({
+  Future<AuthResult> signInRepository({
     required String email,
     required String password,
   }) async {
@@ -43,29 +44,38 @@ class AuthRepository {
     return handleUserOrError(result);
   }
 
-  Future<AuthResult> register(
-      {required String name,
-      required String email,
-      required String password}) async {
+  Future<AuthResult> signUpRepository({
+    required String name,
+    required String email,
+    required String password,
+  }) async {
     final result = await _httpManager.restRequest(
-        url: EndPoints.register,
-        method: HttpMethods.post,
-        body: {'username': name, 'email': email, 'password': password});
+      url: EndPoints.register,
+      method: HttpMethods.post,
+      body: {
+        'username': name,
+        'email': email,
+        'password': password,
+      },
+    );
 
     return handleUserOrError(result);
   }
 
-  Future<AuthResult> updatePassword(
-      {required String token, required String newPassword}) async {
+  Future<AuthResult> passwordUpdateRepository({
+    required String token,
+    required String newPassword,
+  }) async {
     final result = await _httpManager.restRequest(
-        url: EndPoints.updatePassword,
-        method: HttpMethods.post,
-        headers: {
-          'Authorization': 'Bearer ' + token
-        },
-        body: {
-          'password': newPassword,
-        });
+      url: EndPoints.updatePassword,
+      method: HttpMethods.post,
+      headers: {
+        'X-Parse-Session-Token': token,
+      },
+      body: {
+        'password': newPassword,
+      },
+    );
 
     return handleUserOrError(result);
   }

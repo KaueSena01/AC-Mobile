@@ -1,9 +1,9 @@
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../theme/constants.dart';
+import 'package:atlas_coins/src/utils/settings.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 
 const List<String> transactionType = <String>[
   TransactionType.deposit,
@@ -67,7 +67,9 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                       dropdownValue = value!;
                       _.setTransactionType(
                         value,
-                        widget.isPaymentOptions ? "Payment" : "Transaction",
+                        widget.isPaymentOptions
+                            ? DropDownType.paymentOptions
+                            : DropDownType.transactionType,
                       );
                     },
                   );

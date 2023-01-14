@@ -1,5 +1,6 @@
-import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
+
+import 'package:atlas_coins/src/theme/constants.dart';
 
 class ArrowBackWidget extends StatelessWidget {
   final void Function()? onPressed;

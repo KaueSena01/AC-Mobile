@@ -1,8 +1,9 @@
-import 'package:atlas_coins/src/components/input_text_widget.dart';
+import 'package:flutter/material.dart';
+
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/validators.dart';
-import 'package:flutter/material.dart';
+import 'package:atlas_coins/src/components/input_text_widget.dart';
 
 typedef StringCallback = void Function(String val);
 
@@ -15,8 +16,6 @@ class LoginForm extends StatelessWidget {
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
-
-  // final StringCallback callback;
 
   @override
   Widget build(BuildContext context) {

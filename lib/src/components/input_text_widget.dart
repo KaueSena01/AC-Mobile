@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter/services.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:brasil_fields/brasil_fields.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class InputTextWidget extends StatefulWidget {
   final TextEditingController? controller;

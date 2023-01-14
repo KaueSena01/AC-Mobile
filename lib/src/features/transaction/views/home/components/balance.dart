@@ -1,9 +1,10 @@
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/utils_services.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 
 class Balance extends StatelessWidget {
   Balance({
@@ -41,7 +42,9 @@ class Balance extends StatelessWidget {
                         children: [
                           Text(
                             transactionController.showBalance.value
-                                ? transactionController.totalPrice()
+                                ? utilsServices.totalPrice(
+                                    transactionController.transacitonList,
+                                  )
                                 : "R\$ ...",
                             style: AppTheme.lightText.displayLarge!.apply(
                               color: whiteColor,

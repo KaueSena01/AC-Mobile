@@ -1,6 +1,7 @@
-import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'package:atlas_coins/src/theme/constants.dart';
 
 class AppTheme {
   static const TextTheme lightText = TextTheme(

@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:flutter/material.dart';
 
 class InputSearch extends StatelessWidget {
   const InputSearch({

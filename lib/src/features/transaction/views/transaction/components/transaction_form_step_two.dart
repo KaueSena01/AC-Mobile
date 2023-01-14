@@ -1,13 +1,15 @@
-import 'package:atlas_coins/src/components/input_text_widget.dart';
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/theme/app_theme.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:atlas_coins/src/utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/utils/validators.dart';
+import 'package:atlas_coins/src/utils/utils_services.dart';
+import 'package:atlas_coins/src/components/input_text_widget.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+
 class TransactionFormStepTwo extends StatelessWidget {
-  const TransactionFormStepTwo({
+  TransactionFormStepTwo({
     Key? key,
     required this.titleController,
     required this.valueController,
@@ -21,6 +23,8 @@ class TransactionFormStepTwo extends StatelessWidget {
   final TextEditingController dateController;
   final TextEditingController descriptionController;
   final TransactionController transactionController;
+
+  UtilsServices utilsServices = UtilsServices();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +68,9 @@ class TransactionFormStepTwo extends StatelessWidget {
                   ),
                   Text(
                     transactionController.showBalance.value
-                        ? transactionController.totalPrice()
+                        ? utilsServices.totalPrice(
+                            transactionController.transacitonList,
+                          )
                         : "R\$ ...",
                     style: AppTheme.lightText.labelLarge!.apply(
                       color: whiteColor,

@@ -1,5 +1,6 @@
-import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
 
 part 'auth_result.freezed.dart';
 

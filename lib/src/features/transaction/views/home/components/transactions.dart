@@ -1,9 +1,10 @@
-import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/features/transaction/views/home/components/transaction.dart';
-import 'package:atlas_coins/src/theme/app_theme.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
+import 'package:atlas_coins/src/features/transaction/views/home/components/transaction.dart';
 
 class Transactions extends StatelessWidget {
   const Transactions({
@@ -40,7 +41,7 @@ class Transactions extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(top: size10),
                   child: Column(
-                    children: transactionController.allTransactions
+                    children: transactionController.transacitonList
                         .map(
                           (transaction) => Transaction(
                             transaction: transaction,
@@ -51,9 +52,9 @@ class Transactions extends StatelessWidget {
                 );
               },
             ),
-            if (transactionController.allTransactions.length <= 2)
+            if (transactionController.transacitonList.length <= 2)
               Container(
-                height: transactionController.allTransactions.length * 100,
+                height: transactionController.transacitonList.length * 100,
               ),
           ],
         ),

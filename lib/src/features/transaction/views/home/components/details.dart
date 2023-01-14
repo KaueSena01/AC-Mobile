@@ -1,10 +1,11 @@
-import 'package:atlas_coins/src/components/button_widget.dart';
-import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/utils_services.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 
 class Details extends StatelessWidget {
   const Details({

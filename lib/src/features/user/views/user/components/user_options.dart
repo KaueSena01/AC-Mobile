@@ -1,8 +1,9 @@
-import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
-import 'package:atlas_coins/src/theme/app_theme.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 
 class UserOptions extends StatelessWidget {
   const UserOptions({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class UserOptions extends StatelessWidget {
             color: lightColor,
           ),
           InkWell(
-            onTap: () => authController.signOut(),
+            onTap: () => authController.signOutController(),
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: size10),
               child: Row(
