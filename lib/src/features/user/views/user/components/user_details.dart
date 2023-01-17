@@ -21,7 +21,10 @@ class UserDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const UserImage(marginBottom: size20),
+        UserImage(
+          marginBottom: size20,
+          authController: authController,
+        ),
         Text(
           authController.authModel.name!,
           style: AppTheme.lightText.titleLarge!.apply(

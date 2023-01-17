@@ -7,9 +7,10 @@ class AuthModel {
   String? id;
   String? name;
   String? email;
+  String? imageUrl;
   String? token;
 
-  AuthModel({this.id, this.name, this.email, this.token});
+  AuthModel({this.id, this.name, this.email, this.imageUrl, this.token});
 
   factory AuthModel.fromJson(Map<String, dynamic> json) =>
       _$AuthModelFromJson(json);

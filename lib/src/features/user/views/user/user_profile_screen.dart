@@ -22,6 +22,12 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return BaseStructure(
+      onWillPop: () async {
+        Get.off(
+          trasactionController.navigatePageView(0),
+        );
+        return false;
+      },
       child: SingleChildScrollView(
         child: Hero(
           tag: "Hero",

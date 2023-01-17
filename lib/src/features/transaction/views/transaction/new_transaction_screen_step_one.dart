@@ -17,6 +17,12 @@ class NewTransactionScreenStepOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseStructure(
+      onWillPop: () async {
+        Get.off(
+          trasactionController.navigatePageView(0),
+        );
+        return false;
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

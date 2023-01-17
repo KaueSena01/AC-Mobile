@@ -11,6 +11,7 @@ class ButtonWidget extends StatelessWidget {
   final double marginBottom;
   final double marginLeft;
   final double marginRight;
+  final double width;
 
   const ButtonWidget({
     Key? key,
@@ -21,12 +22,14 @@ class ButtonWidget extends StatelessWidget {
     this.marginBottom = 0.0,
     this.marginLeft = 0.0,
     this.marginRight = 0.0,
+    this.width = 0,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: size45,
+      width: width,
       margin:
           EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
       child: ElevatedButton(

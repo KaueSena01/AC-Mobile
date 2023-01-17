@@ -34,15 +34,28 @@ class UserPresentation extends StatelessWidget {
                     shape: BoxShape.circle,
                     border: Border.all(
                       width: 2.5,
-                      color: primaryColor,
+                      color: authController.authModel.imageUrl == ""
+                          ? cardBackgroundColor
+                          : primaryColor,
                     ),
-                    image: const DecorationImage(
-                      image: NetworkImage(
-                        "https://avatars.githubusercontent.com/u/86299739?v=4",
-                      ),
-                      fit: BoxFit.cover,
-                    ),
+                    color: labelColor,
                   ),
+                  child: authController.authModel.imageUrl == ""
+                      ? Padding(
+                          padding: const EdgeInsets.all(size05),
+                          child: SvgPicture.asset(
+                            "assets/icons/person.svg",
+                            color: whiteColor,
+                          ),
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(size100),
+                          child: Image.network(
+                            authController.authModel.imageUrl!,
+                            height: size45,
+                            width: size45,
+                          ),
+                        ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
