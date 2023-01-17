@@ -1,6 +1,5 @@
 import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
-import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:get/get.dart';
@@ -35,18 +34,29 @@ class UserImage extends StatelessWidget {
           shape: BoxShape.circle,
           color: labelColor,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(size10),
-          child: SvgPicture.asset(
-            "assets/icons/person.svg",
-            color: whiteColor,
-          ),
-        ),
+        child: authController.authModel.imageUrl == ""
+            ? Padding(
+                padding: const EdgeInsets.all(size10),
+                child: SvgPicture.asset(
+                  "assets/icons/person.svg",
+                  color: whiteColor,
+                ),
+              )
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(size100),
+                child: Image.network(
+                  authController.authModel.imageUrl!,
+                  height: size45,
+                  width: size45,
+                ),
+              ),
       ),
       onTap: () {
-        Get.to(() => PictureUserProfile(
-              authController: authController,
-            ));
+        Get.to(
+          () => PictureUserProfile(
+            authController: authController,
+          ),
+        );
       },
     );
   }
@@ -211,7 +221,7 @@ class _PictureUserProfileState extends State<PictureUserProfile> {
   }
 }
 
-class DisplayPictureScreen extends StatelessWidget {
+class DisplayPictureScreen extends StatefulWidget {
   final String imagePath;
   final AuthController authController;
 
@@ -221,6 +231,11 @@ class DisplayPictureScreen extends StatelessWidget {
     required this.authController,
   }) : super(key: key);
 
+  @override
+  State<DisplayPictureScreen> createState() => _DisplayPictureScreenState();
+}
+
+class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(
@@ -250,20 +265,20 @@ class DisplayPictureScreen extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(size100),
                       child: Image.file(
-                        File(imagePath),
+                        File(widget.imagePath),
                         fit: BoxFit.cover,
                         filterQuality: FilterQuality.high,
                       ),
                     ),
                   ),
                   Text(
-                    authController.authModel.name!,
+                    widget.authController.authModel.name!,
                     style: AppTheme.lightText.titleLarge!.apply(
                       color: whiteColor,
                     ),
                   ),
                   Text(
-                    authController.authModel.email!,
+                    widget.authController.authModel.email!,
                     style: AppTheme.lightText.labelSmall!.apply(
                       color: labelColor,
                     ),
@@ -277,7 +292,7 @@ class DisplayPictureScreen extends StatelessWidget {
             marginLeft: size15,
             marginRight: size15,
             marginBottom: size20,
-            onPressed: () => Get.toNamed(AppRoutes.profileRoute),
+            onPressed: () async {},
           ),
         ],
       ),

@@ -49,6 +49,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   curved_navigation_bar: ^1.0.3
   camera: ^0.10.1
+  image_picker: ^0.8.6
 
 dev_dependencies:
   flutter_test:

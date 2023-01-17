@@ -116,21 +116,23 @@ class TransactionController extends GetxController {
     return showBalance.value;
   }
 
-  int navigatePageView(int page) {
-    switch (page) {
-      case 0:
-        Get.toNamed(AppRoutes.homeRoute);
-        break;
-      case 1:
-        Get.toNamed(AppRoutes.newTransactionRoute);
-        break;
-      case 2:
-        Get.toNamed(AppRoutes.newTransactionRoute);
-        break;
-      case 3:
-        Get.toNamed(AppRoutes.profileRoute);
-        break;
-    }
+  Future<int> navigatePageView(int page) async {
+    Future.delayed(const Duration(milliseconds: 750), () {
+      switch (page) {
+        case 0:
+          Get.toNamed(AppRoutes.homeRoute);
+          break;
+        case 1:
+          Get.toNamed(AppRoutes.newTransactionRoute);
+          break;
+        // case 2:
+        //   Get.toNamed(AppRoutes.newTransactionRoute);
+        //   break;
+        case 3:
+          Get.toNamed(AppRoutes.profileRoute);
+          break;
+      }
+    });
 
     pageIndex.value = page;
     update();
