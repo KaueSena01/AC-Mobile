@@ -12,6 +12,7 @@ class ButtonWidget extends StatelessWidget {
   final double marginLeft;
   final double marginRight;
   final double width;
+  final bool needCircularIndication;
 
   const ButtonWidget({
     Key? key,
@@ -23,6 +24,7 @@ class ButtonWidget extends StatelessWidget {
     this.marginLeft = 0.0,
     this.marginRight = 0.0,
     this.width = 0,
+    this.needCircularIndication = false,
   }) : super(key: key);
 
   @override
@@ -43,10 +45,17 @@ class ButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
         ),
-        child: Text(
-          label,
-          style: AppTheme.lightText.headlineMedium!.apply(color: whiteColor),
-        ),
+        child: needCircularIndication
+            ? const CircularProgressIndicator(
+                color: whiteColor,
+                strokeWidth: 2.0,
+              )
+            : Text(
+                label,
+                style: AppTheme.lightText.headlineMedium!.apply(
+                  color: whiteColor,
+                ),
+              ),
       ),
     );
   }

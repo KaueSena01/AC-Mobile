@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/components/modal_error.dart';
 import 'package:get/get.dart';
 
 import 'package:atlas_coins/src/routes/app_pages.dart';
@@ -17,6 +18,7 @@ class AuthController extends GetxController {
   AuthModel authModel = AuthModel();
   UtilsServices utilServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
+  RxBool loading = false.obs;
 
   Future<void> signUpController({
     required String name,
@@ -46,10 +48,14 @@ class AuthController extends GetxController {
     required String email,
     required String password,
   }) async {
+    loading.value = true;
+
     AuthResult authResult = await authRepository.signInRepository(
       email: email,
       password: password,
     );
+
+    loading.value = false;
 
     authResult.when(
       success: (authModel) {
@@ -58,8 +64,11 @@ class AuthController extends GetxController {
         update();
         Get.toNamed(AppRoutes.homeRoute);
       },
-      error: (message) {
-        // Mensagem de erro
+      error: (message) async {
+        defaultDialog(
+          message: message,
+          onPressed: () => Get.back(),
+        );
       },
     );
   }

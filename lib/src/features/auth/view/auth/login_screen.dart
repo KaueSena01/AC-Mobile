@@ -6,6 +6,7 @@ import 'package:atlas_coins/src/components/button_widget.dart';
 import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:atlas_coins/src/features/auth/view/auth/components/login_form.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -37,15 +38,28 @@ class LoginScreen extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.all(size20),
-              child: ButtonWidget(
-                label: "Entrar",
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    authController.signInController(
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
-                  }
+              child: GetX<AuthController>(
+                builder: (authController) {
+                  return ButtonWidget(
+                    label: "Entrar",
+                    needCircularIndication:
+                        authController.loading.value ? true : false,
+                    backgroundColor: authController.loading.value
+                        ? defaultColor
+                        : primaryColor,
+                    onPressed: authController.loading.value
+                        ? null
+                        : () {
+                            FocusScope.of(context).unfocus();
+
+                            if (_formKey.currentState!.validate()) {
+                              authController.signInController(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                            }
+                          },
+                  );
                 },
               ),
             ),

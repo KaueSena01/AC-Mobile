@@ -11,8 +11,7 @@ class AuthRepository {
       final auth = AuthModel.fromJson(result['result']);
       return AuthResult.success(auth);
     } else {
-      // retornar mensagem de erro
-      return AuthResult.error('Ocorreu um erro inesperado!');
+      return AuthResult.error(result['error']);
     }
   }
 
