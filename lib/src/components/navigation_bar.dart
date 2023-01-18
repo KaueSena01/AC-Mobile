@@ -19,7 +19,7 @@ Widget bottomNavigationBar(
     color: backgroundColor,
     height: size60,
     buttonBackgroundColor: cardBackgroundColor,
-    animationDuration: const Duration(milliseconds: 750),
+    animationDuration: const Duration(milliseconds: 500),
     items: <Widget>[
       _item(
         transactionController,

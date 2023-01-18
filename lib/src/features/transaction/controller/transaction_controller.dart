@@ -117,7 +117,7 @@ class TransactionController extends GetxController {
   }
 
   Future<int> navigatePageView(int page) async {
-    Future.delayed(const Duration(milliseconds: 750), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       switch (page) {
         case 0:
           Get.toNamed(AppRoutes.homeRoute);

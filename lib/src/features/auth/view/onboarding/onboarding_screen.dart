@@ -7,11 +7,11 @@ import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/utils/validators.dart';
+import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
 import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/components/input_text_widget.dart';
 import 'package:atlas_coins/src/components/outiline_button_widget.dart';
-import 'package:atlas_coins/src/features/auth/view/auth/login_screen.dart';
 import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:atlas_coins/src/features/auth/view/auth/register_screen_step_one.dart';
 
@@ -60,7 +60,7 @@ class OnboardingScreen extends StatelessWidget {
                   ButtonWidget(
                     label: "Entrar",
                     backgroundColor: primaryColor,
-                    onPressed: () => Get.to(LoginScreen()),
+                    onPressed: () => Get.toNamed(AppRoutes.registerLoginRoute),
                   ),
                   const SizedBox(height: size20),
                   GestureDetector(
