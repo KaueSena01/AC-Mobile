@@ -4,6 +4,68 @@ import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+Future<T?> bottomSheet<T>({
+  required String message,
+  required double height,
+  required void Function()? onPressed,
+}) {
+  return Get.bottomSheet(
+    Container(
+      height: height,
+      padding: const EdgeInsets.all(size20),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(size30),
+          topRight: Radius.circular(size30),
+        ),
+        color: cardBackgroundColor,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Image.asset(
+                  "assets/icons/fox.png",
+                  height: size100,
+                  width: size100,
+                ),
+                const SizedBox(
+                  height: size20,
+                ),
+                Text(
+                  "Ops, aconteceu um erro",
+                  style: AppTheme.lightText.titleMedium!.apply(
+                    color: whiteColor,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: height / size10),
+                Text(
+                  message,
+                  style: AppTheme.lightText.displaySmall!.apply(
+                    color: whiteColor,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+          ButtonWidget(
+            marginTop: size20,
+            marginLeft: size15,
+            marginRight: size15,
+            label: 'Fechar',
+            backgroundColor: expenseColor,
+            onPressed: onPressed,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 Future<T?> defaultDialog<T>({
   required String message,
   required void Function()? onPressed,

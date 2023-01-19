@@ -65,8 +65,9 @@ class AuthController extends GetxController {
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {
-        defaultDialog(
+        bottomSheet(
           message: message,
+          height: 330,
           onPressed: () => Get.back(),
         );
       },
