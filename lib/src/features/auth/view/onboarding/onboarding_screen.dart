@@ -60,7 +60,7 @@ class OnboardingScreen extends StatelessWidget {
                   ButtonWidget(
                     label: "Entrar",
                     backgroundColor: primaryColor,
-                    onPressed: () => Get.toNamed(AppRoutes.registerLoginRoute),
+                    onPressed: () => Get.toNamed(AppRoutes.loginRoute),
                   ),
                   const SizedBox(height: size20),
                   GestureDetector(
