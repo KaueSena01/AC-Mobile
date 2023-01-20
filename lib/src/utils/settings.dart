@@ -9,9 +9,9 @@ abstract class ButtonLabel {
 }
 
 abstract class AppInformation {
-  static const String appName = "Atlas Coins";
-  static const String appNameUpperCase = "ATLAS COINS";
-  static const String appNameLowerCase = "atlas coins";
+  static const String appName = "Manage Pay";
+  static const String appNameUpperCase = "Manage Pay";
+  static const String appNameLowerCase = "Manage Pay";
   static const String appIconLogo = "assets/icons/icon_logo.png";
   static const String appLogoPath = "assets/icons/logo.svg";
   static const String appLogoMini = "assets/icons/logo_mini.svg";
