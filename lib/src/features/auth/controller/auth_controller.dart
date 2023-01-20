@@ -39,7 +39,11 @@ class AuthController extends GetxController {
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {
-        // Mensagem de erro
+        bottomSheet(
+          message: message,
+          height: 330,
+          onPressed: () => Get.back(),
+        );
       },
     );
   }
@@ -97,7 +101,11 @@ class AuthController extends GetxController {
         // Realizar ação
       },
       error: (message) async {
-        // Mensagem de erro
+        bottomSheet(
+          message: message,
+          height: 330,
+          onPressed: () => Get.back(),
+        );
       },
     );
   }
@@ -120,7 +128,6 @@ class AuthController extends GetxController {
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {
-        // Mensagem de erro
         Get.toNamed(AppRoutes.onboardingRoute);
       },
     );

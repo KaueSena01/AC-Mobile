@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/utils/utils_services.dart';
+import 'package:atlas_coins/src/components/modal_error.dart';
 import 'package:atlas_coins/src/features/transaction/model/transaction_model.dart';
 import 'package:atlas_coins/src/features/transaction/result/transaction_result.dart';
 import 'package:atlas_coins/src/features/transaction/repository/transaction_repository.dart';
@@ -31,7 +32,11 @@ class TransactionController extends GetxController {
         update();
       },
       error: (message) {
-        // Mensagem de erro
+        bottomSheet(
+          message: message,
+          height: 330,
+          onPressed: () => Get.back(),
+        );
       },
     );
   }
@@ -62,7 +67,11 @@ class TransactionController extends GetxController {
         Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) {
-        // Mensagem de erro
+        bottomSheet(
+          message: message,
+          height: 330,
+          onPressed: () => Get.back(),
+        );
       },
     );
   }

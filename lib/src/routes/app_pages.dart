@@ -1,8 +1,10 @@
+import 'package:atlas_coins/src/features/auth/view/auth/login_screen.dart';
+import 'package:atlas_coins/src/features/auth/view/auth/register_screen_step_one.dart';
+import 'package:atlas_coins/src/features/auth/view/auth/register_screen_step_two.dart';
 import 'package:get/get.dart';
 
 import 'package:atlas_coins/src/bindigs/auth_binding.dart';
 import 'package:atlas_coins/src/bindigs/transaction_binding.dart';
-import 'package:atlas_coins/src/features/auth/view/auth/login_screen.dart';
 import 'package:atlas_coins/src/features/auth/view/splash/splash_screen.dart';
 import 'package:atlas_coins/src/features/transaction/views/home/home_screen.dart';
 import 'package:atlas_coins/src/features/user/views/user/user_profile_screen.dart';
@@ -23,7 +25,17 @@ abstract class AppPages {
       transition: Transition.cupertino,
     ),
     GetPage(
+      name: AppRoutes.registerNameRoute,
+      page: () => RegisterScreenSteepOne(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
       name: AppRoutes.registerLoginRoute,
+      page: () => RegisterScreenSteepTwo(),
+      transition: Transition.cupertino,
+    ),
+    GetPage(
+      name: AppRoutes.loginRoute,
       page: () => LoginScreen(),
       transition: Transition.cupertino,
     ),
@@ -52,6 +64,7 @@ abstract class AppPages {
 abstract class AppRoutes {
   static const String splashRoute = '/splash';
   static const String onboardingRoute = '/onboarding';
+  static const String loginRoute = '/login';
   static const String registerNameRoute = '/register';
   static const String registerLoginRoute = '/registerLogin';
   static const String homeRoute = '/home';
