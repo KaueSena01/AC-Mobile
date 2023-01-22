@@ -42,8 +42,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.splashRoute,
-      // home: const SplashScreen(),
+      initialRoute: AppRoutes.onboardingRoute,
     );
   }
 }
