@@ -38,8 +38,7 @@ class UserDetails extends StatelessWidget {
           ),
         ),
         ButtonWidget(
-          marginTop: size20,
-          marginBottom: size10,
+          margin: const EdgeInsets.only(top: size20, bottom: size10),
           label: "Editar perfil",
           onPressed: () {},
         ),

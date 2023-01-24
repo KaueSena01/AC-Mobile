@@ -13,7 +13,6 @@ class RegisterScreenSteepTwo extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final AuthController authController = AuthController();
   final _formKey = GlobalKey<FormState>();
   dynamic arguments = Get.arguments;
 
@@ -38,20 +37,31 @@ class RegisterScreenSteepTwo extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(size20),
-              child: ButtonWidget(
-                label: "Finalizar",
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    authController.signUpController(
-                      name: arguments[0]['Name'],
-                      email: emailController.text,
-                      password: passwordController.text,
-                    );
-                  }
-                },
-              ),
+            GetX<AuthController>(
+              builder: (authController) {
+                return ButtonWidget(
+                  margin: const EdgeInsets.all(size20),
+                  label: "Finalizar",
+                  circularIndicator:
+                      authController.loading.value ? true : false,
+                  backgroundColor: authController.loading.value
+                      ? defaultColor
+                      : primaryColor,
+                  onPressed: authController.loading.value
+                      ? null
+                      : () {
+                          FocusScope.of(context).unfocus();
+
+                          if (_formKey.currentState!.validate()) {
+                            authController.signUpController(
+                              name: arguments[0]['Name'],
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                          }
+                        },
+                );
+              },
             ),
           ],
         ),

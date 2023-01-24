@@ -5,26 +5,22 @@ import 'package:atlas_coins/src/theme/constants.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String label;
-  final Color backgroundColor;
   final void Function()? onPressed;
-  final double marginTop;
-  final double marginBottom;
-  final double marginLeft;
-  final double marginRight;
   final double width;
-  final bool needCircularIndication;
+  final double height;
+  final Color backgroundColor;
+  final bool circularIndicator;
+  final EdgeInsetsGeometry? margin;
 
   const ButtonWidget({
     Key? key,
     required this.label,
-    this.backgroundColor = primaryColor,
     required this.onPressed,
-    this.marginTop = 0.0,
-    this.marginBottom = 0.0,
-    this.marginLeft = 0.0,
-    this.marginRight = 0.0,
-    this.width = 0,
-    this.needCircularIndication = false,
+    this.width = 0.0,
+    this.height = 0.0,
+    this.backgroundColor = primaryColor,
+    this.margin,
+    this.circularIndicator = false,
   }) : super(key: key);
 
   @override
@@ -32,8 +28,7 @@ class ButtonWidget extends StatelessWidget {
     return Container(
       height: size45,
       width: width,
-      margin:
-          EdgeInsets.fromLTRB(marginLeft, marginTop, marginRight, marginBottom),
+      margin: margin,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -45,7 +40,7 @@ class ButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
         ),
-        child: needCircularIndication
+        child: circularIndicator
             ? const CircularProgressIndicator(
                 color: whiteColor,
                 strokeWidth: 2.0,

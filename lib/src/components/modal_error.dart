@@ -53,9 +53,7 @@ Future<T?> bottomSheet<T>({
             ),
           ),
           ButtonWidget(
-            marginTop: size20,
-            marginLeft: size15,
-            marginRight: size15,
+            margin: const EdgeInsets.fromLTRB(size15, size20, size15, size00),
             label: 'Fechar',
             backgroundColor: expenseColor,
             onPressed: onPressed,
@@ -90,9 +88,7 @@ Future<T?> defaultDialog<T>({
           textAlign: TextAlign.center,
         ),
         ButtonWidget(
-          marginTop: size20,
-          marginLeft: size15,
-          marginRight: size15,
+          margin: const EdgeInsets.fromLTRB(size15, size20, size15, size00),
           label: 'Fechar',
           backgroundColor: expenseColor,
           onPressed: onPressed,

@@ -289,9 +289,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
           ),
           ButtonWidget(
             label: "Salvar",
-            marginLeft: size15,
-            marginRight: size15,
-            marginBottom: size20,
+            margin: const EdgeInsets.fromLTRB(size15, size20, size15, size20),
             onPressed: () async {},
           ),
         ],

@@ -9,12 +9,6 @@ import 'package:atlas_coins/src/features/auth/repository/auth_repository.dart';
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
 
 class AuthController extends GetxController {
-  @override
-  void onInit() {
-    super.onInit();
-    checkTokenController();
-  }
-
   AuthModel authModel = AuthModel();
   UtilsServices utilServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
@@ -25,11 +19,15 @@ class AuthController extends GetxController {
     required String email,
     required String password,
   }) async {
+    loading.value = true;
+
     AuthResult authResult = await authRepository.signUpRepository(
       name: name,
       email: email,
       password: password,
     );
+
+    loading.value = false;
 
     authResult.when(
       success: (authModel) {

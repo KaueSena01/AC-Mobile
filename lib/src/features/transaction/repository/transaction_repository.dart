@@ -26,7 +26,7 @@ class TransactionRepository {
 
       return TransactionResult<List<TransactionModel>>.success(data);
     } else {
-      return TransactionResult.error('Ocorreu um erro inesperado');
+      return TransactionResult.error(result['error']);
     }
   }
 
@@ -59,7 +59,7 @@ class TransactionRepository {
       TransactionModel data = TransactionModel.fromJson(result['result']);
       return TransactionResult<TransactionModel>.success(data);
     } else {
-      return TransactionResult.error('Ocorreu um erro inesperado');
+      return TransactionResult.error(result['error']);
     }
   }
 }

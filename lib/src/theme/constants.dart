@@ -55,6 +55,9 @@ const double size90 = 90.0;
 const double size100 = 100.0;
 const double size110 = 110.0;
 const double size120 = 120.0;
+const double size150 = 150.0;
+const double size170 = 170.0;
+const double size200 = 200.0;
 
 const double minPadding = 10;
 const double defPadding = 15;

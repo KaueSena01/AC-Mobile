@@ -23,6 +23,7 @@ abstract class AppPages {
       name: AppRoutes.onboardingRoute,
       page: () => const OnboardingScreen(),
       transition: Transition.cupertino,
+      binding: AuthBinding(),
     ),
     GetPage(
       name: AppRoutes.registerNameRoute,
@@ -43,7 +44,6 @@ abstract class AppPages {
       name: AppRoutes.homeRoute,
       page: () => const HomeScreen(),
       bindings: [
-        AuthBinding(),
         TransactionBinding(),
       ],
       transition: Transition.cupertino,

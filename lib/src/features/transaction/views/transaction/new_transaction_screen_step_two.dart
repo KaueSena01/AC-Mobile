@@ -43,25 +43,35 @@ class NewTransactionScreenStepTwo extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.fromLTRB(size20, size20, size20, size20),
-              child: ButtonWidget(
-                label: "Continuar",
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    double valueConvert = double.parse(value.text);
+            GetX<TransactionController>(
+              builder: (transactionController) {
+                return ButtonWidget(
+                  margin:
+                      const EdgeInsets.fromLTRB(size20, size20, size20, size20),
+                  label: "Finalizar",
+                  circularIndicator:
+                      transactionController.loading.value ? true : false,
+                  backgroundColor: transactionController.loading.value
+                      ? defaultColor
+                      : primaryColor,
+                  onPressed: transactionController.loading.value
+                      ? null
+                      : () {
+                          if (_formKey.currentState!.validate()) {
+                            FocusScope.of(context).unfocus();
+                            double valueConvert = double.parse(value.text);
 
-                    transactionController.transactionCreationController(
-                      title: title.text,
-                      date: date.text,
-                      value: valueConvert,
-                      description: description.text,
-                    );
-                  }
-                  Get.to(NewTransactionScreenStepTwo());
-                },
-              ),
-            )
+                            transactionController.transactionCreationController(
+                              title: title.text,
+                              date: date.text,
+                              value: valueConvert,
+                              description: description.text,
+                            );
+                          }
+                        },
+                );
+              },
+            ),
           ],
         ),
       ),

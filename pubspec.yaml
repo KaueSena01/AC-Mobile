@@ -51,22 +51,7 @@ dependencies:
   camera: ^0.10.1
   image_picker: ^0.8.6
   connectivity_plus: ^3.0.2
-  flutter_native_splash: ^2.2.9
   flutter_launcher_icons: ^0.9.1
-
-flutter_native_splash:
-  color: "#25113E"
-  image: "assets/images/app_logo.png"
-  android: true
-  ios: true
-
-flutter_icons:
-  image_path: "assets/images/app_icon.png"
-  ios: true
-  remove_alpha_ios: true
-  android: "laucher_icon"
-  adaptive_icon_background: "#25113E"
-  adaptive_icon_foreground: "assets/images/app_icon.png"
 
 dev_dependencies:
   flutter_test:
