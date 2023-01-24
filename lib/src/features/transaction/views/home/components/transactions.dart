@@ -16,9 +16,13 @@ class Transactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.only(top: size30),
-      width: double.infinity,
+      width: size.width,
+      height: transactionController.transacitonList.length <= 2
+          ? size.height * 0.475
+          : null,
       decoration: const BoxDecoration(
         color: cardBackgroundColor,
         borderRadius: BorderRadius.only(
@@ -52,10 +56,6 @@ class Transactions extends StatelessWidget {
                 );
               },
             ),
-            if (transactionController.transacitonList.length <= 2)
-              Container(
-                height: transactionController.transacitonList.length * 100,
-              ),
           ],
         ),
       ),

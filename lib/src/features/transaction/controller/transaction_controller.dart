@@ -15,6 +15,7 @@ class TransactionController extends GetxController {
     findAllTransactionsController();
   }
 
+  RxBool loading = false.obs;
   List<TransactionModel> transacitonList = [];
   UtilsServices utilsServices = UtilsServices();
   TransactionRepository transactionRepository = TransactionRepository();
@@ -47,6 +48,8 @@ class TransactionController extends GetxController {
     required double value,
     required String description,
   }) async {
+    loading.value = true;
+
     String? token = await utilsServices.getStoredToken();
 
     TransactionResult result =
@@ -60,11 +63,13 @@ class TransactionController extends GetxController {
       description,
     );
 
+    loading.value = false;
+
     result.when(
       success: (transactions) {
         refresh();
         findAllTransactionsController();
-        Get.toNamed(AppRoutes.homeRoute);
+        navigatePageView(0);
       },
       error: (message) {
         bottomSheet(

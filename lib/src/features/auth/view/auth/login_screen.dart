@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/features/auth/view/auth/components/login_form.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:flutter/material.dart';
+
 import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
-import 'package:atlas_coins/src/features/auth/view/auth/components/login_form.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -13,7 +13,6 @@ class LoginScreen extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final AuthController authController = AuthController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -36,32 +35,30 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(size20),
-              child: GetX<AuthController>(
-                builder: (authController) {
-                  return ButtonWidget(
-                    label: "Entrar",
-                    needCircularIndication:
-                        authController.loading.value ? true : false,
-                    backgroundColor: authController.loading.value
-                        ? defaultColor
-                        : primaryColor,
-                    onPressed: authController.loading.value
-                        ? null
-                        : () {
-                            FocusScope.of(context).unfocus();
+            GetX<AuthController>(
+              builder: (authController) {
+                return ButtonWidget(
+                  margin: const EdgeInsets.all(size20),
+                  label: "Entrar",
+                  circularIndicator:
+                      authController.loading.value ? true : false,
+                  backgroundColor: authController.loading.value
+                      ? defaultColor
+                      : primaryColor,
+                  onPressed: authController.loading.value
+                      ? null
+                      : () {
+                          FocusScope.of(context).unfocus();
 
-                            if (_formKey.currentState!.validate()) {
-                              authController.signInController(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                            }
-                          },
-                  );
-                },
-              ),
+                          if (_formKey.currentState!.validate()) {
+                            authController.signInController(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                          }
+                        },
+                );
+              },
             ),
           ],
         ),
