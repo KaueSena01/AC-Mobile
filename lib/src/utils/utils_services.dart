@@ -110,8 +110,8 @@ class UtilsServices {
   }
 
   String dateFormart(String date) {
-    var month = date.substring(3, 5);
     var day = date.substring(0, 2);
+    var month = date.substring(3, 5);
     var year = date.substring(6, 10);
 
     var result = "";

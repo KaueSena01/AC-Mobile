@@ -1,12 +1,16 @@
 String? validateName(name) {
   if (name == null || name.isEmpty) {
-    return "Digite seu nome";
+    return "- Digite seu nome";
   }
 
   final names = name.split(' ');
 
   if (names.length == 1) {
-    return 'Digite seu nome completo!';
+    return '- Digite seu nome completo!';
+  }
+
+  if (name.length <= 8) {
+    return '- Nome muito pequeno!';
   }
 
   return null;
@@ -14,7 +18,12 @@ String? validateName(name) {
 
 String? validateEmail(email) {
   if (email == null || email.isEmpty) {
-    return "Digite seu e-mail";
+    return "- Digite seu e-mail";
+  }
+
+  final exp = RegExp(r"^([\w\.-_]+)(@+)([\w]+)((\.+\w{2,3}){1,2})$");
+  if (!exp.hasMatch(email ?? '')) {
+    return '- Email invalido!';
   }
 
   return null;
@@ -22,7 +31,11 @@ String? validateEmail(email) {
 
 String? validatePassword(password) {
   if (password == null || password.isEmpty) {
-    return "Digite sua senha";
+    return "- Digite sua senha";
+  }
+
+  if (password.length < 8) {
+    return "- A senha deve ter mais de 8 caractéres";
   }
 
   return null;
@@ -30,7 +43,7 @@ String? validatePassword(password) {
 
 String? validateNewPassword(newPassword) {
   if (newPassword == null || newPassword.isEmpty) {
-    return "Digite a nova senha";
+    return "- Digite a nova senha";
   }
 
   return null;
@@ -38,7 +51,7 @@ String? validateNewPassword(newPassword) {
 
 String? validatePasswordConfirmation(newPassword) {
   if (newPassword == null || newPassword.isEmpty) {
-    return "Por favor, confime a senha";
+    return "- Por favor, confime a senha";
   }
 
   return null;
@@ -46,15 +59,7 @@ String? validatePasswordConfirmation(newPassword) {
 
 String? validateTransacionTitle(title) {
   if (title == null || title.isEmpty) {
-    return "Por favor, informe um título";
-  }
-
-  return null;
-}
-
-String? validateTransacionValue(value) {
-  if (value == null || value.isEmpty) {
-    return "Por favor, insira um valor válido";
+    return "- Por favor, informe um título";
   }
 
   return null;
@@ -62,15 +67,7 @@ String? validateTransacionValue(value) {
 
 String? validateTransacionDate(date) {
   if (date == null || date.isEmpty) {
-    return "A data deve ser preenchida";
-  }
-
-  return null;
-}
-
-String? validateTransacionDescription(description) {
-  if (description == null || description.isEmpty) {
-    return "Por favor, informe uma descrição";
+    return "- A data deve ser preenchida";
   }
 
   return null;

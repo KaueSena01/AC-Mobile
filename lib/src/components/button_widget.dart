@@ -9,6 +9,7 @@ class ButtonWidget extends StatelessWidget {
   final double width;
   final double height;
   final Color backgroundColor;
+  final bool border;
   final bool circularIndicator;
   final EdgeInsetsGeometry? margin;
 
@@ -19,6 +20,7 @@ class ButtonWidget extends StatelessWidget {
     this.width = 0.0,
     this.height = 0.0,
     this.backgroundColor = primaryColor,
+    this.border = true,
     this.margin,
     this.circularIndicator = false,
   }) : super(key: key);
@@ -34,7 +36,11 @@ class ButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: size30),
           backgroundColor: backgroundColor,
-          side: BorderSide(color: backgroundColor),
+          side: border
+              ? BorderSide(
+                  color: onPressed == null ? labelColor : primaryColor,
+                )
+              : null,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
@@ -48,7 +54,7 @@ class ButtonWidget extends StatelessWidget {
             : Text(
                 label,
                 style: AppTheme.lightText.headlineMedium!.apply(
-                  color: whiteColor,
+                  color: onPressed == null ? labelColor : whiteColor,
                 ),
               ),
       ),

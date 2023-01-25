@@ -43,6 +43,12 @@ class _InputTextWidgetState extends State<InputTextWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Text(
+          widget.label!,
+          style: AppTheme.lightText.labelSmall!.apply(
+            color: primaryColor,
+          ),
+        ),
         SizedBox(
           height: !widget.isDescription! ? size60 : null,
           child: TextFormField(
@@ -64,14 +70,14 @@ class _InputTextWidgetState extends State<InputTextWidget> {
                     DataInputFormatter(),
                   ],
             decoration: InputDecoration(
-              labelText: widget.label,
-              labelStyle: AppTheme.lightText.labelSmall!.apply(
-                color: labelColor,
-              ),
               isDense: true,
               hintText: widget.placeholder,
+              fillColor: cardBackgroundColor,
               floatingLabelStyle: AppTheme.lightText.labelLarge!.apply(
                 color: primaryColor,
+              ),
+              hintStyle: AppTheme.lightText.headlineSmall!.apply(
+                color: labelColor,
               ),
               border: const UnderlineInputBorder(),
               focusedBorder: const UnderlineInputBorder(
@@ -85,6 +91,15 @@ class _InputTextWidgetState extends State<InputTextWidget> {
                   color: labelColor,
                   width: 2,
                 ),
+              ),
+              errorBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: primaryColor,
+                  width: 2,
+                ),
+              ),
+              errorStyle: AppTheme.lightText.labelSmall!.apply(
+                color: labelColor,
               ),
             ),
           ),
