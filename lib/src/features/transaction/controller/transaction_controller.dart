@@ -12,19 +12,23 @@ class TransactionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    findAllTransactionsController();
+    findAllTransactionsController('');
   }
 
   RxBool loading = false.obs;
+  RxString searchTitle = ''.obs;
   List<TransactionModel> transacitonList = [];
   UtilsServices utilsServices = UtilsServices();
   TransactionRepository transactionRepository = TransactionRepository();
 
-  Future<void> findAllTransactionsController() async {
+  Future<void> findAllTransactionsController(String title) async {
     String? token = await utilsServices.getStoredToken();
 
     TransactionResult<List<TransactionModel>> transactionResult =
-        await transactionRepository.findAllTransactionsRepository(token!);
+        await transactionRepository.findAllTransactionsRepository(
+      token!,
+      title,
+    );
 
     transactionResult.when(
       success: (transactionModel) {
@@ -68,7 +72,7 @@ class TransactionController extends GetxController {
     result.when(
       success: (transactions) {
         refresh();
-        findAllTransactionsController();
+        findAllTransactionsController('');
         navigatePageView(0);
       },
       error: (message) {
@@ -135,6 +139,7 @@ class TransactionController extends GetxController {
       switch (page) {
         case 0:
           Get.toNamed(AppRoutes.homeRoute);
+          findAllTransactionsController('');
           break;
         case 1:
           Get.toNamed(AppRoutes.newTransactionRoute);

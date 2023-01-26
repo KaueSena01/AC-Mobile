@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen>
                   children: [
                     UserPresentation(authController: authController),
                     Balance(transactionController: transactionController),
-                    const InputSearch(description: "Pesquisar por..."),
+                    InputSearch(description: "Pesquisar por..."),
                     GetBuilder<TransactionController>(
                       builder: (_) {
                         return _.transacitonList.isNotEmpty

@@ -44,7 +44,7 @@ class TransactionFormStepTwo extends StatelessWidget {
             label: "Título",
             textInputType: TextInputType.text,
             controller: titleController,
-            validator: validateTransacionTitle,
+            validator: validateTransactionTitle,
           ),
           const SizedBox(height: size15),
           InputTextWidget(
@@ -96,7 +96,7 @@ class TransactionFormStepTwo extends StatelessWidget {
             textInputType: TextInputType.datetime,
             isDate: true,
             controller: dateController,
-            validator: validateTransacionDate,
+            validator: validateTransactionDate,
           ),
           const SizedBox(height: size15),
           InputTextWidget(
@@ -106,6 +106,7 @@ class TransactionFormStepTwo extends StatelessWidget {
             minLines: 1,
             maxLines: 3,
             controller: descriptionController,
+            validator: validateTransactionDescription,
           ),
           Container(
             margin: const EdgeInsets.only(top: 03),

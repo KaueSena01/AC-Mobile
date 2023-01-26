@@ -57,7 +57,7 @@ String? validatePasswordConfirmation(newPassword) {
   return null;
 }
 
-String? validateTransacionTitle(title) {
+String? validateTransactionTitle(title) {
   if (title == null || title.isEmpty) {
     return "- Por favor, informe um título";
   }
@@ -65,9 +65,33 @@ String? validateTransacionTitle(title) {
   return null;
 }
 
-String? validateTransacionDate(date) {
+String? validateTransactionDate(date) {
   if (date == null || date.isEmpty) {
     return "- A data deve ser preenchida";
+  }
+
+  int day = int.parse(date.substring(0, 2));
+  int month = int.parse(date.substring(3, 5));
+  int year = int.parse(date.substring(6, 10));
+
+  String dateTime = DateTime.now().toString();
+
+  int currentYear = int.parse(dateTime.substring(0, 4));
+
+  if (day > 32 || month > 13 || year > currentYear) {
+    return "- Data inválida";
+  }
+
+  return null;
+}
+
+String? validateTransactionDescription(description) {
+  if (description == null || description.isEmpty) {
+    return "- Por favor, informe uma descrição";
+  }
+
+  if (description.length <= 12) {
+    return "- Descrição muito curta";
   }
 
   return null;
