@@ -19,12 +19,16 @@ class NewTransactionScreenStepTwo extends StatelessWidget {
       Get.find<TransactionController>();
 
   final _formKey = GlobalKey<FormState>();
+  RxBool enabledButton = false.obs;
 
   @override
   Widget build(BuildContext context) {
     return BaseStructure(
       child: Form(
         key: _formKey,
+        onChanged: () {
+          enabledButton.value = _formKey.currentState!.validate();
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -54,7 +58,8 @@ class NewTransactionScreenStepTwo extends StatelessWidget {
                   backgroundColor: transactionController.loading.value
                       ? defaultColor
                       : primaryColor,
-                  onPressed: transactionController.loading.value
+                  onPressed: !enabledButton.value ||
+                          transactionController.loading.value
                       ? null
                       : () {
                           if (_formKey.currentState!.validate()) {

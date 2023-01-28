@@ -37,6 +37,7 @@ class RegisterFormStepOne extends StatelessWidget {
           const SizedBox(height: size20),
           InputTextWidget(
             label: "Seu nome",
+            placeholder: "Digite seu nome",
             textInputType: TextInputType.name,
             controller: nameController,
             validator: validateName,

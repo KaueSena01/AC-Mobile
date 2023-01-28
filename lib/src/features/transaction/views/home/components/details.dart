@@ -126,6 +126,7 @@ class Details extends StatelessWidget {
             ButtonWidget(
               label: "Fechar",
               backgroundColor: detailsColor,
+              border: false,
               onPressed: () => Get.back(),
             ),
           ],

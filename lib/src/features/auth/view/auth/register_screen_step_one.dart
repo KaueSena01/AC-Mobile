@@ -13,12 +13,16 @@ class RegisterScreenSteepOne extends StatelessWidget {
 
   final TextEditingController nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  RxBool enabledButton = false.obs;
 
   @override
   Widget build(BuildContext context) {
     return BaseStructure(
       child: Form(
         key: _formKey,
+        onChanged: () {
+          enabledButton.value = _formKey.currentState!.validate();
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -33,20 +37,22 @@ class RegisterScreenSteepOne extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.all(size20),
-              child: ButtonWidget(
+            Obx(
+              () => ButtonWidget(
+                margin: const EdgeInsets.all(size20),
                 label: "Continuar",
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Get.toNamed(
-                      AppRoutes.registerLoginRoute,
-                      arguments: [
-                        {"Name": nameController.text},
-                      ],
-                    );
-                  }
-                },
+                onPressed: !enabledButton.value
+                    ? null
+                    : () {
+                        if (_formKey.currentState!.validate()) {
+                          Get.toNamed(
+                            AppRoutes.registerLoginRoute,
+                            arguments: [
+                              {"Name": nameController.text},
+                            ],
+                          );
+                        }
+                      },
               ),
             ),
           ],

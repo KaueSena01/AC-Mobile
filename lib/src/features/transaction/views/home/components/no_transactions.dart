@@ -30,23 +30,25 @@ class NoTransactions extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(size15, size20, size15, size20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
               "Meu extrato",
               style: AppTheme.lightText.titleMedium!.apply(
                 color: whiteColor,
               ),
+              textAlign: TextAlign.center,
             ),
             Container(
               margin: const EdgeInsets.only(top: size110),
               child: Text(
-                "Você ainda não realizou\nnenhuma transação :-(",
+                "Não foi possível encontrar\nsuas transação :-(",
                 style: AppTheme.lightText.headlineSmall!.apply(
                   color: labelColor,
                 ),
                 textAlign: TextAlign.center,
               ),
-            )
+            ),
           ],
         ),
       ),

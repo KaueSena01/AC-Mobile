@@ -44,56 +44,50 @@ class TransactionFormStepTwo extends StatelessWidget {
             label: "Título",
             textInputType: TextInputType.text,
             controller: titleController,
-            validator: validateTransacionTitle,
+            validator: validateTransactionTitle,
           ),
           const SizedBox(height: size15),
           InputTextWidget(
             label: "Valor",
             textInputType: TextInputType.number,
             controller: valueController,
-            validator: validateTransacionValue,
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 03),
-            child: Obx(
-              () => Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Saldo disponível: ",
-                    style: AppTheme.lightText.labelMedium!.apply(
+          Obx(
+            () => Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Saldo disponível: ",
+                  style: AppTheme.lightText.labelMedium!.apply(
+                    color: labelColor,
+                  ),
+                ),
+                Text(
+                  transactionController.showBalance.value
+                      ? utilsServices.totalPrice(
+                          transactionController.transacitonList,
+                        )
+                      : "R\$ ...",
+                  style: AppTheme.lightText.labelLarge!.apply(
+                    color: whiteColor,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    transactionController.showAndHideBalance();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: size10, right: size10),
+                    child: Icon(
+                      transactionController.showBalance.value
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      size: size20,
                       color: labelColor,
                     ),
                   ),
-                  Text(
-                    transactionController.showBalance.value
-                        ? utilsServices.totalPrice(
-                            transactionController.transacitonList,
-                          )
-                        : "R\$ ...",
-                    style: AppTheme.lightText.labelLarge!.apply(
-                      color: whiteColor,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      transactionController.showAndHideBalance();
-                    },
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(left: size10, right: size10),
-                      child: Icon(
-                        transactionController.showBalance.value
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        size: size20,
-                        color: labelColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: size15),
@@ -102,7 +96,7 @@ class TransactionFormStepTwo extends StatelessWidget {
             textInputType: TextInputType.datetime,
             isDate: true,
             controller: dateController,
-            validator: validateTransacionDate,
+            validator: validateTransactionDate,
           ),
           const SizedBox(height: size15),
           InputTextWidget(
@@ -112,7 +106,7 @@ class TransactionFormStepTwo extends StatelessWidget {
             minLines: 1,
             maxLines: 3,
             controller: descriptionController,
-            validator: validateTransacionDescription,
+            validator: validateTransactionDescription,
           ),
           Container(
             margin: const EdgeInsets.only(top: 03),

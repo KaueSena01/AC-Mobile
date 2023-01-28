@@ -93,12 +93,6 @@ class AppTheme {
     canvasColor: primaryColor,
     primaryColor: primaryColor,
     scaffoldBackgroundColor: lightColor,
-    colorScheme: const ColorScheme.light(
-      primary: primaryColor,
-      secondary: secondaryColor,
-      tertiary: tertiaryColor,
-      background: backgroundColor,
-    ),
     cardTheme: const CardTheme(
       color: Colors.white,
       elevation: 0,
@@ -117,6 +111,18 @@ class AppTheme {
           color: primaryColor,
           width: 2,
         ),
+      ),
+      errorBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: labelColor,
+          width: 2,
+        ),
+      ),
+      errorStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w300,
+        fontFamily: 'Poppins',
+        color: labelColor,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -139,5 +145,11 @@ class AppTheme {
         ),
       ),
     ),
+    colorScheme: const ColorScheme.light(
+      primary: primaryColor,
+      secondary: secondaryColor,
+      tertiary: tertiaryColor,
+      background: backgroundColor,
+    ).copyWith(error: labelColor),
   );
 }

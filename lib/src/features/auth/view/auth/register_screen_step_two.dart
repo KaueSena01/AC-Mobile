@@ -15,12 +15,16 @@ class RegisterScreenSteepTwo extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   dynamic arguments = Get.arguments;
+  RxBool enabledButton = false.obs;
 
   @override
   Widget build(BuildContext context) {
     return BaseStructure(
       child: Form(
         key: _formKey,
+        onChanged: () {
+          enabledButton.value = _formKey.currentState!.validate();
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -47,19 +51,20 @@ class RegisterScreenSteepTwo extends StatelessWidget {
                   backgroundColor: authController.loading.value
                       ? defaultColor
                       : primaryColor,
-                  onPressed: authController.loading.value
-                      ? null
-                      : () {
-                          FocusScope.of(context).unfocus();
+                  onPressed:
+                      !enabledButton.value || authController.loading.value
+                          ? null
+                          : () {
+                              FocusScope.of(context).unfocus();
 
-                          if (_formKey.currentState!.validate()) {
-                            authController.signUpController(
-                              name: arguments[0]['Name'],
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
-                          }
-                        },
+                              if (_formKey.currentState!.validate()) {
+                                authController.signUpController(
+                                  name: arguments[0]['Name'],
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                );
+                              }
+                            },
                 );
               },
             ),

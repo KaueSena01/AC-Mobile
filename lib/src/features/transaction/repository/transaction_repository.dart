@@ -9,10 +9,16 @@ class TransactionRepository {
   Future<TransactionResult<List<TransactionModel>>>
       findAllTransactionsRepository(
     String token,
+    String title,
   ) async {
     final result = await _httpManager.restRequest(
       url: EndPoints.listtransactions,
       method: HttpMethods.post,
+      body: title.isNotEmpty || title != ""
+          ? {
+              'title': title,
+            }
+          : null,
       headers: {
         'X-Parse-Session-Token': token,
       },
