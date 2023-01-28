@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 abstract class HttpMethods {
   static const String post = 'POST';
@@ -15,13 +16,16 @@ class HttpManager {
     Map? headers,
     Map? body,
   }) async {
+    String applicationId = dotenv.get("APPLICATION_ID", fallback: "");
+    String restApiKey = dotenv.get("REST_API_KEY", fallback: "");
+
     final defaultHeaders = headers?.cast<String, String>() ?? {}
       ..addAll(
         {
           'content-type': 'application/json',
           'accept': 'application/json',
-          'X-Parse-Application-Id': 'jcWlaydMGK4tdSW1f1QiLyJf5g3ZtYJfcqJoHGht',
-          'X-Parse-REST-API-Key': 'PjGilH7TDTXAkxsIXdtyeYpX9mXjPW17GkzA2NXa',
+          'X-Parse-Application-Id': applicationId,
+          'X-Parse-REST-API-Key': restApiKey,
         },
       );
 

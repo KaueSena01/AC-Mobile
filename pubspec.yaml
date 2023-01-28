@@ -45,7 +45,6 @@ dependencies:
   mask_text_input_formatter: ^2.4.0
   intl: ^0.17.0
   brasil_fields: ^1.6.0
-  flutter_masked_text: ^0.8.0
   flutter_dotenv: ^5.0.2
   curved_navigation_bar: ^1.0.3
   camera: ^0.10.1
