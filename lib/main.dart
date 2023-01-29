@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,26 +24,41 @@ Future<void> main() async {
       statusBarIconBrightness: Brightness.light,
     ),
   );
-  runApp(const MyApp());
+
+  Get.put(AuthController());
+
+  var authController = Get.find<AuthController>();
+
+  var router = await authController.checkTokenController();
+
+  runApp(MyApp(
+    router: router,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({
+    Key? key,
+    required this.router,
+  }) : super(key: key);
+
+  final String? router;
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: AppInformation.appName,
       localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate
+        GlobalCupertinoLocalizations.delegate,
       ],
       debugShowCheckedModeBanner: false,
       supportedLocales: const [Locale("pt", "BR")],
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.onboardingRoute,
+      initialRoute: router,
     );
   }
 }

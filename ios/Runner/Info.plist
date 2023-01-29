@@ -46,6 +46,8 @@
 		<key>NSCameraUsageDescription</key>
 		<string>I must access the camera to take pictures for the user to set his profile picture</string>
 		<key>UIStatusBarHidden</key>
+		<key>NSFaceIDUsageDescription</key>
+		<string>Biometric login to authenticate the user</string>
 		<false/>
 	</dict>
 </plist>

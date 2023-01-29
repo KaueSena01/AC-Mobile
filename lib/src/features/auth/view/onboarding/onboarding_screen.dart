@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +8,8 @@ import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  OnboardingScreen({Key? key}) : super(key: key);
+  AuthController authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +98,8 @@ class OnboardingScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onTap: () => Get.toNamed(AppRoutes.loginRoute),
+                          onTap: () =>
+                              authController.checkBiometricController(),
                         ),
                       ),
                       const SizedBox(width: size20),

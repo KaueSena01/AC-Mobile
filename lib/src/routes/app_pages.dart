@@ -21,7 +21,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.onboardingRoute,
-      page: () => const OnboardingScreen(),
+      page: () => OnboardingScreen(),
       transition: Transition.cupertino,
       binding: AuthBinding(),
     ),
