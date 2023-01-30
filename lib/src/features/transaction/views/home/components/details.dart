@@ -84,6 +84,10 @@ class Details extends StatelessWidget {
                               color: backgroundColor,
                               borderRadius: BorderRadius.circular(size25),
                             ),
+                            child: Icon(
+                              Icons.edit,
+                              color: detailsColor,
+                            ),
                           )
                         ],
                       ),

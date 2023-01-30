@@ -21,7 +21,7 @@ class Transactions extends StatelessWidget {
       margin: const EdgeInsets.only(top: size30),
       width: size.width,
       height: transactionController.transacitonList.length <= 2
-          ? size.height * 0.475
+          ? size.height * 0.55
           : null,
       decoration: const BoxDecoration(
         color: cardBackgroundColor,
