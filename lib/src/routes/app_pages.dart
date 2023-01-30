@@ -1,3 +1,4 @@
+import 'package:atlas_coins/src/features/auth/view/auth/fingerprint_screen.dart';
 import 'package:atlas_coins/src/features/auth/view/auth/login_screen.dart';
 import 'package:atlas_coins/src/features/auth/view/auth/register_screen_step_one.dart';
 import 'package:atlas_coins/src/features/auth/view/auth/register_screen_step_two.dart';
@@ -58,6 +59,11 @@ abstract class AppPages {
       page: () => NewTransactionScreenStepOne(),
       transition: Transition.cupertino,
     ),
+    GetPage(
+      name: AppRoutes.fingerprint,
+      page: () => Fingerprint(),
+      transition: Transition.cupertino,
+    ),
   ];
 }
 
@@ -70,4 +76,5 @@ abstract class AppRoutes {
   static const String homeRoute = '/home';
   static const String profileRoute = '/profile';
   static const String newTransactionRoute = '/newTransaction';
+  static const String fingerprint = '/fingerprint';
 }

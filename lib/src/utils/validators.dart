@@ -35,7 +35,7 @@ String? validatePassword(password) {
   }
 
   if (password.length < 8) {
-    return "- A senha deve ter mais de 8 caractéres";
+    return "- A senha deve ter pelo menos 8 caractéres";
   }
 
   return null;

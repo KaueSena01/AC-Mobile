@@ -15,6 +15,7 @@ class AuthController extends GetxController {
   AuthModel authModel = AuthModel();
   UtilsServices utilServices = UtilsServices();
   AuthRepository authRepository = AuthRepository();
+  LocalAuthentication auth = LocalAuthentication();
   RxBool loading = false.obs;
 
   Future<void> signUpController({
@@ -111,60 +112,40 @@ class AuthController extends GetxController {
     );
   }
 
-  Future<String?> checkTokenController() async {
+  Future<void> checkTokenController() async {
+    loading.value = true;
+
     String? token = await utilServices.getStoredToken();
 
-    if (token == null) {
-      // Get.toNamed(AppRoutes.onboardingRoute);
-      return AppRoutes.onboardingRoute;
-    }
+    AuthResult authResult = await authRepository.checkTokenRepository(token!);
 
-    AuthResult authResult = await authRepository.checkTokenRepository(token);
+    loading.value = false;
 
     authResult.when(
       success: (authModel) {
         this.authModel = authModel;
         utilServices.storeToken(authModel: authModel);
         update();
-
-        // Get.toNamed(AppRoutes.homeRoute);
+        Get.toNamed(AppRoutes.homeRoute);
       },
       error: (message) async {
-        // Get.toNamed(AppRoutes.onboardingRoute);
+        Get.toNamed(AppRoutes.onboardingRoute);
       },
     );
-
-    return AppRoutes.homeRoute;
   }
 
   Future<void> checkBiometricController() async {
-    String? token = await utilServices.getStoredToken();
-
-    if (token == null) {
-      Get.toNamed(AppRoutes.loginRoute);
-      return;
-    }
-
-    final LocalAuthentication auth = LocalAuthentication();
-
     try {
-      final bool isDeviceSupported = await auth.isDeviceSupported();
-
-      if (!isDeviceSupported) {
-        return;
-      }
-
       final bool didAuthenticate = await auth.authenticate(
         localizedReason:
-            'Utilize a biometria para uma autenticação rápida e segura',
+            'Utilize a biometria para uma autenticação rápida e segura.',
         options: const AuthenticationOptions(
-          biometricOnly: true,
           useErrorDialogs: false,
           sensitiveTransaction: false,
         ),
         authMessages: const <AuthMessages>[
           AndroidAuthMessages(
-            signInTitle: 'Autenticação por biometria',
+            signInTitle: 'Autenticação por Biometria',
             biometricHint: '',
             cancelButton: 'Não obrigado',
           ),
@@ -176,11 +157,20 @@ class AuthController extends GetxController {
 
       if (didAuthenticate) {
         checkTokenController();
-      } else {
-        Get.toNamed(AppRoutes.loginRoute);
       }
     } catch (e) {
       Get.toNamed(AppRoutes.loginRoute);
     }
+  }
+
+  Future<String?> checkDeviceSettings() async {
+    String? token = await utilServices.getStoredToken();
+    bool isDeviceSupported = await auth.isDeviceSupported();
+
+    if (token == null || !isDeviceSupported) {
+      return AppRoutes.onboardingRoute;
+    }
+
+    return AppRoutes.fingerprint;
   }
 }

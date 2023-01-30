@@ -1,4 +1,3 @@
-import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,11 +5,11 @@ import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'src/routes/app_pages.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/settings.dart';
-
-import 'src/routes/app_pages.dart';
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 
 List<CameraDescription> cameras = [];
 
@@ -25,24 +24,24 @@ Future<void> main() async {
     ),
   );
 
-  Get.put(AuthController());
+  AuthController authController = Get.put(AuthController());
 
-  var authController = Get.find<AuthController>();
+  String? page = await authController.checkDeviceSettings();
 
-  var router = await authController.checkTokenController();
-
-  runApp(MyApp(
-    router: router,
-  ));
+  runApp(
+    ManagePAY(
+      page: page,
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({
+class ManagePAY extends StatelessWidget {
+  const ManagePAY({
     Key? key,
-    required this.router,
+    required this.page,
   }) : super(key: key);
 
-  final String? router;
+  final String? page;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
       getPages: AppPages.pages,
-      initialRoute: router,
+      initialRoute: page,
     );
   }
 }

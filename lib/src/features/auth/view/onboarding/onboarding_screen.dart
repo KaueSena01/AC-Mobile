@@ -68,7 +68,7 @@ class OnboardingScreen extends StatelessWidget {
                             size20,
                           ),
                           child: Text(
-                            "A Manage PAY é uma plataforma onde a administração de transações é o foco principal, oferecendo a melhor experiência possível para seus usuários.",
+                            "A Manage PAY é uma plataforma onde a administração de transações é o foco principal, oferecendo a melhor experiência para seus usuários.",
                             style: AppTheme.lightText.headlineSmall!.apply(
                               color: labelColor,
                             ),
@@ -83,7 +83,7 @@ class OnboardingScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 1,
-                        child: InkWell(
+                        child: GestureDetector(
                           child: Container(
                             height: size50,
                             alignment: Alignment.center,
@@ -98,14 +98,13 @@ class OnboardingScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onTap: () =>
-                              authController.checkBiometricController(),
+                          onTap: () => Get.toNamed(AppRoutes.loginRoute),
                         ),
                       ),
                       const SizedBox(width: size20),
                       Expanded(
                         flex: 2,
-                        child: InkWell(
+                        child: GestureDetector(
                           child: Container(
                             height: size50,
                             alignment: Alignment.center,
