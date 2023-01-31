@@ -13,6 +13,7 @@ This application used the Flutter tool and presents characteristics such as
 > Some of these features had to be changed and developed in native code.
 
 - [x] Communication with external API
+- [x] Cloud Code
 - [x] State management
 - [x] Route management
 - [x] Camera acess
@@ -31,90 +32,72 @@ After the first access, the user will be authenticated by the type of biometrics
     <img width="300" alt="" src="https://github.com/KaueSena01/AC-Mobile/blob/release-v1/assets/readme/load.jpeg">
   </td>
 </tr>
-</div>
+</table></div>
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
-<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
-* Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
-* Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
-* Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
+Once the user is logged in, his statement is presented and he can search by title of transactions
 
-## 🚀 Instalando <nome_do_projeto>
+<div style="text-align: center"><table><tr>
+   <td style="text-align: center">
+    <img width="300" alt="" src="https://github.com/KaueSena01/AC-Mobile/blob/release-v1/assets/readme/pix.jpeg">
+  </td>
+  <td style="text-align: center">
+    <img width="300" alt="" src="https://github.com/KaueSena01/AC-Mobile/blob/release-v1/assets/readme/search.jpeg">
+  </td>
+</tr>
+</table></div>
 
-Para instalar o <nome_do_projeto>, siga estas etapas:
+The user can consult his profile and change his image.
 
-Linux e macOS:
+<div style="text-align: center"><table><tr>
+   <td style="text-align: center">
+    <img width="300" alt="" src="https://github.com/KaueSena01/AC-Mobile/blob/release-v1/assets/readme/profile.jpeg">
+  </td>
+  <td style="text-align: center">
+    <img width="300" alt="" src="https://github.com/KaueSena01/AC-Mobile/blob/release-v1/assets/readme/camera.jpeg">
+  </td>
+</tr>
+</table></div>
+
+## 🚀 Installing MP
+
+To run the project use the following commands
+> It is worth mentioning that this project was developed only for Android and IOS.
+
+```bash
+# Clone this project
+$ git clone https://github.com/KaueSena01/AC-Mobile
+
+# Execute
+$ flutter pub get
 ```
-<comando_de_instalação>
-```
-
-Windows:
-```
-<comando_de_instalação>
-```
-
-## ☕ Usando <nome_do_projeto>
-
-Para usar <nome_do_projeto>, siga estas etapas:
+After that, create an .env file based on .env.example and insert the necessary keys to run the APP.
 
 ```
-<exemplo_de_uso>
+API_BASE_URL=
+TOKEN_KEY=
+APPLICATION_ID=
+REST_API_KEY=
 ```
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+After that, start APP.
 
-## 📫 Contribuindo para <nome_do_projeto>
-<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
-Para contribuir com <nome_do_projeto>, siga estas etapas:
+```
+flutter run
+```
 
-1. Bifurque este repositório.
-2. Crie um branch: `git checkout -b <nome_branch>`.
-3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
-5. Crie a solicitação de pull.
-
-Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-
-## 🤝 Colaboradores
-
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+## Developer
 
 <table>
   <tr>
     <td align="center">
-      <a href="#">
-        <img src="https://avatars3.githubusercontent.com/u/31936044" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+      <a href="https://github.com/KaueSena01">
+        <img src="https://avatars.githubusercontent.com/u/86299739?s=400&u=79241537628ffd14ff1f80a584669a9b491e7bc1&v=4" width="100px;" alt="Kauê Sena"/><br>
         <sub>
-          <b>Iuri Silva</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
-        <sub>
-          <b>Mark Zuckerberg</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Steve Jobs</b>
+          <b>Kauê Alves Sena - Mobile Developer 💙</b>
         </sub>
       </a>
     </td>
   </tr>
 </table>
 
-
-## 😄 Seja um dos contribuidores<br>
-
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
-
-## 📝 Licença
-
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
-
-[⬆ Voltar ao topo](#nome-do-projeto)<br>
+Thanks for your attention.
