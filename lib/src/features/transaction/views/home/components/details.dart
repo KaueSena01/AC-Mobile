@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/utils/utils_services.dart';
@@ -128,7 +129,7 @@ class Details extends StatelessWidget {
               ),
             ),
             ButtonWidget(
-              label: "Fechar",
+              label: ButtonLabel.close,
               backgroundColor: detailsColor,
               border: false,
               onPressed: () => Get.back(),

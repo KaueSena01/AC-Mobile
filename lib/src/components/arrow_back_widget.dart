@@ -16,7 +16,7 @@ class ArrowBackWidget extends StatelessWidget {
       onTap: onPressed,
       borderRadius: BorderRadius.circular(size70),
       child: const Padding(
-        padding: EdgeInsets.fromLTRB(15, 10, 5, 10),
+        padding: EdgeInsets.fromLTRB(size15, size10, size05, size10),
         child: Icon(
           Icons.arrow_back_ios,
           color: whiteColor,

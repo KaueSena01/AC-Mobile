@@ -11,10 +11,10 @@ const List<String> transactionType = <String>[
 ];
 
 const List<String> payment = <String>[
-  "Dinheiro",
-  "PIX",
-  "Cartão",
-  "Agência",
+  PaymentOptions.money,
+  PaymentOptions.pix,
+  PaymentOptions.card,
+  PaymentOptions.agency,
 ];
 
 class DropDownWidget extends StatefulWidget {
@@ -42,7 +42,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         widget.isPaymentOptions ? payment.first : transactionType.first;
     return GetBuilder<TransactionController>(builder: (_) {
       return Container(
-        padding: const EdgeInsets.fromLTRB(20, size30, 30, 5),
+        padding: const EdgeInsets.fromLTRB(size20, size30, size30, size05),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

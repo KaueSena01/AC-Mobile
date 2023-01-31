@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:atlas_coins/src/utils/settings.dart';
+import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/theme/constants.dart';
+import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
 import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
-import 'package:atlas_coins/src/routes/app_pages.dart';
-import 'package:atlas_coins/src/theme/app_theme.dart';
-import 'package:atlas_coins/src/theme/constants.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class Fingerprint extends StatelessWidget {
   Fingerprint({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class Fingerprint extends StatelessWidget {
     authController.checkBiometricController();
     return BaseStructure(
       child: Container(
-        margin: const EdgeInsets.all(30),
+        margin: const EdgeInsets.all(size30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -46,8 +48,8 @@ class Fingerprint extends StatelessWidget {
             GetX<AuthController>(
               builder: (controller) {
                 return ButtonWidget(
-                  margin: const EdgeInsets.only(bottom: 30),
-                  label: "Usar digital",
+                  margin: const EdgeInsets.only(bottom: size30),
+                  label: ButtonLabel.useFingerprint,
                   circularIndicator: controller.loading.value ? true : false,
                   backgroundColor:
                       controller.loading.value ? defaultColor : primaryColor,
@@ -59,7 +61,7 @@ class Fingerprint extends StatelessWidget {
             ),
             GestureDetector(
               child: Text(
-                "Entrar sem usar a digital",
+                ButtonLabel.logInWithoutFingerprint,
                 style: AppTheme.lightText.labelMedium!.apply(
                   color: whiteColor,
                 ),

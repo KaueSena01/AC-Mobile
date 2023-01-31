@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
@@ -52,7 +53,7 @@ class NewTransactionScreenStepTwo extends StatelessWidget {
                 return ButtonWidget(
                   margin:
                       const EdgeInsets.fromLTRB(size20, size20, size20, size20),
-                  label: "Finalizar",
+                  label: ButtonLabel.finalize,
                   circularIndicator:
                       transactionController.loading.value ? true : false,
                   backgroundColor: transactionController.loading.value

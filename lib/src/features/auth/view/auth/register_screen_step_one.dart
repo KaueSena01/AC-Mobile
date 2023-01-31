@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
@@ -40,7 +41,7 @@ class RegisterScreenSteepOne extends StatelessWidget {
             Obx(
               () => ButtonWidget(
                 margin: const EdgeInsets.all(size20),
-                label: "Continuar",
+                label: ButtonLabel.next,
                 onPressed: !enabledButton.value
                     ? null
                     : () {

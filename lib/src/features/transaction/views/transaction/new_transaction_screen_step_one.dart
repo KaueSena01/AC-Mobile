@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
@@ -40,7 +41,7 @@ class NewTransactionScreenStepOne extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(size20),
             child: ButtonWidget(
-              label: "Continuar",
+              label: ButtonLabel.next,
               onPressed: () => Get.to(NewTransactionScreenStepTwo()),
             ),
           )

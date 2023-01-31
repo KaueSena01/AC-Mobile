@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
@@ -39,7 +40,7 @@ class UserDetails extends StatelessWidget {
         ),
         ButtonWidget(
           margin: const EdgeInsets.only(top: size20, bottom: size10),
-          label: "Editar perfil",
+          label: ButtonLabel.editProfile,
           onPressed: () {},
         ),
         Container(

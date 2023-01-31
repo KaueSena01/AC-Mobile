@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-String apiBaseUrl = dotenv.get("APIBASEURL", fallback: "");
+String apiBaseUrl = dotenv.get("API_BASE_URL", fallback: "");
 
 abstract class EndPoints {
   static String signin = '$apiBaseUrl/sign-in';

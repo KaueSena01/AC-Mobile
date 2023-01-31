@@ -21,9 +21,10 @@ class HeadWidget extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 5, bottom: 0, left: 0),
+              margin: const EdgeInsets.only(
+                  top: size05, bottom: size00, left: size00),
               height: 3,
-              width: 40,
+              width: size40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(3),
                 color: tertiaryColor,

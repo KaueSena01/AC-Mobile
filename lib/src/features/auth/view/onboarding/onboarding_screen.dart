@@ -1,11 +1,12 @@
-import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
-import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
+import 'package:atlas_coins/src/routes/app_pages.dart';
+import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 
 class OnboardingScreen extends StatelessWidget {
   OnboardingScreen({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class OnboardingScreen extends StatelessWidget {
                           width: size200,
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(top: size40, bottom: 20),
+                          padding: EdgeInsets.only(top: size40, bottom: size20),
                           child: Text(
                             "Gerencie suas\nfinanças corretamente",
                             style: TextStyle(
@@ -92,7 +93,7 @@ class OnboardingScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(size30),
                             ),
                             child: Text(
-                              "Entrar",
+                              ButtonLabel.logIn,
                               style: AppTheme.lightText.headlineMedium!.apply(
                                 color: whiteColor,
                               ),
@@ -113,7 +114,7 @@ class OnboardingScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(size30),
                             ),
                             child: Text(
-                              "Criar conta",
+                              ButtonLabel.createAccount,
                               style: AppTheme.lightText.headlineMedium!.apply(
                                 color: whiteColor,
                               ),

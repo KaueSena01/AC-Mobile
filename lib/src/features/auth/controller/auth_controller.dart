@@ -1,15 +1,15 @@
-import 'package:atlas_coins/src/components/modal_error.dart';
 import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:local_auth_android/local_auth_android.dart';
+import 'package:local_auth_ios/local_auth_ios.dart';
 
 import 'package:atlas_coins/src/routes/app_pages.dart';
 import 'package:atlas_coins/src/utils/utils_services.dart';
+import 'package:atlas_coins/src/components/modal_error.dart';
 import 'package:atlas_coins/src/features/auth/model/auth_model.dart';
 import 'package:atlas_coins/src/features/auth/result/auth_result.dart';
 import 'package:atlas_coins/src/features/auth/repository/auth_repository.dart';
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:local_auth_android/local_auth_android.dart';
-import 'package:local_auth_ios/local_auth_ios.dart';
 
 class AuthController extends GetxController {
   AuthModel authModel = AuthModel();

@@ -29,7 +29,8 @@ class InputSearch extends StatelessWidget {
               color: whiteColor,
             ),
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.fromLTRB(size20, 0, size20, 0),
+              contentPadding:
+                  const EdgeInsets.fromLTRB(size20, size00, size20, size00),
               filled: true,
               fillColor: cardBackgroundColor,
               isDense: false,

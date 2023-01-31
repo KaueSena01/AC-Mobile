@@ -1,5 +1,3 @@
-import 'package:atlas_coins/src/components/base_structure.dart';
-import 'package:atlas_coins/src/components/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:get/get.dart';
@@ -8,9 +6,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:atlas_coins/main.dart';
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/app_theme.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
+import 'package:atlas_coins/src/components/button_widget.dart';
+import 'package:atlas_coins/src/components/base_structure.dart';
 import 'package:atlas_coins/src/features/auth/controller/auth_controller.dart';
 
 class UserImage extends StatelessWidget {
@@ -121,9 +122,9 @@ class _PictureUserProfileState extends State<PictureUserProfile> {
                     },
                   ),
                   Positioned(
-                    bottom: 00,
+                    bottom: size00,
                     child: Container(
-                      height: 160,
+                      height: size160,
                       width: MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
                       child: InkWell(
@@ -157,12 +158,12 @@ class _PictureUserProfileState extends State<PictureUserProfile> {
                     ),
                   ),
                   Positioned.fill(
-                    right: 10,
+                    right: size10,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Container(
-                        height: 190,
-                        width: 45,
+                        height: size190,
+                        width: size45,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(size05),
                           color: backgroundColor.withOpacity(0.5),
@@ -175,7 +176,7 @@ class _PictureUserProfileState extends State<PictureUserProfile> {
                               onPressed: () {},
                               icon: const Icon(
                                 Icons.flash_off,
-                                size: 30,
+                                size: size30,
                                 color: whiteColor,
                               ),
                             ),
@@ -184,7 +185,7 @@ class _PictureUserProfileState extends State<PictureUserProfile> {
                               onPressed: () {},
                               icon: const Icon(
                                 Icons.flip_camera_ios,
-                                size: 30,
+                                size: size30,
                                 color: whiteColor,
                               ),
                             ),
@@ -193,7 +194,7 @@ class _PictureUserProfileState extends State<PictureUserProfile> {
                               onPressed: () {},
                               icon: const Icon(
                                 Icons.photo,
-                                size: 30,
+                                size: size30,
                                 color: whiteColor,
                               ),
                             ),
@@ -256,8 +257,8 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(top: size100, bottom: size20),
-                    height: 150,
-                    width: 150,
+                    height: size150,
+                    width: size150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(size100),
                       color: cardBackgroundColor,
@@ -288,7 +289,7 @@ class _DisplayPictureScreenState extends State<DisplayPictureScreen> {
             ),
           ),
           ButtonWidget(
-            label: "Salvar",
+            label: ButtonLabel.save,
             margin: const EdgeInsets.fromLTRB(size15, size20, size15, size20),
             onPressed: () async {},
           ),

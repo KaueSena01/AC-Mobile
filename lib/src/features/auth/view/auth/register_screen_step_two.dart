@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 import 'package:atlas_coins/src/components/app_bar_app.dart';
 import 'package:atlas_coins/src/components/button_widget.dart';
@@ -45,7 +46,7 @@ class RegisterScreenSteepTwo extends StatelessWidget {
               builder: (authController) {
                 return ButtonWidget(
                   margin: const EdgeInsets.all(size20),
-                  label: "Finalizar",
+                  label: ButtonLabel.finalize,
                   circularIndicator:
                       authController.loading.value ? true : false,
                   backgroundColor: authController.loading.value

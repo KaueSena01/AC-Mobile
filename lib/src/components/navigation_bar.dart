@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 import 'package:atlas_coins/src/features/transaction/controller/transaction_controller.dart';
-import 'package:atlas_coins/src/services/bottom_navigation_bar.dart';
+import 'package:atlas_coins/src/utils/settings.dart';
 import 'package:atlas_coins/src/theme/constants.dart';
 
 Widget bottomNavigationBar(
@@ -52,8 +52,8 @@ Widget bottomNavigationBar(
 Widget _item(
     TransactionController transactionController, String item, int? pageIndex) {
   return SizedBox(
-    height: 30,
-    width: 30,
+    height: size30,
+    width: size30,
     child: Padding(
       padding: const EdgeInsets.all(size05),
       child: SvgPicture.asset(
